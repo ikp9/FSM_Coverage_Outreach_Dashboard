@@ -87,10 +87,10 @@ knitr::opts_chunk$set(
 )
 
 knitr::opts_knit$set(
-  root.dir = "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data"
+  root.dir = "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data"
 )
 
-setwd("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data")
+setwd("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data")
 
 getwd()
 
@@ -111,25 +111,25 @@ STEP 3: Import Reminder/Recall
 #STEP 1: Import roster
 
 #start highlight
-roster <- import("C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/WebIZ Data/Roster_0-7_061826.xlsx")%>%
+roster <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data/Roster_0-7_072926.xlsx")%>%
   janitor::clean_names() #end highlight
 
 #STEP 2: Import patient detail with services
 
 #start highlight
-detail <- import("C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/WebIZ Data/Details_0-7_061826.xlsx") %>%
+detail <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data/Details_0-7_072926.xlsx") %>%
   janitor::clean_names() #end highlight
 
 #STEP 3: Import REMINDER RECALL
 
 #start highlight
-reminder <- import("C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/WebIZ Data/RR_ALL_0-7_061826.xlsx") %>%
+reminder <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data/RR_ALL_0-7_072726.xlsx") %>%
   janitor::clean_names() #end highlight
 
 #STEP 3: Import PlaceNames data for mapping later
 
 #start highlight
-placenames <- import("C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/WebIZ Data/placenames_micronesia_all_v2_index.xlsx") %>%
+placenames <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/placenames_micronesia_all_v2_index.xlsx") %>%
   janitor::clean_names() #end highlight
 
 
