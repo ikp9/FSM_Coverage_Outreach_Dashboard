@@ -157,7 +157,7 @@ interest.
 
 #Set the "age as of" date. For example, age 19 - 35 months *as of January 1, 2026*
 
-age_as_of_date <- ymd("2026-06-01")
+age_as_of_date <- ymd("2026-07-01")
 
 roster2 <- roster %>% 
   mutate(
@@ -230,7 +230,7 @@ interest.
 ```{r reminder2, include=FALSE}
 #Set the "age as of" date. For example, age 19 - 35 months *as of January 1, 2026*
 
-age_as_of_date <- ymd("2026-06-01")
+age_as_of_date <- ymd("2026-07-01")
 
 reminder2 <- reminder %>% 
   mutate(
@@ -273,7 +273,6 @@ QA
 reminder2 %>% 
   count(rr_agegroup) 
 
-
 ```
 
 # Create reminder categories
@@ -289,7 +288,7 @@ recommended schedule
 
 reminder3 <- reminder2 %>%
   # Keep only children 2-83 months
-  filter(age_months >= 2, age_months <= 83) %>%
+  filter(age_months >= 2, age_months < 84) %>%
   # Temporary row ID so we can safely collapse back later
   mutate(row_id = row_number())
 
@@ -562,7 +561,7 @@ interest.
 
 ```{r clean detail, include=FALSE}
 
-age_as_of_date <- ymd("2026-06-01")
+age_as_of_date <- ymd("2026-07-01")
 
 detail2 <-detail %>% 
   mutate(
@@ -1415,7 +1414,8 @@ product_dosenum <- clean_hib4_filtered %>%
 
 ```
 
-QA clean product dose number
+
+QA clean product dose number and county/village data
 
 ```{r product dose number qa, include=FALSE}
 #qa column names are in desired order, and view data
@@ -1441,9 +1441,20 @@ sort(unique(clean2$county))
 export_county <- clean2 %>%
   select(provider, clinic, state, county, rr_county, city)
 
-write_xlsx(
+today <- format(Sys.Date(), "%m%d%y")
+
+county_file <- file.path(
+  "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output",
+  paste0(
+    "Raw_Provider_Clinic_Locations_",
+    today,
+    ".xlsx"
+  )
+)
+
+writexl::write_xlsx(
   export_county,
-  "C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/WebIZ Data/Output/provider_clinic_location_variables.xlsx"
+  path = county_file
 )
 ```
 
@@ -2381,7 +2392,7 @@ hib_utd = case_when(
 
 #----------------------------------------------------------------------------
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  # ROTA UTD: Ignore FSM ONLY USES 3 DOSE PRODUCT 
+  # ROTA UTD: NEED TO ADD
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #----------------------------------------------------------------------------
@@ -3086,7 +3097,7 @@ missing_latlon_table_unique <- clean11_merged %>%
   distinct() %>%
   arrange(rr_county, county, city)
 
-write_xlsx(missing_latlon_table_unique, "Output/Missing_Coordinates_061826.xlsx")
+write_xlsx(missing_latlon_table_unique, "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output/Missing_Coordinates.xlsx")
 
 ```
 
@@ -3130,25 +3141,50 @@ if (!requireNamespace("openxlsx", quietly = TRUE)) {
   install.packages("openxlsx")
 }
 
+today <- format(Sys.Date(), "%m%d%y")
+
+dataset_file <- file.path(
+  "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output",
+  paste0(
+    "Dataset 1_FSM_2-83 Mos_Full Dataset_",
+    today,
+    ".xlsx"
+  )
+)
 
 write.xlsx(
   clean12_merged,
-  file = "Output/Dataset 1_FSM_2-83 mos_Full Dataset_06252026.xlsx",
+  file = dataset_file,
   overwrite = TRUE
 )
 
 #Export de-identified dataset
-write_xlsx(
-  clean12_merged %>%
-    select(
-      -last_name,
-      -first_name,
-      -primary_contact_lastname_firstname
-    ),
-  "Output/Dataset 1_FSM_2-83 mos_Full Dataset_06252026_DeID.xlsx"
+
+deid_dataset <- clean12_merged %>%
+  select(
+    -last_name,
+    -first_name,
+    -primary_contact_lastname_firstname
+  )
+
+deid_dataset_file <- file.path(
+  "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output",
+  paste0(
+    "Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_",
+    today,
+    ".xlsx"
+  )
+)
+
+openxlsx::write.xlsx(
+  deid_dataset,
+  file = deid_dataset_file,
+  overwrite = TRUE
 )
 
 ```
+
+#### START HERE ###
 
 # Import census data - population statistics and area by county and merge with clean patient dataset
 
