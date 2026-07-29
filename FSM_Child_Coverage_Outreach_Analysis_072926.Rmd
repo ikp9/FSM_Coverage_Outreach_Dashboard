@@ -87,10 +87,10 @@ knitr::opts_chunk$set(
 )
 
 knitr::opts_knit$set(
-  root.dir = "C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/WebIZ Data"
+  root.dir = "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data"
 )
 
-setwd("C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/WebIZ Data")
+setwd("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data")
 
 getwd()
 
