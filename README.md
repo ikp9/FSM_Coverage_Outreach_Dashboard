@@ -22,4 +22,5 @@ Automatically detects the state variable from state.x, state, state_join, or sta
 Checks for missing required variables and returns a clear error listing them.
 Preserves the Chuuk and Yap regional breakdowns in the 19–35-month tables.
 Cleans and standardizes state, county, and village names.
+Delete old code chunks
 
