@@ -3184,8 +3184,6 @@ openxlsx::write.xlsx(
 
 ```
 
-#### START HERE ###
-
 # Import census data - population statistics and area by county and merge with clean patient dataset
 
 -Includes population per m2 and per acre - acre may be more appropriate
@@ -3195,7 +3193,7 @@ been able to find
 ```{r pop density, include=FALSE}
 
 
-pop_density <- import("C:/Users/ikp9/OneDrive - CDC/USAPI/DSU/SEB DSU 2025_Project Materials/TA/data/FSM Counties_Census.xlsx")%>%
+pop_density <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/FSM Counties_Census.xlsx")%>%
   janitor::clean_names() 
 
 clean13_merged <- clean12_merged %>%
@@ -3208,6 +3206,1182 @@ clean13_merged <- clean12_merged %>%
   )
 
 ```
+
+#TEST CODE
+Creates on Excel workbook with the following tables:
+•	IIS denominator by Age
+•	Under-vaccinated by Village
+•	Under-vaccinated by County
+•	Vaccines Needed by County
+•	2 – 83 months Coverage by Dose
+•	2 – 83 months UTD by County
+•	19 – 35 Months Coverage by State
+•	19 – 35 Months Series Coverage by State
+
+```{r}
+
+# ===========================================================================
+# FSM CHILD COVERAGE AND OUTREACH TABLES
+# Creates one dated Excel workbook with eight worksheets.
+# ===========================================================================
+
+# ---- Packages -------------------------------------------------------------
+required_packages <- c("dplyr", "tidyr", "stringr", "purrr", "tibble", "openxlsx")
+missing_packages <- required_packages[!vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)]
+
+if (length(missing_packages) > 0) {
+  install.packages(missing_packages)
+}
+
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(purrr)
+library(tibble)
+library(openxlsx)
+
+# ---- Output settings ----------------------------------------------------------
+today <- format(Sys.Date(), "%m%d%y")
+report_year <- format(Sys.Date(), "%Y")
+
+output_dir <- paste0(
+  "C:/Users/ikp9/R/USAPI/FSM/",
+  "ShoreToShot_R_Prototype_Vaccination_Coverage/",
+  "data/Analytic Code Output"
+)
+
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+output_file <- file.path(
+  output_dir,
+  paste0("FSM_Child_Coverage_Outreach_Tables_", today, ".xlsx")
+)
+
+# Excel worksheet names cannot exceed 31 characters.
+sheet_names <- c(
+  denominator       = "IIS denominator by Age",
+  village_targets   = "Undervaccinated by Village",
+  county_targets    = "Undervaccinated by County",
+  vaccine_products  = "Vaccines Needed by County",
+  dose_coverage     = "2 – 83 months Coverage by Dose",
+  county_utd        = "2 – 83 months UTD by County",
+  coverage_19_35    = "19–35 Mos Coverage by State",
+  series_19_35      = "19–35 Mos Series by State"
+)
+
+# ---- Validate source data -----------------------------------------------------
+if (!exists("clean13_merged")) {
+  stop("The data frame 'clean13_merged' is not available in the R environment.")
+}
+
+state_var <- intersect(
+  c("state.x", "state", "state_join", "state.y"),
+  names(clean13_merged)
+)[1]
+
+village_var <- intersect(
+  c("city", "village", "Village"),
+  names(clean13_merged)
+)[1]
+
+if (is.na(state_var)) {
+  stop("No state variable was found. Expected one of: state.x, state, state_join, state.y.")
+}
+
+if (is.na(village_var)) {
+  stop("No village variable was found. Expected one of: city, village, Village.")
+}
+
+required_vars <- c(
+  # Geography and age
+  "county", "age_months",
+
+  # Outreach targets
+  "onreminder", "need_dtap", "need_ipv", "need_mmr", "need_hib",
+  "need_hepb", "need_pcv", "need_rota",
+
+  # Vaccine products needed
+  "PedVaxHib", "Vaxelis", "Pediarix", "DTaP_Single", "IPV_Single",
+  "MMR_Single", "Prevnar", "RotaTeq",
+
+  # Overall UTD
+  "utd",
+
+  # Dose-specific UTD
+  "dtap1utd", "dtap2utd", "dtap3utd", "dtap4utd", "dtap54utd",
+  "ipv1utd", "ipv2utd", "ipv3utd", "ipv43utd",
+  "mmr1utd", "mmr2utd",
+  "hib1utd", "hib2utd", "hib3utd", "hib4utd", "hib_utd",
+  "hepb1utd", "hepb2utd", "hepb3utd",
+  "pcv1utd", "pcv2utd", "pcv3utd", "pcv4utd", "pcv_utd",
+  "rota3utd",
+
+  # Variables needed for the 19-35 month tables
+  "dob", "hepb_date1", "bcg_date1", "primary_pedvaxhib"
+)
+
+missing_vars <- setdiff(required_vars, names(clean13_merged))
+
+if (length(missing_vars) > 0) {
+  stop(
+    "The following required variables are missing from clean13_merged: ",
+    paste(missing_vars, collapse = ", ")
+  )
+}
+
+# ---- Cleaning and classification helpers -------------------------------------
+clean_state_name <- function(x) {
+  x <- str_to_upper(str_squish(as.character(x)))
+  x[x %in% c("", "NA", "N/A", "UNKNOWN")] <- NA_character_
+
+  case_when(
+    x %in% c("CH", "CHK", "CHUUK")       ~ "Chuuk",
+    x %in% c("KO", "KSA", "KOSRAE")     ~ "Kosrae",
+    x %in% c("PO", "PNI", "POHNPEI")    ~ "Pohnpei",
+    x %in% c("YA", "YAP")                ~ "Yap",
+    TRUE                                   ~ str_to_title(str_to_lower(x))
+  )
+}
+
+clean_place_name <- function(x) {
+  x <- str_squish(as.character(x))
+  x[x %in% c("", "NA", "N/A", "UNKNOWN")] <- NA_character_
+  x <- str_to_title(str_to_lower(x))
+
+  recode(
+    x,
+    "Dalipebinaw" = "Dalipeebinaew",
+    "Ettal" = "Etal",
+    "Polowat" = "Puluwat",
+    "Rull" = "Ruul",
+    "Tomil" = "Tamil",
+    "Weloy" = "Weeloey"
+  )
+}
+
+age_levels <- c(
+  "2 - 3 months",
+  "4 - 5 months",
+  "6 - 11 months",
+  "12 - 18 months",
+  "19 - 35 months",
+  "36 - 47 months",
+  "48 - 59 months",
+  "60 - 71 months",
+  "72 - 83 months"
+)
+
+assign_age_band <- function(age_months) {
+  factor(
+    case_when(
+      age_months >= 2  & age_months <= 3  ~ age_levels[1],
+      age_months >= 4  & age_months <= 5  ~ age_levels[2],
+      age_months >= 6  & age_months <= 11 ~ age_levels[3],
+      age_months >= 12 & age_months <= 18 ~ age_levels[4],
+      age_months >= 19 & age_months <= 35 ~ age_levels[5],
+      age_months >= 36 & age_months <= 47 ~ age_levels[6],
+      age_months >= 48 & age_months <= 59 ~ age_levels[7],
+      age_months >= 60 & age_months <= 71 ~ age_levels[8],
+      age_months >= 72 & age_months <= 83 ~ age_levels[9],
+      TRUE ~ NA_character_
+    ),
+    levels = age_levels
+  )
+}
+
+state_groups <- c("FSM", "Chuuk", "Kosrae", "Pohnpei", "Yap")
+state_sort_levels <- c("FSM", "Chuuk", "Kosrae", "Pohnpei", "Yap", "Unknown")
+
+filter_state_group <- function(data, group_name) {
+  if (group_name == "FSM") {
+    data
+  } else {
+    data %>% filter(State == group_name)
+  }
+}
+
+fmt_n <- function(x) {
+  format(x, big.mark = ",", scientific = FALSE, trim = TRUE)
+}
+
+# ---- Prepare standardized analysis data --------------------------------------
+analysis_all <- clean13_merged %>%
+  mutate(
+    State = clean_state_name(.data[[state_var]]),
+    County = clean_place_name(county),
+    Village = clean_place_name(.data[[village_var]]),
+    State = coalesce(State, "Unknown"),
+    County = coalesce(County, "Unknown"),
+    Village = coalesce(Village, "Unknown")
+  )
+
+if (!"region" %in% names(analysis_all)) {
+  analysis_all$region <- NA_character_
+}
+
+analysis_2_83 <- analysis_all %>%
+  filter(!is.na(age_months), age_months >= 2, age_months <= 83) %>%
+  mutate(Age_Group = assign_age_band(age_months))
+
+# ===========================================================================
+# TABLE 1: IIS DENOMINATOR BY AGE AND STATE
+# ===========================================================================
+denominator_table <- tibble(
+  `Age Group` = c("Active patients (total)", age_levels)
+)
+
+for (group_name in state_groups) {
+  group_data <- filter_state_group(analysis_2_83, group_name)
+
+  age_counts <- group_data %>%
+    count(Age_Group, name = "n") %>%
+    complete(
+      Age_Group = factor(age_levels, levels = age_levels),
+      fill = list(n = 0)
+    ) %>%
+    arrange(Age_Group)
+
+  denominator_table[[group_name]] <- c(nrow(group_data), age_counts$n)
+}
+
+# ==============================================================================
+# TABLE 2: UNDERVACCINATED CHILDREN BY VILLAGE
+# ==============================================================================
+village_targets_table <- analysis_all %>%
+  filter(onreminder == 1) %>%
+  count(State, County, Village, name = "Undervaccinated Children") %>%
+  mutate(State_Order = match(State, state_sort_levels)) %>%
+  arrange(State_Order, County, Village) %>%
+  select(-State_Order)
+
+# ==============================================================================
+# TABLE 3: UNDERVACCINATED CHILDREN BY COUNTY AND VACCINE
+# ==============================================================================
+target_vars <- c(
+  "Total children on reminder/recall" = "onreminder",
+  "DTaP" = "need_dtap",
+  "IPV" = "need_ipv",
+  "MMR" = "need_mmr",
+  "Hib" = "need_hib",
+  "HepB" = "need_hepb",
+  "PCV" = "need_pcv",
+  "Rotavirus" = "need_rota"
+)
+
+county_target_summary <- analysis_all %>%
+  group_by(State, County) %>%
+  summarise(
+    across(all_of(unname(target_vars)), ~sum(.x, na.rm = TRUE)),
+    .groups = "drop"
+  ) %>%
+  rename_with(
+    ~names(target_vars)[match(.x, unname(target_vars))],
+    all_of(unname(target_vars))
+  )
+
+fsm_target_total <- analysis_all %>%
+  summarise(across(all_of(unname(target_vars)), ~sum(.x, na.rm = TRUE))) %>%
+  rename_with(
+    ~names(target_vars)[match(.x, unname(target_vars))],
+    all_of(unname(target_vars))
+  ) %>%
+  mutate(State = "FSM", County = "FSM Total") %>%
+  select(State, County, everything())
+
+county_targets_table <- bind_rows(fsm_target_total, county_target_summary) %>%
+  pivot_longer(
+    cols = all_of(names(target_vars)),
+    names_to = "Planning Measure",
+    values_to = "Planning Target"
+  ) %>%
+  mutate(
+    State_Order = match(State, state_sort_levels),
+    Measure_Order = match(`Planning Measure`, names(target_vars)),
+    County_Order = if_else(County == "FSM Total", "", County)
+  ) %>%
+  arrange(State_Order, County_Order, Measure_Order) %>%
+  select(State, County, `Planning Measure`, `Planning Target`)
+
+# ==============================================================================
+# TABLE 4: VACCINE PRODUCTS NEEDED BY COUNTY
+# ==============================================================================
+product_vars <- c(
+  "PedVaxHIB" = "PedVaxHib",
+  "Vaxelis" = "Vaxelis",
+  "Pediarix" = "Pediarix",
+  "DTaP single-antigen" = "DTaP_Single",
+  "IPV single-antigen" = "IPV_Single",
+  "MMR single-antigen" = "MMR_Single",
+  "Prevnar" = "Prevnar",
+  "RotaTeq" = "RotaTeq"
+)
+
+county_product_summary <- analysis_all %>%
+  group_by(State, County) %>%
+  summarise(
+    across(all_of(unname(product_vars)), ~sum(.x, na.rm = TRUE)),
+    .groups = "drop"
+  ) %>%
+  rename_with(
+    ~names(product_vars)[match(.x, unname(product_vars))],
+    all_of(unname(product_vars))
+  )
+
+fsm_product_total <- analysis_all %>%
+  summarise(across(all_of(unname(product_vars)), ~sum(.x, na.rm = TRUE))) %>%
+  rename_with(
+    ~names(product_vars)[match(.x, unname(product_vars))],
+    all_of(unname(product_vars))
+  ) %>%
+  mutate(State = "FSM", County = "FSM Total") %>%
+  select(State, County, everything())
+
+vaccine_products_table <- bind_rows(fsm_product_total, county_product_summary) %>%
+  mutate(
+    State_Order = match(State, state_sort_levels),
+    County_Order = if_else(County == "FSM Total", "", County)
+  ) %>%
+  arrange(State_Order, County_Order) %>%
+  select(-State_Order, -County_Order)
+
+# ==============================================================================
+# TABLE 5: DOSE-SPECIFIC COVERAGE, AGES 2-83 MONTHS, FSM AND FOUR STATES
+# ==============================================================================
+dose_specs <- tibble(
+  Vaccine = c(
+    rep("DTaP", 5),
+    rep("IPV", 4),
+    rep("MMR", 2),
+    rep("Hib", 3),
+    rep("HepB", 3),
+    rep("PCV", 4)
+  ),
+  Dose = c(
+    paste("Dose", 1:5),
+    paste("Dose", 1:4),
+    paste("Dose", 1:2),
+    paste("Dose", 1:3),
+    paste("Dose", 1:3),
+    paste("Dose", 1:4)
+  ),
+  var = c(
+    "dtap1utd", "dtap2utd", "dtap3utd", "dtap4utd", "dtap54utd",
+    "ipv1utd", "ipv2utd", "ipv3utd", "ipv43utd",
+    "mmr1utd", "mmr2utd",
+    "hib1utd", "hib2utd", "hib3utd",
+    "hepb1utd", "hepb2utd", "hepb3utd",
+    "pcv1utd", "pcv2utd", "pcv3utd", "pcv4utd"
+  ),
+  eligible_age_bands = list(
+    age_levels, age_levels[2:9], age_levels[3:9], age_levels[4:9], age_levels[7:9],
+    age_levels, age_levels[2:9], age_levels[3:9], age_levels[7:9],
+    age_levels[4:9], age_levels[5:9],
+    age_levels, age_levels[2:9], age_levels[3:9],
+    age_levels, age_levels, age_levels[3:9],
+    age_levels, age_levels[2:9], age_levels[3:9], age_levels[4:9]
+  )
+)
+
+calc_coverage_pct <- function(data, group_name, age_band_name, utd_var) {
+  group_data <- filter_state_group(data, group_name) %>%
+    filter(Age_Group == age_band_name)
+
+  denominator <- nrow(group_data)
+
+  if (denominator == 0) {
+    return(NA_real_)
+  }
+
+  numerator <- sum(group_data[[utd_var]] == 1, na.rm = TRUE)
+  round((numerator / denominator) * 100, 1)
+}
+
+dose_rows <- vector("list", nrow(dose_specs))
+
+for (i in seq_len(nrow(dose_specs))) {
+  row <- list(
+    Vaccine = dose_specs$Vaccine[i],
+    Dose = dose_specs$Dose[i]
+  )
+
+  for (group_name in state_groups) {
+    for (age_band_name in age_levels) {
+      output_col <- paste(group_name, age_band_name, sep = "__")
+
+      if (!age_band_name %in% dose_specs$eligible_age_bands[[i]]) {
+        row[[output_col]] <- "--"
+      } else {
+        pct <- calc_coverage_pct(
+          analysis_2_83,
+          group_name,
+          age_band_name,
+          dose_specs$var[i]
+        )
+
+        row[[output_col]] <- ifelse(is.na(pct), "", sprintf("%.1f", pct))
+      }
+    }
+  }
+
+  dose_rows[[i]] <- as_tibble(row)
+}
+
+dose_coverage_table <- bind_rows(dose_rows)
+
+# ==============================================================================
+# TABLE 6: UTD FOR AGE BY COUNTY, AGES 2-83 MONTHS
+# ==============================================================================
+county_utd_age <- analysis_2_83 %>%
+  group_by(State, County, Age_Group) %>%
+  summarise(
+    Denominator = n(),
+    UTD_n = sum(utd == 1, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  complete(
+    nesting(State, County),
+    Age_Group = factor(age_levels, levels = age_levels),
+    fill = list(Denominator = 0, UTD_n = 0)
+  ) %>%
+  mutate(
+    `% UTD for age` = if_else(
+      Denominator == 0,
+      NA_real_,
+      round((UTD_n / Denominator) * 100, 1)
+    ),
+    Row_Order = as.integer(Age_Group) + 1,
+    `Age Group` = as.character(Age_Group)
+  ) %>%
+  select(State, County, `Age Group`, Denominator, `% UTD for age`, Row_Order)
+
+county_utd_total <- analysis_2_83 %>%
+  group_by(State, County) %>%
+  summarise(
+    Denominator = n(),
+    UTD_n = sum(utd == 1, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    `Age Group` = "Total",
+    `% UTD for age` = round((UTD_n / Denominator) * 100, 1),
+    Row_Order = 1L
+  ) %>%
+  select(State, County, `Age Group`, Denominator, `% UTD for age`, Row_Order)
+
+fsm_utd_age <- analysis_2_83 %>%
+  group_by(Age_Group) %>%
+  summarise(
+    Denominator = n(),
+    UTD_n = sum(utd == 1, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  complete(
+    Age_Group = factor(age_levels, levels = age_levels),
+    fill = list(Denominator = 0, UTD_n = 0)
+  ) %>%
+  mutate(
+    State = "FSM",
+    County = "FSM Total",
+    `% UTD for age` = if_else(
+      Denominator == 0,
+      NA_real_,
+      round((UTD_n / Denominator) * 100, 1)
+    ),
+    Row_Order = as.integer(Age_Group) + 1,
+    `Age Group` = as.character(Age_Group)
+  ) %>%
+  select(State, County, `Age Group`, Denominator, `% UTD for age`, Row_Order)
+
+fsm_utd_total <- analysis_2_83 %>%
+  summarise(
+    Denominator = n(),
+    UTD_n = sum(utd == 1, na.rm = TRUE)
+  ) %>%
+  mutate(
+    State = "FSM",
+    County = "FSM Total",
+    `Age Group` = "Total",
+    `% UTD for age` = if_else(
+      Denominator == 0,
+      NA_real_,
+      round((UTD_n / Denominator) * 100, 1)
+    ),
+    Row_Order = 1L
+  ) %>%
+  select(State, County, `Age Group`, Denominator, `% UTD for age`, Row_Order)
+
+county_utd_table <- bind_rows(
+  fsm_utd_total,
+  fsm_utd_age,
+  county_utd_total,
+  county_utd_age
+) %>%
+  mutate(
+    State_Order = match(State, state_sort_levels),
+    County_Order = if_else(County == "FSM Total", "", County)
+  ) %>%
+  arrange(State_Order, County_Order, Row_Order) %>%
+  select(State, County, `Age Group`, Denominator, `% UTD for age`)
+
+# ==============================================================================
+# TABLES 7 AND 8: 19-35 MONTH COVERAGE AND SERIES TABLES
+# ==============================================================================
+chuuk_main <- c("WENO", "IRAS", "MWAN", "NEPUKOS", "PENIESENE", "WICHAP")
+
+chuuk_lagoon <- c(
+  "ETTEN", "EOT", "EOT ISLAND", "FANAPANGES", "FEFAN", "FONOTON", "FONO",
+  "PAREM-CHUUK", "PAREM", "PPO-ONEI", "ONEI", "WONEI", "ONOUN", "PAATA",
+  "PATA", "PATTA", "PPO-PATTA", "PPO-POLLE", "POLLE", "ROMALUM", "ROMONUM",
+  "SAPOTA", "SAPOTIW", "SIIS", "TOLENSOM", "TONOAS", "UDOT", "UMAN"
+)
+
+chuuk_outer <- c(
+  "ETTAL", "ETAL", "FANANU", "HOUK", "KUTTU", "LEKINIOCH", "LOSAP",
+  "LOSAP ATOLL", "LUKUNOR ATOLL", "MAKUR", "MOCH", "MORTLOCK", "MORTLOCKS",
+  "MURILO", "MURILO ATOLL", "NAMA", "NAMOLUK", "NAMONUITO ATOLL", "NEAUO",
+  "NOMWIN", "NOMWIN ATOLL", "NORTHWEST", "ONEOP", "ONO", "ONOUN", "PIHARAR",
+  "PISEMWAR", "PIISEMWAR", "POLLAP", "PULAP", "PULAP ATOLL", "POLOWAT",
+  "PULUWAT", "RUO", "SATAWAN", "SATAWAN ATOLL", "TA", "TAMATAM", "CHK_MORT",
+  "UNANU", "ONOU", "CHK_O"
+)
+
+yap_main <- c(
+  "COLONIA", "DALIPEBINAW", "DALIPEEBINAEW", "FANIF", "GAGIL", "GILMAN",
+  "KANIFAY", "MAAP", "RULL", "RUUL", "RUMUNG", "TOMIL", "TAMIL", "WELOY",
+  "WEELOEY", "YAP PH"
+)
+
+yap_outer <- c(
+  "EAURIPIK", "ELATO", "ELATO ISLAND", "FAIS", "FARAULAP", "FECHAILAP",
+  "IFALIK", "LAMOTREK", "LAMOTREK ISLAND", "NGULU", "SATAWAL", "SATAWAL ATOLL",
+  "ULITHI", "ULITHI ATOLL", "WOLEAI"
+)
+
+fsm_19_35 <- analysis_all %>%
+  mutate(
+    state_clean = str_to_upper(State),
+    county_clean = str_to_upper(County),
+    region_clean = str_to_upper(str_squish(as.character(region))),
+    region_clean = na_if(region_clean, ""),
+    region_clean = case_when(
+      region_clean %in% c("MAIN", "MAIN ISLAND") ~ "MAIN",
+      region_clean %in% c("LAGOON", "LAGOON ISLAND") ~ "LAGOON",
+      region_clean %in% c("OUTER", "OUTER ISLAND", "OUTER ISLANDS") ~ "OUTER",
+      TRUE ~ region_clean
+    ),
+    region_clean = case_when(
+      is.na(region_clean) ~ case_when(
+        state_clean == "CHUUK" & county_clean %in% chuuk_main   ~ "MAIN",
+        state_clean == "CHUUK" & county_clean %in% chuuk_lagoon ~ "LAGOON",
+        state_clean == "CHUUK" & county_clean %in% chuuk_outer  ~ "OUTER",
+        state_clean == "YAP"   & county_clean %in% yap_main     ~ "MAIN",
+        state_clean == "YAP"   & county_clean %in% yap_outer    ~ "OUTER",
+        TRUE ~ NA_character_
+      ),
+      TRUE ~ region_clean
+    ),
+    hepb_birth_dose = as.integer(
+      !is.na(hepb_date1) & !is.na(dob) &
+        as.numeric(as.Date(hepb_date1) - as.Date(dob)) >= 0 &
+        as.numeric(as.Date(hepb_date1) - as.Date(dob)) <= 3
+    ),
+    bcg_birth_dose = as.integer(
+      !is.na(bcg_date1) & !is.na(dob) &
+        as.numeric(as.Date(bcg_date1) - as.Date(dob)) >= 0 &
+        as.numeric(as.Date(bcg_date1) - as.Date(dob)) <= 3
+    ),
+    hib_primary_series = case_when(
+      primary_pedvaxhib == 1 ~ as.integer(hib2utd == 1),
+      TRUE ~ as.integer(hib3utd == 1)
+    ),
+    hib_full_series = case_when(
+      primary_pedvaxhib == 1 ~ as.integer(hib3utd == 1),
+      TRUE ~ as.integer(hib4utd == 1)
+    ),
+    series432334 = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr2utd == 1 & hib3utd == 1 &
+        hepb3utd == 1 & pcv4utd == 1
+    ),
+    series431334 = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr1utd == 1 & hib3utd == 1 &
+        hepb3utd == 1 & pcv4utd == 1
+    ),
+    series432hibutd3pcvutd = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr2utd == 1 & hib_utd == 1 &
+        hepb3utd == 1 & pcv_utd == 1
+    ),
+    series431hibutd3pcvutd = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr1utd == 1 & hib_utd == 1 &
+        hepb3utd == 1 & pcv_utd == 1
+    ),
+    series432_hibfull_334 = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr2utd == 1 & hib_full_series == 1 &
+        hepb3utd == 1 & pcv4utd == 1
+    ),
+    series431_hibfull_334 = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr1utd == 1 & hib_full_series == 1 &
+        hepb3utd == 1 & pcv4utd == 1
+    ),
+    series432_hibfull_3_pcvutd = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr2utd == 1 & hib_full_series == 1 &
+        hepb3utd == 1 & pcv_utd == 1
+    ),
+    series431_hibfull_3_pcvutd = as.integer(
+      dtap4utd == 1 & ipv3utd == 1 & mmr1utd == 1 & hib_full_series == 1 &
+        hepb3utd == 1 & pcv_utd == 1
+    )
+  ) %>%
+  filter(age_months >= 19, age_months <= 35)
+
+group_names_19 <- c(
+  "FSM", "Chuuk", "Chuuk main island", "Chuuk lagoon island",
+  "Chuuk outer islands", "Kosrae", "Pohnpei", "Yap",
+  "Yap main island", "Yap outer islands"
+)
+
+filter_group_19 <- function(data, group_name) {
+  switch(
+    group_name,
+    "FSM"                 = data,
+    "Chuuk"               = data %>% filter(state_clean == "CHUUK"),
+    "Chuuk main island"   = data %>% filter(state_clean == "CHUUK", region_clean == "MAIN"),
+    "Chuuk lagoon island" = data %>% filter(state_clean == "CHUUK", region_clean == "LAGOON"),
+    "Chuuk outer islands" = data %>% filter(state_clean == "CHUUK", region_clean == "OUTER"),
+    "Kosrae"              = data %>% filter(state_clean == "KOSRAE"),
+    "Pohnpei"             = data %>% filter(state_clean == "POHNPEI"),
+    "Yap"                 = data %>% filter(state_clean == "YAP"),
+    "Yap main island"     = data %>% filter(state_clean == "YAP", region_clean == "MAIN"),
+    "Yap outer islands"   = data %>% filter(state_clean == "YAP", region_clean == "OUTER")
+  )
+}
+
+make_19_35_display_table <- function(data, row_specs) {
+  output_rows <- vector("list", nrow(row_specs))
+
+  for (i in seq_len(nrow(row_specs))) {
+    this_label <- row_specs$label[i]
+    this_var <- row_specs$var[i]
+    row <- list(label = this_label)
+
+    for (group_name in group_names_19) {
+      group_data <- filter_group_19(data, group_name)
+      n_col <- paste0(group_name, "_n")
+      pct_col <- paste0(group_name, "_pct")
+
+      if (is.na(this_var)) {
+        row[[n_col]] <- NA_real_
+        row[[pct_col]] <- NA_real_
+      } else {
+        denominator <- nrow(group_data)
+        numerator <- if (denominator == 0) {
+          NA_real_
+        } else {
+          sum(group_data[[this_var]] == 1, na.rm = TRUE)
+        }
+
+        row[[n_col]] <- numerator
+        row[[pct_col]] <- if (denominator == 0) {
+          NA_real_
+        } else {
+          round((numerator / denominator) * 100, 1)
+        }
+      }
+    }
+
+    output_rows[[i]] <- as_tibble(row)
+  }
+
+  bind_rows(output_rows)
+}
+
+coverage_rows <- tribble(
+  ~label,                 ~var,
+  "HepB Birth Dose*",     "hepb_birth_dose",
+  "BCG Birth Dose*",      "bcg_birth_dose",
+  ">=3 DTaP",             "dtap3utd",
+  ">=4 DTaP",             "dtap4utd",
+  ">=3 IPV",              "ipv3utd",
+  ">=1 MMR",              "mmr1utd",
+  ">=2 MMR",              "mmr2utd",
+  ">=3 Hib",              "hib3utd",
+  "Hib UTD+",             "hib_utd",
+  "Hib primary series",   "hib_primary_series",
+  "Hib full series",      "hib_full_series",
+  ">=3 HepB",             "hepb3utd",
+  ">=3 PCV",              "pcv3utd",
+  ">=4 PCV",              "pcv4utd",
+  "PCV UTD#",             "pcv_utd",
+  ">=3 Rota",             "rota3utd"
+)
+
+series_rows <- tribble(
+  ~label,                                ~var,
+  "Series",                              NA_character_,
+  "4:3:2:3:3:4*",                        "series432334",
+  "4:3:1:3:3:4+",                        "series431334",
+  "Series with UTD measures",            NA_character_,
+  "4:3:2:Hib UTD:3:PCV UTD#",            "series432hibutd3pcvutd",
+  "4:3:1:Hib UTD:3:PCV UTD^",            "series431hibutd3pcvutd",
+  "Series with Hib series measures",     NA_character_,
+  "4:3:2:Hib full series:3:4**",         "series432_hibfull_334",
+  "4:3:1:Hib full series:3:4++",         "series431_hibfull_334",
+  "4:3:2:Hib full series:3:PCV UTD##",   "series432_hibfull_3_pcvutd",
+  "4:3:1:Hib full series:3:PCV UTD^^",   "series431_hibfull_3_pcvutd"
+)
+
+coverage_19_35_table <- make_19_35_display_table(fsm_19_35, coverage_rows)
+series_19_35_table <- make_19_35_display_table(fsm_19_35, series_rows)
+
+group_denominators_19 <- map_int(
+  group_names_19,
+  ~nrow(filter_group_19(fsm_19_35, .x))
+)
+
+group_headers_19 <- paste0(
+  group_names_19,
+  " (n=", fmt_n(group_denominators_19), ")"
+)
+
+coverage_footnotes <- c(
+  "Abbreviations: FSM=Federated States of Micronesia; HepB=hepatitis B vaccine; BCG=Bacillus Calmette-Guerin vaccine; DTaP=diphtheria and tetanus toxoids and acellular pertussis vaccine; IPV=inactivated poliovirus vaccine; MMR=measles, mumps, and rubella vaccine; Hib=Haemophilus influenzae type b vaccine; UTD=up to date; PCV=pneumococcal conjugate vaccine; Rota=rotavirus vaccine.",
+  "Note: Regional totals may not sum to state totals because of missing or nonstandard county or region information.",
+  "*Birth dose is defined as a dose administered 0-3 calendar days after birth.",
+  "+Hib UTD includes children vaccinated according to age-appropriate Hib catch-up guidance.",
+  "#PCV UTD includes children vaccinated according to age-appropriate PCV catch-up guidance."
+)
+
+series_footnotes <- c(
+  "Abbreviations: FSM=Federated States of Micronesia; DTaP=diphtheria and tetanus toxoids and acellular pertussis vaccine; IPV=inactivated poliovirus vaccine; MMR=measles, mumps, and rubella vaccine; Hib=Haemophilus influenzae type b vaccine; HepB=hepatitis B vaccine; PCV=pneumococcal conjugate vaccine; UTD=up to date.",
+  "Hib primary series is receipt of >=2 or >=3 doses, depending on product type. Hib full series is the primary series plus a booster dose. Hib UTD and PCV UTD include age-appropriate catch-up guidance.",
+  "*4:3:2:3:3:4 includes >=4 DTaP, >=3 IPV, >=2 MMR, >=3 Hib, >=3 HepB, and >=4 PCV.",
+  "+4:3:1:3:3:4 includes >=4 DTaP, >=3 IPV, >=1 MMR, >=3 Hib, >=3 HepB, and >=4 PCV.",
+  "#Series includes >=4 DTaP, >=3 IPV, >=2 MMR, Hib UTD, >=3 HepB, and PCV UTD.",
+  "^Series includes >=4 DTaP, >=3 IPV, >=1 MMR, Hib UTD, >=3 HepB, and PCV UTD.",
+  "**Series includes >=4 DTaP, >=3 IPV, >=2 MMR, the Hib full series, >=3 HepB, and >=4 PCV.",
+  "++Series includes >=4 DTaP, >=3 IPV, >=1 MMR, the Hib full series, >=3 HepB, and >=4 PCV.",
+  "##Series includes >=4 DTaP, >=3 IPV, >=2 MMR, the Hib full series, >=3 HepB, and PCV UTD.",
+  "^^Series includes >=4 DTaP, >=3 IPV, >=1 MMR, the Hib full series, >=3 HepB, and PCV UTD."
+)
+
+# ==============================================================================
+# EXCEL FORMATTING HELPERS
+# ==============================================================================
+title_style <- createStyle(
+  textDecoration = "bold",
+  fontSize = 12,
+  halign = "left",
+  valign = "center",
+  wrapText = TRUE
+)
+
+header_style <- createStyle(
+  textDecoration = "bold",
+  halign = "center",
+  valign = "center",
+  wrapText = TRUE,
+  border = "bottom",
+  borderStyle = "thin"
+)
+
+subheader_style <- createStyle(
+  textDecoration = "bold",
+  halign = "center",
+  valign = "center",
+  wrapText = TRUE,
+  border = c("top", "bottom"),
+  borderStyle = "thin"
+)
+
+body_center_style <- createStyle(halign = "center", valign = "center")
+integer_style <- createStyle(halign = "center", numFmt = "#,##0")
+percent_style <- createStyle(halign = "center", numFmt = "0.0")
+bold_style <- createStyle(textDecoration = "bold")
+left_border_style <- createStyle(border = "left", borderStyle = "thin")
+footnote_style <- createStyle(fontSize = 8, wrapText = TRUE, valign = "top")
+
+write_simple_table <- function(
+    wb,
+    sheet,
+    title,
+    data,
+    percent_columns = character(),
+    integer_columns = character()
+) {
+  addWorksheet(wb, sheet, gridLines = TRUE)
+
+  n_cols <- ncol(data)
+  n_rows <- nrow(data)
+  data_start <- 4
+  data_end <- data_start + n_rows - 1
+
+  writeData(wb, sheet, title, startRow = 1, startCol = 1, colNames = FALSE)
+  mergeCells(wb, sheet, cols = 1:n_cols, rows = 1)
+  addStyle(wb, sheet, title_style, rows = 1, cols = 1:n_cols, gridExpand = TRUE)
+
+  writeData(wb, sheet, data, startRow = 3, startCol = 1, colNames = TRUE, keepNA = FALSE)
+  addStyle(wb, sheet, header_style, rows = 3, cols = 1:n_cols, gridExpand = TRUE)
+
+  if (n_rows > 0) {
+    percent_cols <- match(percent_columns, names(data), nomatch = 0)
+    percent_cols <- percent_cols[percent_cols > 0]
+
+    integer_cols <- match(integer_columns, names(data), nomatch = 0)
+    integer_cols <- integer_cols[integer_cols > 0]
+
+    if (length(percent_cols) > 0) {
+      addStyle(
+        wb, sheet, percent_style,
+        rows = data_start:data_end,
+        cols = percent_cols,
+        gridExpand = TRUE
+      )
+    }
+
+    if (length(integer_cols) > 0) {
+      addStyle(
+        wb, sheet, integer_style,
+        rows = data_start:data_end,
+        cols = integer_cols,
+        gridExpand = TRUE
+      )
+    }
+
+    if ("County" %in% names(data)) {
+      total_rows <- which(data$County == "FSM Total") + data_start - 1
+      if (length(total_rows) > 0) {
+        addStyle(
+          wb, sheet, bold_style,
+          rows = total_rows,
+          cols = 1:n_cols,
+          gridExpand = TRUE,
+          stack = TRUE
+        )
+      }
+    }
+  }
+
+  addFilter(wb, sheet, row = 3, cols = 1:n_cols)
+  freezePane(wb, sheet, firstActiveRow = 4, firstActiveCol = 1)
+  setColWidths(wb, sheet, cols = 1:n_cols, widths = "auto")
+  setRowHeights(wb, sheet, rows = 1, heights = 32)
+}
+
+write_denominator_table <- function(wb, sheet, title, data) {
+  addWorksheet(wb, sheet, gridLines = TRUE)
+
+  n_cols <- ncol(data)
+  data_start <- 4
+  data_end <- data_start + nrow(data) - 1
+
+  writeData(wb, sheet, title, startRow = 1, startCol = 1, colNames = FALSE)
+  mergeCells(wb, sheet, cols = 1:n_cols, rows = 1)
+  addStyle(wb, sheet, title_style, rows = 1, cols = 1:n_cols, gridExpand = TRUE)
+
+  writeData(wb, sheet, "Age Group", startRow = 2, startCol = 1, colNames = FALSE)
+  mergeCells(wb, sheet, cols = 1, rows = 2:3)
+
+  for (i in seq_along(state_groups)) {
+    col <- i + 1
+    writeData(wb, sheet, state_groups[i], startRow = 2, startCol = col, colNames = FALSE)
+    writeData(wb, sheet, "n", startRow = 3, startCol = col, colNames = FALSE)
+  }
+
+  addStyle(wb, sheet, subheader_style, rows = 2:3, cols = 1:n_cols, gridExpand = TRUE)
+
+  writeData(wb, sheet, data, startRow = data_start, startCol = 1, colNames = FALSE)
+  addStyle(wb, sheet, integer_style, rows = data_start:data_end, cols = 2:n_cols, gridExpand = TRUE)
+  addStyle(wb, sheet, bold_style, rows = data_start, cols = 1:n_cols, gridExpand = TRUE, stack = TRUE)
+
+  setColWidths(wb, sheet, cols = 1, widths = 27)
+  setColWidths(wb, sheet, cols = 2:n_cols, widths = 13)
+  setRowHeights(wb, sheet, rows = 1, heights = 32)
+  freezePane(wb, sheet, firstActiveRow = 4, firstActiveCol = 2)
+}
+
+write_dose_coverage_table <- function(wb, sheet, title, data) {
+  addWorksheet(wb, sheet, gridLines = TRUE)
+
+  n_age <- length(age_levels)
+  n_groups <- length(state_groups)
+  n_cols <- 2 + (n_age * n_groups)
+  data_start <- 4
+  data_end <- data_start + nrow(data) - 1
+  footnote_row <- data_end + 2
+
+  writeData(wb, sheet, title, startRow = 1, startCol = 1, colNames = FALSE)
+  mergeCells(wb, sheet, cols = 1:n_cols, rows = 1)
+  addStyle(wb, sheet, title_style, rows = 1, cols = 1:n_cols, gridExpand = TRUE)
+
+  writeData(wb, sheet, "Vaccine", startRow = 2, startCol = 1, colNames = FALSE)
+  writeData(wb, sheet, "Dose", startRow = 2, startCol = 2, colNames = FALSE)
+  mergeCells(wb, sheet, cols = 1, rows = 2:3)
+  mergeCells(wb, sheet, cols = 2, rows = 2:3)
+
+  for (i in seq_along(state_groups)) {
+    start_col <- 3 + ((i - 1) * n_age)
+    end_col <- start_col + n_age - 1
+
+    writeData(
+      wb, sheet, state_groups[i],
+      startRow = 2, startCol = start_col,
+      colNames = FALSE
+    )
+    mergeCells(wb, sheet, cols = start_col:end_col, rows = 2)
+
+    writeData(
+      wb, sheet, matrix(age_levels, nrow = 1),
+      startRow = 3, startCol = start_col,
+      colNames = FALSE, rowNames = FALSE
+    )
+
+    addStyle(
+      wb, sheet, left_border_style,
+      rows = 2:data_end,
+      cols = start_col,
+      gridExpand = TRUE,
+      stack = TRUE
+    )
+  }
+
+  addStyle(wb, sheet, subheader_style, rows = 2:3, cols = 1:n_cols, gridExpand = TRUE)
+
+  write_data <- data
+  write_data$Vaccine[duplicated(write_data$Vaccine)] <- ""
+  writeData(wb, sheet, write_data, startRow = data_start, startCol = 1, colNames = FALSE)
+  addStyle(wb, sheet, body_center_style, rows = data_start:data_end, cols = 2:n_cols, gridExpand = TRUE)
+
+  vaccine_counts <- tibble(
+    Vaccine = unique(dose_specs$Vaccine),
+    n_rows = map_int(unique(dose_specs$Vaccine), ~sum(dose_specs$Vaccine == .x))
+  )
+  current_row <- data_start
+
+  for (i in seq_len(nrow(vaccine_counts))) {
+    block_start <- current_row
+    block_end <- current_row + vaccine_counts$n_rows[i] - 1
+
+    if (block_end > block_start) {
+      mergeCells(wb, sheet, cols = 1, rows = block_start:block_end)
+    }
+
+    addStyle(
+      wb, sheet, bold_style,
+      rows = block_start:block_end,
+      cols = 1,
+      gridExpand = TRUE,
+      stack = TRUE
+    )
+
+    current_row <- block_end + 1
+  }
+
+  writeData(
+    wb, sheet,
+    "Values are percentages. -- indicates that the dose is not expected for that age group.",
+    startRow = footnote_row, startCol = 1, colNames = FALSE
+  )
+  mergeCells(wb, sheet, cols = 1:n_cols, rows = footnote_row)
+  addStyle(wb, sheet, footnote_style, rows = footnote_row, cols = 1:n_cols, gridExpand = TRUE)
+
+  setColWidths(wb, sheet, cols = 1, widths = 11)
+  setColWidths(wb, sheet, cols = 2, widths = 10)
+  setColWidths(wb, sheet, cols = 3:n_cols, widths = 12)
+  setRowHeights(wb, sheet, rows = 1, heights = 32)
+  setRowHeights(wb, sheet, rows = 3, heights = 45)
+  freezePane(wb, sheet, firstActiveRow = 4, firstActiveCol = 3)
+}
+
+write_19_35_table <- function(
+    wb,
+    sheet,
+    title,
+    display_table,
+    row_specs,
+    footnotes
+) {
+  addWorksheet(wb, sheet, gridLines = TRUE)
+
+  n_groups <- length(group_names_19)
+  n_cols <- 1 + (n_groups * 2)
+  data_start <- 4
+  data_end <- data_start + nrow(display_table) - 1
+  foot_start <- data_end + 2
+
+  writeData(wb, sheet, title, startRow = 1, startCol = 1, colNames = FALSE)
+  mergeCells(wb, sheet, cols = 1:n_cols, rows = 1)
+  addStyle(wb, sheet, title_style, rows = 1, cols = 1:n_cols, gridExpand = TRUE)
+
+  writeData(wb, sheet, "Measure", startRow = 2, startCol = 1, colNames = FALSE)
+  mergeCells(wb, sheet, cols = 1, rows = 2:3)
+
+  for (i in seq_along(group_headers_19)) {
+    start_col <- 2 + ((i - 1) * 2)
+
+    writeData(
+      wb, sheet, group_headers_19[i],
+      startRow = 2, startCol = start_col,
+      colNames = FALSE
+    )
+    mergeCells(wb, sheet, cols = start_col:(start_col + 1), rows = 2)
+
+    writeData(
+      wb, sheet, matrix(c("n", "%"), nrow = 1),
+      startRow = 3, startCol = start_col,
+      colNames = FALSE, rowNames = FALSE
+    )
+
+    if (i > 1) {
+      addStyle(
+        wb, sheet, left_border_style,
+        rows = 2:data_end,
+        cols = start_col,
+        gridExpand = TRUE,
+        stack = TRUE
+      )
+    }
+  }
+
+  addStyle(wb, sheet, subheader_style, rows = 2:3, cols = 1:n_cols, gridExpand = TRUE)
+
+  writeData(
+    wb, sheet, display_table,
+    startRow = data_start, startCol = 1,
+    colNames = FALSE, keepNA = FALSE
+  )
+
+  addStyle(wb, sheet, integer_style, rows = data_start:data_end, cols = seq(2, n_cols, by = 2), gridExpand = TRUE)
+  addStyle(wb, sheet, percent_style, rows = data_start:data_end, cols = seq(3, n_cols, by = 2), gridExpand = TRUE)
+
+  section_rows <- which(is.na(row_specs$var)) + data_start - 1
+  if (length(section_rows) > 0) {
+    addStyle(
+      wb, sheet, bold_style,
+      rows = section_rows,
+      cols = 1:n_cols,
+      gridExpand = TRUE,
+      stack = TRUE
+    )
+  }
+
+  for (i in seq_along(footnotes)) {
+    row <- foot_start + i - 1
+    writeData(wb, sheet, footnotes[i], startRow = row, startCol = 1, colNames = FALSE)
+    mergeCells(wb, sheet, cols = 1:n_cols, rows = row)
+    addStyle(wb, sheet, footnote_style, rows = row, cols = 1:n_cols, gridExpand = TRUE)
+  }
+
+  setColWidths(wb, sheet, cols = 1, widths = 35)
+  setColWidths(wb, sheet, cols = 2:n_cols, widths = 10)
+  setRowHeights(wb, sheet, rows = 1, heights = 32)
+  setRowHeights(wb, sheet, rows = 2, heights = 42)
+  freezePane(wb, sheet, firstActiveRow = 4, firstActiveCol = 2)
+}
+
+# ==============================================================================
+# CREATE THE SINGLE WORKBOOK IN THE REQUESTED SHEET ORDER
+# ==============================================================================
+wb <- createWorkbook()
+
+write_denominator_table(
+  wb,
+  sheet_names[["denominator"]],
+  paste0(
+    "Number of children aged 2-83 months with an active status in the ",
+    "immunization information system (IIS), by age group and state - FSM, ",
+    report_year
+  ),
+  denominator_table
+)
+
+write_simple_table(
+  wb,
+  sheet_names[["village_targets"]],
+  paste0(
+    "Number of undervaccinated children on reminder/recall, by state, ",
+    "county, and village - FSM, ", report_year
+  ),
+  village_targets_table,
+  integer_columns = "Undervaccinated Children"
+)
+
+write_simple_table(
+  wb,
+  sheet_names[["county_targets"]],
+  paste0(
+    "Number of undervaccinated children and doses needed, by state, county, ",
+    "and vaccine - FSM, ", report_year
+  ),
+  county_targets_table,
+  integer_columns = "Planning Target"
+)
+
+write_simple_table(
+  wb,
+  sheet_names[["vaccine_products"]],
+  paste0("Number of vaccine products needed, by state and county - FSM, ", report_year),
+  vaccine_products_table,
+  integer_columns = names(product_vars)
+)
+
+write_dose_coverage_table(
+  wb,
+  sheet_names[["dose_coverage"]],
+  paste0(
+    "Percent of children aged 2-83 months UTD for each vaccine dose, ",
+    "by age group and state - FSM, ", report_year
+  ),
+  dose_coverage_table
+)
+
+write_simple_table(
+  wb,
+  sheet_names[["county_utd"]],
+  paste0(
+    "Vaccination up-to-date status among children aged 2-83 months, ",
+    "by state, county, and age group - FSM, ", report_year
+  ),
+  county_utd_table,
+  percent_columns = "% UTD for age",
+  integer_columns = "Denominator"
+)
+
+write_19_35_table(
+  wb,
+  sheet_names[["coverage_19_35"]],
+  paste0(
+    "Vaccination coverage among children aged 19-35 months, ",
+    "by state and island group - FSM, ", report_year
+  ),
+  coverage_19_35_table,
+  coverage_rows,
+  coverage_footnotes
+)
+
+write_19_35_table(
+  wb,
+  sheet_names[["series_19_35"]],
+  paste0(
+    "Vaccine series coverage among children aged 19-35 months, ",
+    "by state and island group - FSM, ", report_year
+  ),
+  series_19_35_table,
+  series_rows,
+  series_footnotes
+)
+
+saveWorkbook(wb, output_file, overwrite = TRUE)
+
+message("Workbook created: ", output_file)
+output_file
+
+
+```
+
+
+
+
+
+#ORIGINAL CODE BELOW
 
 # START OF SUMMARY STATISTICS
 
