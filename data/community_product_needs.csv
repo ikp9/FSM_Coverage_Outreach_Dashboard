@@ -1,0 +1,537 @@
+community_id,state,county,product,doses_needed
+CHUUK__EOT ISLAND,Chuuk,Eot Island,PedVaxHib,1
+CHUUK__EOT ISLAND,Chuuk,Eot Island,Vaxelis,2
+CHUUK__EOT ISLAND,Chuuk,Eot Island,Pediarix,1
+CHUUK__EOT ISLAND,Chuuk,Eot Island,DTaP_Single,8
+CHUUK__EOT ISLAND,Chuuk,Eot Island,IPV_Single,3
+CHUUK__EOT ISLAND,Chuuk,Eot Island,MMR_Single,4
+CHUUK__EOT ISLAND,Chuuk,Eot Island,Prevnar,3
+CHUUK__EOT ISLAND,Chuuk,Eot Island,RotaTeq,0
+CHUUK__ETAL,Chuuk,Etal,PedVaxHib,0
+CHUUK__ETAL,Chuuk,Etal,Vaxelis,2
+CHUUK__ETAL,Chuuk,Etal,Pediarix,1
+CHUUK__ETAL,Chuuk,Etal,DTaP_Single,2
+CHUUK__ETAL,Chuuk,Etal,IPV_Single,2
+CHUUK__ETAL,Chuuk,Etal,MMR_Single,0
+CHUUK__ETAL,Chuuk,Etal,Prevnar,2
+CHUUK__ETAL,Chuuk,Etal,RotaTeq,1
+CHUUK__FANAPANGES,Chuuk,Fanapanges,PedVaxHib,8
+CHUUK__FANAPANGES,Chuuk,Fanapanges,Vaxelis,27
+CHUUK__FANAPANGES,Chuuk,Fanapanges,Pediarix,18
+CHUUK__FANAPANGES,Chuuk,Fanapanges,DTaP_Single,27
+CHUUK__FANAPANGES,Chuuk,Fanapanges,IPV_Single,13
+CHUUK__FANAPANGES,Chuuk,Fanapanges,MMR_Single,38
+CHUUK__FANAPANGES,Chuuk,Fanapanges,Prevnar,38
+CHUUK__FANAPANGES,Chuuk,Fanapanges,RotaTeq,3
+CHUUK__FEFAN,Chuuk,Fefan,PedVaxHib,12
+CHUUK__FEFAN,Chuuk,Fefan,Vaxelis,44
+CHUUK__FEFAN,Chuuk,Fefan,Pediarix,23
+CHUUK__FEFAN,Chuuk,Fefan,DTaP_Single,64
+CHUUK__FEFAN,Chuuk,Fefan,IPV_Single,47
+CHUUK__FEFAN,Chuuk,Fefan,MMR_Single,70
+CHUUK__FEFAN,Chuuk,Fefan,Prevnar,65
+CHUUK__FEFAN,Chuuk,Fefan,RotaTeq,8
+CHUUK__FONOTON,Chuuk,Fonoton,PedVaxHib,3
+CHUUK__FONOTON,Chuuk,Fonoton,Vaxelis,6
+CHUUK__FONOTON,Chuuk,Fonoton,Pediarix,1
+CHUUK__FONOTON,Chuuk,Fonoton,DTaP_Single,4
+CHUUK__FONOTON,Chuuk,Fonoton,IPV_Single,2
+CHUUK__FONOTON,Chuuk,Fonoton,MMR_Single,7
+CHUUK__FONOTON,Chuuk,Fonoton,Prevnar,9
+CHUUK__FONOTON,Chuuk,Fonoton,RotaTeq,0
+CHUUK__HOUK,Chuuk,Houk,PedVaxHib,0
+CHUUK__HOUK,Chuuk,Houk,Vaxelis,8
+CHUUK__HOUK,Chuuk,Houk,Pediarix,0
+CHUUK__HOUK,Chuuk,Houk,DTaP_Single,9
+CHUUK__HOUK,Chuuk,Houk,IPV_Single,7
+CHUUK__HOUK,Chuuk,Houk,MMR_Single,2
+CHUUK__HOUK,Chuuk,Houk,Prevnar,8
+CHUUK__HOUK,Chuuk,Houk,RotaTeq,3
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,PedVaxHib,2
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Vaxelis,8
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Pediarix,5
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,DTaP_Single,19
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,IPV_Single,14
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,MMR_Single,12
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Prevnar,8
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,RotaTeq,0
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,PedVaxHib,2
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,Vaxelis,8
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,Pediarix,3
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,DTaP_Single,22
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,IPV_Single,18
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,MMR_Single,12
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,Prevnar,11
+CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,RotaTeq,1
+CHUUK__MORTLOCK,Chuuk,Mortlock,PedVaxHib,6
+CHUUK__MORTLOCK,Chuuk,Mortlock,Vaxelis,15
+CHUUK__MORTLOCK,Chuuk,Mortlock,Pediarix,1
+CHUUK__MORTLOCK,Chuuk,Mortlock,DTaP_Single,15
+CHUUK__MORTLOCK,Chuuk,Mortlock,IPV_Single,2
+CHUUK__MORTLOCK,Chuuk,Mortlock,MMR_Single,15
+CHUUK__MORTLOCK,Chuuk,Mortlock,Prevnar,18
+CHUUK__MORTLOCK,Chuuk,Mortlock,RotaTeq,1
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,PedVaxHib,1
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,Vaxelis,8
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,Pediarix,2
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,DTaP_Single,9
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,IPV_Single,7
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,MMR_Single,6
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,Prevnar,8
+CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,RotaTeq,1
+CHUUK__NAMOLUK,Chuuk,Namoluk,PedVaxHib,0
+CHUUK__NAMOLUK,Chuuk,Namoluk,Vaxelis,2
+CHUUK__NAMOLUK,Chuuk,Namoluk,Pediarix,0
+CHUUK__NAMOLUK,Chuuk,Namoluk,DTaP_Single,7
+CHUUK__NAMOLUK,Chuuk,Namoluk,IPV_Single,5
+CHUUK__NAMOLUK,Chuuk,Namoluk,MMR_Single,1
+CHUUK__NAMOLUK,Chuuk,Namoluk,Prevnar,2
+CHUUK__NAMOLUK,Chuuk,Namoluk,RotaTeq,1
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,PedVaxHib,2
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,Vaxelis,35
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,Pediarix,3
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,DTaP_Single,24
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,IPV_Single,20
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,MMR_Single,17
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,Prevnar,36
+CHUUK__NAMONUITO ATOLL,Chuuk,Namonuito Atoll,RotaTeq,8
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,PedVaxHib,0
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,Vaxelis,6
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,Pediarix,0
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,DTaP_Single,9
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,IPV_Single,8
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,MMR_Single,6
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,Prevnar,7
+CHUUK__NOMWIN ATOLL,Chuuk,Nomwin Atoll,RotaTeq,1
+CHUUK__NORTHWEST,Chuuk,Northwest,PedVaxHib,8
+CHUUK__NORTHWEST,Chuuk,Northwest,Vaxelis,34
+CHUUK__NORTHWEST,Chuuk,Northwest,Pediarix,6
+CHUUK__NORTHWEST,Chuuk,Northwest,DTaP_Single,5
+CHUUK__NORTHWEST,Chuuk,Northwest,IPV_Single,0
+CHUUK__NORTHWEST,Chuuk,Northwest,MMR_Single,38
+CHUUK__NORTHWEST,Chuuk,Northwest,Prevnar,40
+CHUUK__NORTHWEST,Chuuk,Northwest,RotaTeq,0
+CHUUK__ONEI,Chuuk,Onei,PedVaxHib,3
+CHUUK__ONEI,Chuuk,Onei,Vaxelis,9
+CHUUK__ONEI,Chuuk,Onei,Pediarix,6
+CHUUK__ONEI,Chuuk,Onei,DTaP_Single,22
+CHUUK__ONEI,Chuuk,Onei,IPV_Single,11
+CHUUK__ONEI,Chuuk,Onei,MMR_Single,16
+CHUUK__ONEI,Chuuk,Onei,Prevnar,11
+CHUUK__ONEI,Chuuk,Onei,RotaTeq,1
+CHUUK__PAREM,Chuuk,Parem,PedVaxHib,1
+CHUUK__PAREM,Chuuk,Parem,Vaxelis,5
+CHUUK__PAREM,Chuuk,Parem,Pediarix,2
+CHUUK__PAREM,Chuuk,Parem,DTaP_Single,11
+CHUUK__PAREM,Chuuk,Parem,IPV_Single,9
+CHUUK__PAREM,Chuuk,Parem,MMR_Single,6
+CHUUK__PAREM,Chuuk,Parem,Prevnar,6
+CHUUK__PAREM,Chuuk,Parem,RotaTeq,2
+CHUUK__PATTA,Chuuk,Patta,PedVaxHib,0
+CHUUK__PATTA,Chuuk,Patta,Vaxelis,19
+CHUUK__PATTA,Chuuk,Patta,Pediarix,5
+CHUUK__PATTA,Chuuk,Patta,DTaP_Single,14
+CHUUK__PATTA,Chuuk,Patta,IPV_Single,11
+CHUUK__PATTA,Chuuk,Patta,MMR_Single,21
+CHUUK__PATTA,Chuuk,Patta,Prevnar,21
+CHUUK__PATTA,Chuuk,Patta,RotaTeq,1
+CHUUK__POLLE,Chuuk,Polle,PedVaxHib,12
+CHUUK__POLLE,Chuuk,Polle,Vaxelis,49
+CHUUK__POLLE,Chuuk,Polle,Pediarix,11
+CHUUK__POLLE,Chuuk,Polle,DTaP_Single,71
+CHUUK__POLLE,Chuuk,Polle,IPV_Single,39
+CHUUK__POLLE,Chuuk,Polle,MMR_Single,53
+CHUUK__POLLE,Chuuk,Polle,Prevnar,63
+CHUUK__POLLE,Chuuk,Polle,RotaTeq,7
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,PedVaxHib,3
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,Vaxelis,6
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,Pediarix,0
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,DTaP_Single,8
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,IPV_Single,5
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,MMR_Single,5
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,Prevnar,9
+CHUUK__PULAP ATOLL,Chuuk,Pulap Atoll,RotaTeq,0
+CHUUK__PULUWAT,Chuuk,Puluwat,PedVaxHib,0
+CHUUK__PULUWAT,Chuuk,Puluwat,Vaxelis,2
+CHUUK__PULUWAT,Chuuk,Puluwat,Pediarix,0
+CHUUK__PULUWAT,Chuuk,Puluwat,DTaP_Single,9
+CHUUK__PULUWAT,Chuuk,Puluwat,IPV_Single,5
+CHUUK__PULUWAT,Chuuk,Puluwat,MMR_Single,1
+CHUUK__PULUWAT,Chuuk,Puluwat,Prevnar,2
+CHUUK__PULUWAT,Chuuk,Puluwat,RotaTeq,1
+CHUUK__ROMONUM,Chuuk,Romonum,PedVaxHib,4
+CHUUK__ROMONUM,Chuuk,Romonum,Vaxelis,7
+CHUUK__ROMONUM,Chuuk,Romonum,Pediarix,1
+CHUUK__ROMONUM,Chuuk,Romonum,DTaP_Single,19
+CHUUK__ROMONUM,Chuuk,Romonum,IPV_Single,10
+CHUUK__ROMONUM,Chuuk,Romonum,MMR_Single,13
+CHUUK__ROMONUM,Chuuk,Romonum,Prevnar,11
+CHUUK__ROMONUM,Chuuk,Romonum,RotaTeq,0
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,PedVaxHib,1
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,Vaxelis,10
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,Pediarix,3
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,DTaP_Single,9
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,IPV_Single,6
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,MMR_Single,12
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,Prevnar,10
+CHUUK__SATAWAN ATOLL,Chuuk,Satawan Atoll,RotaTeq,1
+CHUUK__SIIS,Chuuk,Siis,PedVaxHib,1
+CHUUK__SIIS,Chuuk,Siis,Vaxelis,4
+CHUUK__SIIS,Chuuk,Siis,Pediarix,2
+CHUUK__SIIS,Chuuk,Siis,DTaP_Single,6
+CHUUK__SIIS,Chuuk,Siis,IPV_Single,4
+CHUUK__SIIS,Chuuk,Siis,MMR_Single,6
+CHUUK__SIIS,Chuuk,Siis,Prevnar,6
+CHUUK__SIIS,Chuuk,Siis,RotaTeq,1
+CHUUK__TOLENSOM,Chuuk,Tolensom,PedVaxHib,24
+CHUUK__TOLENSOM,Chuuk,Tolensom,Vaxelis,116
+CHUUK__TOLENSOM,Chuuk,Tolensom,Pediarix,62
+CHUUK__TOLENSOM,Chuuk,Tolensom,DTaP_Single,163
+CHUUK__TOLENSOM,Chuuk,Tolensom,IPV_Single,98
+CHUUK__TOLENSOM,Chuuk,Tolensom,MMR_Single,172
+CHUUK__TOLENSOM,Chuuk,Tolensom,Prevnar,149
+CHUUK__TOLENSOM,Chuuk,Tolensom,RotaTeq,10
+CHUUK__TONOAS,Chuuk,Tonoas,PedVaxHib,17
+CHUUK__TONOAS,Chuuk,Tonoas,Vaxelis,62
+CHUUK__TONOAS,Chuuk,Tonoas,Pediarix,15
+CHUUK__TONOAS,Chuuk,Tonoas,DTaP_Single,89
+CHUUK__TONOAS,Chuuk,Tonoas,IPV_Single,61
+CHUUK__TONOAS,Chuuk,Tonoas,MMR_Single,62
+CHUUK__TONOAS,Chuuk,Tonoas,Prevnar,73
+CHUUK__TONOAS,Chuuk,Tonoas,RotaTeq,18
+CHUUK__UDOT,Chuuk,Udot,PedVaxHib,9
+CHUUK__UDOT,Chuuk,Udot,Vaxelis,40
+CHUUK__UDOT,Chuuk,Udot,Pediarix,8
+CHUUK__UDOT,Chuuk,Udot,DTaP_Single,41
+CHUUK__UDOT,Chuuk,Udot,IPV_Single,30
+CHUUK__UDOT,Chuuk,Udot,MMR_Single,40
+CHUUK__UDOT,Chuuk,Udot,Prevnar,47
+CHUUK__UDOT,Chuuk,Udot,RotaTeq,5
+CHUUK__UMAN,Chuuk,Uman,PedVaxHib,18
+CHUUK__UMAN,Chuuk,Uman,Vaxelis,38
+CHUUK__UMAN,Chuuk,Uman,Pediarix,11
+CHUUK__UMAN,Chuuk,Uman,DTaP_Single,43
+CHUUK__UMAN,Chuuk,Uman,IPV_Single,30
+CHUUK__UMAN,Chuuk,Uman,MMR_Single,57
+CHUUK__UMAN,Chuuk,Uman,Prevnar,57
+CHUUK__UMAN,Chuuk,Uman,RotaTeq,7
+CHUUK__WENO,Chuuk,Weno,PedVaxHib,65
+CHUUK__WENO,Chuuk,Weno,Vaxelis,141
+CHUUK__WENO,Chuuk,Weno,Pediarix,56
+CHUUK__WENO,Chuuk,Weno,DTaP_Single,214
+CHUUK__WENO,Chuuk,Weno,IPV_Single,141
+CHUUK__WENO,Chuuk,Weno,MMR_Single,241
+CHUUK__WENO,Chuuk,Weno,Prevnar,206
+CHUUK__WENO,Chuuk,Weno,RotaTeq,17
+CHUUK__WONEI,Chuuk,Wonei,PedVaxHib,0
+CHUUK__WONEI,Chuuk,Wonei,Vaxelis,0
+CHUUK__WONEI,Chuuk,Wonei,Pediarix,0
+CHUUK__WONEI,Chuuk,Wonei,DTaP_Single,0
+CHUUK__WONEI,Chuuk,Wonei,IPV_Single,0
+CHUUK__WONEI,Chuuk,Wonei,MMR_Single,0
+CHUUK__WONEI,Chuuk,Wonei,Prevnar,0
+CHUUK__WONEI,Chuuk,Wonei,RotaTeq,0
+KOSRAE__LELU,Kosrae,Lelu,PedVaxHib,18
+KOSRAE__LELU,Kosrae,Lelu,Vaxelis,11
+KOSRAE__LELU,Kosrae,Lelu,Pediarix,2
+KOSRAE__LELU,Kosrae,Lelu,DTaP_Single,21
+KOSRAE__LELU,Kosrae,Lelu,IPV_Single,16
+KOSRAE__LELU,Kosrae,Lelu,MMR_Single,17
+KOSRAE__LELU,Kosrae,Lelu,Prevnar,18
+KOSRAE__LELU,Kosrae,Lelu,RotaTeq,6
+KOSRAE__MALEM,Kosrae,Malem,PedVaxHib,12
+KOSRAE__MALEM,Kosrae,Malem,Vaxelis,9
+KOSRAE__MALEM,Kosrae,Malem,Pediarix,2
+KOSRAE__MALEM,Kosrae,Malem,DTaP_Single,9
+KOSRAE__MALEM,Kosrae,Malem,IPV_Single,8
+KOSRAE__MALEM,Kosrae,Malem,MMR_Single,12
+KOSRAE__MALEM,Kosrae,Malem,Prevnar,20
+KOSRAE__MALEM,Kosrae,Malem,RotaTeq,5
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,PedVaxHib,28
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,Vaxelis,6
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,Pediarix,1
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,DTaP_Single,25
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,IPV_Single,16
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,MMR_Single,22
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,Prevnar,23
+KOSRAE__TAFUNSAK,Kosrae,Tafunsak,RotaTeq,1
+KOSRAE__UTWE,Kosrae,Utwe,PedVaxHib,5
+KOSRAE__UTWE,Kosrae,Utwe,Vaxelis,2
+KOSRAE__UTWE,Kosrae,Utwe,Pediarix,0
+KOSRAE__UTWE,Kosrae,Utwe,DTaP_Single,12
+KOSRAE__UTWE,Kosrae,Utwe,IPV_Single,12
+KOSRAE__UTWE,Kosrae,Utwe,MMR_Single,5
+KOSRAE__UTWE,Kosrae,Utwe,Prevnar,6
+KOSRAE__UTWE,Kosrae,Utwe,RotaTeq,0
+KOSRAE__WALUNG,Kosrae,Walung,PedVaxHib,0
+KOSRAE__WALUNG,Kosrae,Walung,Vaxelis,0
+KOSRAE__WALUNG,Kosrae,Walung,Pediarix,0
+KOSRAE__WALUNG,Kosrae,Walung,DTaP_Single,0
+KOSRAE__WALUNG,Kosrae,Walung,IPV_Single,0
+KOSRAE__WALUNG,Kosrae,Walung,MMR_Single,0
+KOSRAE__WALUNG,Kosrae,Walung,Prevnar,0
+KOSRAE__WALUNG,Kosrae,Walung,RotaTeq,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,PedVaxHib,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,Vaxelis,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,Pediarix,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,DTaP_Single,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,IPV_Single,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,MMR_Single,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,Prevnar,0
+KOSRAE__WEELOEY,Kosrae,Weeloey,RotaTeq,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,PedVaxHib,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,Vaxelis,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,Pediarix,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,DTaP_Single,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,IPV_Single,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,MMR_Single,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,Prevnar,0
+POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,RotaTeq,0
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,PedVaxHib,1
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,Vaxelis,0
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,Pediarix,0
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,DTaP_Single,10
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,IPV_Single,2
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,MMR_Single,5
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,Prevnar,1
+POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,RotaTeq,0
+POHNPEI__KITTI,Pohnpei,Kitti,PedVaxHib,45
+POHNPEI__KITTI,Pohnpei,Kitti,Vaxelis,103
+POHNPEI__KITTI,Pohnpei,Kitti,Pediarix,72
+POHNPEI__KITTI,Pohnpei,Kitti,DTaP_Single,166
+POHNPEI__KITTI,Pohnpei,Kitti,IPV_Single,83
+POHNPEI__KITTI,Pohnpei,Kitti,MMR_Single,223
+POHNPEI__KITTI,Pohnpei,Kitti,Prevnar,161
+POHNPEI__KITTI,Pohnpei,Kitti,RotaTeq,23
+POHNPEI__KOLONIA,Pohnpei,Kolonia,PedVaxHib,27
+POHNPEI__KOLONIA,Pohnpei,Kolonia,Vaxelis,92
+POHNPEI__KOLONIA,Pohnpei,Kolonia,Pediarix,32
+POHNPEI__KOLONIA,Pohnpei,Kolonia,DTaP_Single,146
+POHNPEI__KOLONIA,Pohnpei,Kolonia,IPV_Single,82
+POHNPEI__KOLONIA,Pohnpei,Kolonia,MMR_Single,171
+POHNPEI__KOLONIA,Pohnpei,Kolonia,Prevnar,126
+POHNPEI__KOLONIA,Pohnpei,Kolonia,RotaTeq,15
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,PedVaxHib,16
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Vaxelis,55
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Pediarix,12
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,DTaP_Single,72
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,IPV_Single,37
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,MMR_Single,63
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Prevnar,72
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,RotaTeq,19
+POHNPEI__NETT,Pohnpei,Nett,PedVaxHib,45
+POHNPEI__NETT,Pohnpei,Nett,Vaxelis,132
+POHNPEI__NETT,Pohnpei,Nett,Pediarix,93
+POHNPEI__NETT,Pohnpei,Nett,DTaP_Single,165
+POHNPEI__NETT,Pohnpei,Nett,IPV_Single,92
+POHNPEI__NETT,Pohnpei,Nett,MMR_Single,307
+POHNPEI__NETT,Pohnpei,Nett,Prevnar,193
+POHNPEI__NETT,Pohnpei,Nett,RotaTeq,16
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,PedVaxHib,0
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,Vaxelis,1
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,Pediarix,0
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,DTaP_Single,2
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,IPV_Single,1
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,MMR_Single,0
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,Prevnar,1
+POHNPEI__NUKUORO,Pohnpei,Nukuoro,RotaTeq,1
+POHNPEI__PINGILAP,Pohnpei,Pingilap,PedVaxHib,0
+POHNPEI__PINGILAP,Pohnpei,Pingilap,Vaxelis,3
+POHNPEI__PINGILAP,Pohnpei,Pingilap,Pediarix,1
+POHNPEI__PINGILAP,Pohnpei,Pingilap,DTaP_Single,2
+POHNPEI__PINGILAP,Pohnpei,Pingilap,IPV_Single,1
+POHNPEI__PINGILAP,Pohnpei,Pingilap,MMR_Single,5
+POHNPEI__PINGILAP,Pohnpei,Pingilap,Prevnar,4
+POHNPEI__PINGILAP,Pohnpei,Pingilap,RotaTeq,0
+POHNPEI__RUUL,Pohnpei,Ruul,PedVaxHib,0
+POHNPEI__RUUL,Pohnpei,Ruul,Vaxelis,0
+POHNPEI__RUUL,Pohnpei,Ruul,Pediarix,0
+POHNPEI__RUUL,Pohnpei,Ruul,DTaP_Single,0
+POHNPEI__RUUL,Pohnpei,Ruul,IPV_Single,0
+POHNPEI__RUUL,Pohnpei,Ruul,MMR_Single,0
+POHNPEI__RUUL,Pohnpei,Ruul,Prevnar,0
+POHNPEI__RUUL,Pohnpei,Ruul,RotaTeq,0
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,PedVaxHib,1
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,Vaxelis,4
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,Pediarix,5
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,DTaP_Single,4
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,IPV_Single,2
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,MMR_Single,9
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,Prevnar,5
+POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,RotaTeq,0
+POHNPEI__SOKEHS,Pohnpei,Sokehs,PedVaxHib,47
+POHNPEI__SOKEHS,Pohnpei,Sokehs,Vaxelis,92
+POHNPEI__SOKEHS,Pohnpei,Sokehs,Pediarix,38
+POHNPEI__SOKEHS,Pohnpei,Sokehs,DTaP_Single,134
+POHNPEI__SOKEHS,Pohnpei,Sokehs,IPV_Single,72
+POHNPEI__SOKEHS,Pohnpei,Sokehs,MMR_Single,178
+POHNPEI__SOKEHS,Pohnpei,Sokehs,Prevnar,140
+POHNPEI__SOKEHS,Pohnpei,Sokehs,RotaTeq,18
+POHNPEI__U,Pohnpei,U,PedVaxHib,20
+POHNPEI__U,Pohnpei,U,Vaxelis,26
+POHNPEI__U,Pohnpei,U,Pediarix,9
+POHNPEI__U,Pohnpei,U,DTaP_Single,48
+POHNPEI__U,Pohnpei,U,IPV_Single,22
+POHNPEI__U,Pohnpei,U,MMR_Single,57
+POHNPEI__U,Pohnpei,U,Prevnar,46
+POHNPEI__U,Pohnpei,U,RotaTeq,7
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,PedVaxHib,0
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,Vaxelis,1
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,Pediarix,0
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,DTaP_Single,1
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,IPV_Single,1
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,MMR_Single,2
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,Prevnar,1
+YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,RotaTeq,1
+YAP__EAURIPIK,Yap,Eauripik,PedVaxHib,2
+YAP__EAURIPIK,Yap,Eauripik,Vaxelis,0
+YAP__EAURIPIK,Yap,Eauripik,Pediarix,0
+YAP__EAURIPIK,Yap,Eauripik,DTaP_Single,3
+YAP__EAURIPIK,Yap,Eauripik,IPV_Single,0
+YAP__EAURIPIK,Yap,Eauripik,MMR_Single,3
+YAP__EAURIPIK,Yap,Eauripik,Prevnar,2
+YAP__EAURIPIK,Yap,Eauripik,RotaTeq,0
+YAP__ELATO ISLAND,Yap,Elato Island,PedVaxHib,0
+YAP__ELATO ISLAND,Yap,Elato Island,Vaxelis,1
+YAP__ELATO ISLAND,Yap,Elato Island,Pediarix,0
+YAP__ELATO ISLAND,Yap,Elato Island,DTaP_Single,5
+YAP__ELATO ISLAND,Yap,Elato Island,IPV_Single,1
+YAP__ELATO ISLAND,Yap,Elato Island,MMR_Single,3
+YAP__ELATO ISLAND,Yap,Elato Island,Prevnar,2
+YAP__ELATO ISLAND,Yap,Elato Island,RotaTeq,0
+YAP__FAIS,Yap,Fais,PedVaxHib,2
+YAP__FAIS,Yap,Fais,Vaxelis,7
+YAP__FAIS,Yap,Fais,Pediarix,0
+YAP__FAIS,Yap,Fais,DTaP_Single,8
+YAP__FAIS,Yap,Fais,IPV_Single,4
+YAP__FAIS,Yap,Fais,MMR_Single,8
+YAP__FAIS,Yap,Fais,Prevnar,8
+YAP__FAIS,Yap,Fais,RotaTeq,4
+YAP__FANIF,Yap,Fanif,PedVaxHib,0
+YAP__FANIF,Yap,Fanif,Vaxelis,3
+YAP__FANIF,Yap,Fanif,Pediarix,0
+YAP__FANIF,Yap,Fanif,DTaP_Single,2
+YAP__FANIF,Yap,Fanif,IPV_Single,2
+YAP__FANIF,Yap,Fanif,MMR_Single,2
+YAP__FANIF,Yap,Fanif,Prevnar,3
+YAP__FANIF,Yap,Fanif,RotaTeq,2
+YAP__FARAULAP,Yap,Faraulap,PedVaxHib,0
+YAP__FARAULAP,Yap,Faraulap,Vaxelis,0
+YAP__FARAULAP,Yap,Faraulap,Pediarix,0
+YAP__FARAULAP,Yap,Faraulap,DTaP_Single,0
+YAP__FARAULAP,Yap,Faraulap,IPV_Single,0
+YAP__FARAULAP,Yap,Faraulap,MMR_Single,0
+YAP__FARAULAP,Yap,Faraulap,Prevnar,0
+YAP__FARAULAP,Yap,Faraulap,RotaTeq,0
+YAP__GAGIL,Yap,Gagil,PedVaxHib,1
+YAP__GAGIL,Yap,Gagil,Vaxelis,4
+YAP__GAGIL,Yap,Gagil,Pediarix,0
+YAP__GAGIL,Yap,Gagil,DTaP_Single,6
+YAP__GAGIL,Yap,Gagil,IPV_Single,3
+YAP__GAGIL,Yap,Gagil,MMR_Single,3
+YAP__GAGIL,Yap,Gagil,Prevnar,7
+YAP__GAGIL,Yap,Gagil,RotaTeq,4
+YAP__GILMAN,Yap,Gilman,PedVaxHib,0
+YAP__GILMAN,Yap,Gilman,Vaxelis,4
+YAP__GILMAN,Yap,Gilman,Pediarix,0
+YAP__GILMAN,Yap,Gilman,DTaP_Single,2
+YAP__GILMAN,Yap,Gilman,IPV_Single,2
+YAP__GILMAN,Yap,Gilman,MMR_Single,1
+YAP__GILMAN,Yap,Gilman,Prevnar,4
+YAP__GILMAN,Yap,Gilman,RotaTeq,2
+YAP__IFALIK,Yap,Ifalik,PedVaxHib,6
+YAP__IFALIK,Yap,Ifalik,Vaxelis,8
+YAP__IFALIK,Yap,Ifalik,Pediarix,0
+YAP__IFALIK,Yap,Ifalik,DTaP_Single,24
+YAP__IFALIK,Yap,Ifalik,IPV_Single,10
+YAP__IFALIK,Yap,Ifalik,MMR_Single,14
+YAP__IFALIK,Yap,Ifalik,Prevnar,14
+YAP__IFALIK,Yap,Ifalik,RotaTeq,2
+YAP__KANIFAY,Yap,Kanifay,PedVaxHib,2
+YAP__KANIFAY,Yap,Kanifay,Vaxelis,3
+YAP__KANIFAY,Yap,Kanifay,Pediarix,0
+YAP__KANIFAY,Yap,Kanifay,DTaP_Single,0
+YAP__KANIFAY,Yap,Kanifay,IPV_Single,0
+YAP__KANIFAY,Yap,Kanifay,MMR_Single,1
+YAP__KANIFAY,Yap,Kanifay,Prevnar,4
+YAP__KANIFAY,Yap,Kanifay,RotaTeq,2
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,PedVaxHib,8
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,Vaxelis,6
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,Pediarix,0
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,DTaP_Single,20
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,IPV_Single,5
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,MMR_Single,11
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,Prevnar,12
+YAP__LAMOTREK ISLAND,Yap,Lamotrek Island,RotaTeq,0
+YAP__MAAP,Yap,Maap,PedVaxHib,0
+YAP__MAAP,Yap,Maap,Vaxelis,3
+YAP__MAAP,Yap,Maap,Pediarix,1
+YAP__MAAP,Yap,Maap,DTaP_Single,3
+YAP__MAAP,Yap,Maap,IPV_Single,2
+YAP__MAAP,Yap,Maap,MMR_Single,2
+YAP__MAAP,Yap,Maap,Prevnar,4
+YAP__MAAP,Yap,Maap,RotaTeq,3
+YAP__NGULU,Yap,Ngulu,PedVaxHib,1
+YAP__NGULU,Yap,Ngulu,Vaxelis,0
+YAP__NGULU,Yap,Ngulu,Pediarix,0
+YAP__NGULU,Yap,Ngulu,DTaP_Single,1
+YAP__NGULU,Yap,Ngulu,IPV_Single,0
+YAP__NGULU,Yap,Ngulu,MMR_Single,2
+YAP__NGULU,Yap,Ngulu,Prevnar,2
+YAP__NGULU,Yap,Ngulu,RotaTeq,0
+YAP__RUMUNG,Yap,Rumung,PedVaxHib,0
+YAP__RUMUNG,Yap,Rumung,Vaxelis,0
+YAP__RUMUNG,Yap,Rumung,Pediarix,0
+YAP__RUMUNG,Yap,Rumung,DTaP_Single,0
+YAP__RUMUNG,Yap,Rumung,IPV_Single,0
+YAP__RUMUNG,Yap,Rumung,MMR_Single,0
+YAP__RUMUNG,Yap,Rumung,Prevnar,0
+YAP__RUMUNG,Yap,Rumung,RotaTeq,0
+YAP__RUUL,Yap,Ruul,PedVaxHib,5
+YAP__RUUL,Yap,Ruul,Vaxelis,9
+YAP__RUUL,Yap,Ruul,Pediarix,2
+YAP__RUUL,Yap,Ruul,DTaP_Single,11
+YAP__RUUL,Yap,Ruul,IPV_Single,7
+YAP__RUUL,Yap,Ruul,MMR_Single,10
+YAP__RUUL,Yap,Ruul,Prevnar,16
+YAP__RUUL,Yap,Ruul,RotaTeq,8
+YAP__SATAWAL,Yap,Satawal,PedVaxHib,6
+YAP__SATAWAL,Yap,Satawal,Vaxelis,7
+YAP__SATAWAL,Yap,Satawal,Pediarix,0
+YAP__SATAWAL,Yap,Satawal,DTaP_Single,31
+YAP__SATAWAL,Yap,Satawal,IPV_Single,8
+YAP__SATAWAL,Yap,Satawal,MMR_Single,11
+YAP__SATAWAL,Yap,Satawal,Prevnar,13
+YAP__SATAWAL,Yap,Satawal,RotaTeq,2
+YAP__TAMIL,Yap,Tamil,PedVaxHib,1
+YAP__TAMIL,Yap,Tamil,Vaxelis,4
+YAP__TAMIL,Yap,Tamil,Pediarix,0
+YAP__TAMIL,Yap,Tamil,DTaP_Single,12
+YAP__TAMIL,Yap,Tamil,IPV_Single,7
+YAP__TAMIL,Yap,Tamil,MMR_Single,7
+YAP__TAMIL,Yap,Tamil,Prevnar,6
+YAP__TAMIL,Yap,Tamil,RotaTeq,0
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,PedVaxHib,7
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,Vaxelis,9
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,Pediarix,1
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,DTaP_Single,19
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,IPV_Single,8
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,MMR_Single,12
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,Prevnar,17
+YAP__ULITHI ATOLL,Yap,Ulithi Atoll,RotaTeq,3
+YAP__WEELOEY,Yap,Weeloey,PedVaxHib,1
+YAP__WEELOEY,Yap,Weeloey,Vaxelis,4
+YAP__WEELOEY,Yap,Weeloey,Pediarix,0
+YAP__WEELOEY,Yap,Weeloey,DTaP_Single,8
+YAP__WEELOEY,Yap,Weeloey,IPV_Single,5
+YAP__WEELOEY,Yap,Weeloey,MMR_Single,2
+YAP__WEELOEY,Yap,Weeloey,Prevnar,5
+YAP__WEELOEY,Yap,Weeloey,RotaTeq,1
+YAP__WOLEAI,Yap,Woleai,PedVaxHib,5
+YAP__WOLEAI,Yap,Woleai,Vaxelis,11
+YAP__WOLEAI,Yap,Woleai,Pediarix,0
+YAP__WOLEAI,Yap,Woleai,DTaP_Single,4
+YAP__WOLEAI,Yap,Woleai,IPV_Single,3
+YAP__WOLEAI,Yap,Woleai,MMR_Single,12
+YAP__WOLEAI,Yap,Woleai,Prevnar,13
+YAP__WOLEAI,Yap,Woleai,RotaTeq,6

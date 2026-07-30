@@ -1,0 +1,21 @@
+state,region,county,county_original,county_source_join,census_total,census_under5,area_m2,latitude_census,longitude_census
+Chuuk,Outer,Losap Atoll,Losap,LOSAP,248,26,42692,6.89556,152.73399999999998
+Chuuk,Outer,Losap Atoll,Nama,NAMA,676,65,910979,6.996670000000001,152.577
+Chuuk,Lagoon,Losap Atoll,Piis Paneu,PIIS PANEU,376,58,318064,7.67724136,151.76412269999997
+Chuuk,Outer,Lukunor Atoll,Lekinioch,LEKINIOCH,848,75,2476083,5.503048474,153.82168760000002
+Chuuk,Outer,Lukunor Atoll,Oneop,ONEOP,400,52,543661,5.50472,153.71299999999997
+Chuuk,Outer,Murilo Atoll,Murillo,MURILLO,329,52,1286429,8.66667,152.183
+Chuuk,Outer,Murilo Atoll,Piisemwar,PIISEMWAR,258,41,278107,6.8351452109999995,152.7018263
+Chuuk,Outer,Murilo Atoll,Ruo,RUO,241,0,390505,7.59722,151.941
+Chuuk,Outer,Namonuito Atoll,Makur,MAKUR,159,23,464690,8.99083,150.123
+Chuuk,Outer,Namonuito Atoll,Onoun,ONOUN,633,88,2285124,8.589440000000002,149.66
+Chuuk,Outer,Namonuito Atoll,Piharar,PIHARAR,227,36,483971,8.58194,150.407
+Chuuk,Outer,Namonuito Atoll,Unanu,UNANU,193,27,8391,8.75306,150.329
+Chuuk,Outer,Nomwin Atoll,Fananu,FANANU,580,76,33424,8.55667,151.901
+Chuuk,Outer,Nomwin Atoll,Nomwin,NOMWIN,763,67,1441660,8.42972,151.74099999999999
+Chuuk,Outer,Pulap Atoll,Pollap,POLLAP,1168,132,687827,7.6447199999999995,149.42100000000002
+Chuuk,Outer,Pulap Atoll,Tamatam,TAMATAM,493,75,385197,7.54333,149.412
+Chuuk,Outer,Satawan Atoll,Kuttu,KUTTU,323,28,373700,5.4519400000000005,153.46
+Chuuk,Outer,Satawan Atoll,Moch,MOCH,932,65,319670,5.490918999999999,153.542079
+Chuuk,Outer,Satawan Atoll,Satawan,SATAWAN,692,69,1163739,5.324999999999999,153.737
+Chuuk,Outer,Satawan Atoll,Ta,TA,273,31,1286480,5.28333,153.683

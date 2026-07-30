@@ -24,3 +24,6 @@ Preserves the Chuuk and Yap regional breakdowns in the 19–35-month tables.
 Cleans and standardizes state, county, and village names.
 Delete old code chunks
 
+Added app files - install packages, app, prepare data, and route functions
+Updated paths
+
