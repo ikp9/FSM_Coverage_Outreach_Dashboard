@@ -1,0 +1,83 @@
+ship_name,route_name,origin,destination,origin_lat,origin_lon,destination_lat,destination_lon
+Hapilmohol2,Yap Regular Run,Woneedaey Reef Pass,Ulithi 1,9.490030484,138.131885,9.758158,139.688315
+Hapilmohol2,Yap Regular Run,Ulithi 1,Dochirichi Channel,9.758158,139.688315,10.024278,139.781043
+Hapilmohol2,Yap Regular Run,Dochirichi Channel,Ulithi 2,10.024278,139.781043,10.024142,139.80649
+Hapilmohol2,Yap Regular Run,Ulithi 2,Fais 1,10.024142,139.80649,9.746857,140.489001
+Hapilmohol2,Yap Regular Run,Fais 1,Eauripik 1,9.746857,140.489001,6.700715,143.091726
+Hapilmohol2,Yap Regular Run,Eauripik 1,Raur Channel,6.700715,143.091726,7.341075,143.89848
+Hapilmohol2,Yap Regular Run,Raur Channel,Ifalik 1,7.341075,143.89848,7.277105,144.460209
+Hapilmohol2,Yap Regular Run,Ifalik 1,Faraulep 1,7.277105,144.460209,8.578948,144.509325
+Hapilmohol2,Yap Regular Run,Faraulep 1,Elato 1,8.578948,144.509325,7.531149,146.177825
+Hapilmohol2,Yap Regular Run,Elato 1,Lamotrek 1,7.531149,146.177825,7.46075,146.312481
+Hapilmohol2,Yap Regular Run,Lamotrek 1,Satawal 1,7.46075,146.312481,7.397121,147.02584
+Caroline Voyager,Northwest Islands,Mochenap Reef Pass,Murilo 1,7.506141979,151.9659588,8.677048,152.34726
+Caroline Voyager,Northwest Islands,Murilo 1,Ruo 1,8.677048,152.34726,8.59864,152.24495
+Caroline Voyager,Northwest Islands,Ruo 1,Murilo Deep Pass,8.59864,152.24495,8.573615,152.058676
+Caroline Voyager,Northwest Islands,Murilo Deep Pass,Fananu 1,8.573615,152.058676,8.550857,151.906519
+Caroline Voyager,Northwest Islands,Fananu 1,Nomwin 1,8.550857,151.906519,8.424116,151.747175
+Caroline Voyager,Northwest Islands,Nomwin 1,Pisaras 1,8.424116,151.747175,8.562013,150.42999
+Caroline Voyager,Northwest Islands,Pisaras 1,Onari 1,8.562013,150.42999,8.756155,150.35609
+Caroline Voyager,Northwest Islands,Onari 1,Ono 1,8.756155,150.35609,8.805269,150.313025
+Caroline Voyager,Northwest Islands,Ono 1,Magur 1,8.805269,150.313025,9.006871,150.132544
+Caroline Voyager,Northwest Islands,Magur 1,Onoun 1,9.006871,150.132544,8.583104,149.660647
+Caroline Voyager,Northwest Islands,Onoun 1,Pulap 1,8.583104,149.660647,7.639418,149.447526
+Caroline Voyager,Northwest Islands,Pulap 1,Tamatam 1,7.639418,149.447526,7.526432,149.446153
+Caroline Voyager,Northwest Islands,Tamatam 1,Pulawat 1,7.526432,149.446153,7.327698,149.201602
+Caroline Voyager,Northwest Islands,Pulawat 1,Houk 1,7.327698,149.201602,6.70941,149.299449
+Caroline Voyager,Yap State Regular Run,Pohnpei Port,Sokehs Pass,6.980321452,158.1995604,6.999704349,158.1791132
+Caroline Voyager,Yap State Regular Run,Sokehs Pass,Pohnpei 1,6.999704349,158.1791132,7.01745,158.142289
+Caroline Voyager,Yap State Regular Run,Pohnpei 1,Oroluk 1,7.01745,158.142289,7.650386,155.143892
+Caroline Voyager,Yap State Regular Run,Oroluk 1,Mochenap Reef Pass,7.650386,155.143892,7.506141979,151.9659588
+Caroline Voyager,Yap State Regular Run,Mochenap Reef Pass,Chuuk Lagoon 1,7.506141979,151.9659588,7.499201,151.844608
+Caroline Voyager,Yap State Regular Run,Chuuk Lagoon 1,Chuuk Lagoon 2,7.499201,151.844608,7.455969,151.827614
+Caroline Voyager,Yap State Regular Run,Chuuk Lagoon 2,Weno Port,7.455969,151.827614,7.445958983,151.8401653
+Caroline Voyager,Yap State Regular Run,Weno Port,Mochun Tauanap Reef Pass,7.445958983,151.8401653,7.475865338,151.5876211
+Caroline Voyager,Yap State Regular Run,Mochun Tauanap Reef Pass,Pulawat 1,7.475865338,151.5876211,7.327698,149.201602
+Caroline Voyager,Yap State Regular Run,Pulawat 1,Houk 1,7.327698,149.201602,6.70941,149.299449
+Caroline Voyager,Yap State Regular Run,Houk 1,Satawal 1,6.70941,149.299449,7.397121,147.02584
+Caroline Voyager,Yap State Regular Run,Satawal 1,Lamotrek 1,7.397121,147.02584,7.46075,146.312481
+Caroline Voyager,Yap State Regular Run,Lamotrek 1,Elato 1,7.46075,146.312481,7.531149,146.177825
+Caroline Voyager,Yap State Regular Run,Elato 1,Faraulep 1,7.531149,146.177825,8.578948,144.509325
+Caroline Voyager,Yap State Regular Run,Faraulep 1,Ifalik 1,8.578948,144.509325,7.277105,144.460209
+Caroline Voyager,Yap State Regular Run,Ifalik 1,Raur Channel,7.277105,144.460209,7.341075,143.89848
+Caroline Voyager,Yap State Regular Run,Raur Channel,Eauripik 1,7.341075,143.89848,6.700715,143.091726
+Caroline Voyager,Yap State Regular Run,Eauripik 1,Fais 1,6.700715,143.091726,9.746857,140.489001
+Caroline Voyager,Yap State Regular Run,Fais 1,Ulithi 2,9.746857,140.489001,10.024142,139.80649
+Caroline Voyager,Yap State Regular Run,Ulithi 2,Dochirichi Channel,10.024142,139.80649,10.024278,139.781043
+Caroline Voyager,Yap State Regular Run,Dochirichi Channel,Ulithi 1,10.024278,139.781043,9.758158,139.688315
+Caroline Voyager,Yap State Regular Run,Ulithi 1,Woneedaey Reef Pass,9.758158,139.688315,9.490030484,138.131885
+Caroline Voyager,Southern Islands Regular Run,Pohnpei Port,Sokehs Pass,6.980321452,158.1995604,6.999704349,158.1791132
+Caroline Voyager,Southern Islands Regular Run,Sokehs Pass,Pohnpei 1,6.999704349,158.1791132,7.01745,158.142289
+Caroline Voyager,Southern Islands Regular Run,Pohnpei 1,Pohnpei 2,7.01745,158.142289,6.954747,158.065213
+Caroline Voyager,Southern Islands Regular Run,Pohnpei 2,Pohnpei 3,6.954747,158.065213,6.805176,157.881018
+Caroline Voyager,Southern Islands Regular Run,Pohnpei 3,Sapwuahfik Atoll 1,6.805176,157.881018,5.77277,157.371107
+Caroline Voyager,Southern Islands Regular Run,Sapwuahfik Atoll 1,Nukuoro Atoll 2,5.77277,157.371107,3.866749,154.90235
+Caroline Voyager,Southern Islands Regular Run,Nukuoro Atoll 2,Nukuoro Atoll 1,3.866749,154.90235,3.798539,154.897296
+Caroline Voyager,Southern Islands Regular Run,Nukuoro Atoll 1,Kapingamarangi Atoll 1,3.798539,154.897296,1.069393,154.684813
+Caroline Voyager,Southern Islands Regular Run,Kapingamarangi Atoll 1,The Passage,1.069393,154.684813,1.033672,154.759653
+Caroline Voyager,Eastern Islands Regular Run,Pohnpei Port,Sokehs Pass,6.980321452,158.1995604,6.999704349,158.1791132
+Caroline Voyager,Eastern Islands Regular Run,Sokehs Pass,Pohnpei 1,6.999704349,158.1791132,7.01745,158.142289
+Caroline Voyager,Eastern Islands Regular Run,Pohnpei 1,Pohnpei 4,7.01745,158.142289,7.094704,158.272054
+Caroline Voyager,Eastern Islands Regular Run,Pohnpei 4,Mokil 1,7.094704,158.272054,6.653697,159.751517
+Caroline Voyager,Eastern Islands Regular Run,Mokil 1,Pingelap 1,6.653697,159.751517,6.238755,160.703033
+Caroline Voyager,Eastern Islands Regular Run,Pingelap 1,Kosrae 1,6.238755,160.703033,5.37597,162.944037
+Caroline Voyager,Eastern Islands Regular Run,Kosrae 1,Molsron Okat Reef Pass,5.37597,162.944037,5.346188113,162.9506423
+Caroline Voyager,Eastern Islands Regular Run,Molsron Okat Reef Pass,Okat Commercial Port,5.346188113,162.9506423,5.350445441,162.95677173956935
+Caroline Voyager,Mortlock Islands Regular Run,Pohnpei Port,Sokehs Pass,6.980321452,158.1995604,6.999704349,158.1791132
+Caroline Voyager,Mortlock Islands Regular Run,Sokehs Pass,Pohnpei 1,6.999704349,158.1791132,7.01745,158.142289
+Caroline Voyager,Mortlock Islands Regular Run,Pohnpei 1,Oroluk 1,7.01745,158.142289,7.650386,155.143892
+Caroline Voyager,Mortlock Islands Regular Run,Oroluk 1,Lekinioch 1,7.650386,155.143892,5.479212,153.830528
+Caroline Voyager,Mortlock Islands Regular Run,Lekinioch 1,Oneop 1,5.479212,153.830528,5.491408,153.703669
+Caroline Voyager,Mortlock Islands Regular Run,Oneop 1,Satowan 1,5.491408,153.703669,5.312648,153.755511
+Caroline Voyager,Mortlock Islands Regular Run,Satowan 1,Ta 1,5.312648,153.755511,5.262395,153.657321
+Caroline Voyager,Mortlock Islands Regular Run,Ta 1,Kuttu 1,5.262395,153.657321,5.445271,153.441027
+Caroline Voyager,Mortlock Islands Regular Run,Kuttu 1,Moch 1,5.445271,153.441027,5.500422,153.537716
+Caroline Voyager,Mortlock Islands Regular Run,Moch 1,Ettal 1,5.500422,153.537716,5.551168,153.572949
+Caroline Voyager,Mortlock Islands Regular Run,Ettal 1,Namoluk Atoll 1,5.551168,153.572949,5.927914,153.093411
+Caroline Voyager,Mortlock Islands Regular Run,Namoluk Atoll 1,Losap 1,5.927914,153.093411,6.884268,152.749232
+Caroline Voyager,Mortlock Islands Regular Run,Losap 1,Piis 1,6.884268,152.749232,6.816434,152.693099
+Caroline Voyager,Mortlock Islands Regular Run,Piis 1,Nama 1,6.816434,152.693099,6.997756,152.594565
+Caroline Voyager,Mortlock Islands Regular Run,Nama 1,Mochenap Reef Pass,6.997756,152.594565,7.506141979,151.9659588
+Caroline Voyager,Mortlock Islands Regular Run,Mochenap Reef Pass,Chuuk Lagoon 1,7.506141979,151.9659588,7.499201,151.844608
+Caroline Voyager,Mortlock Islands Regular Run,Chuuk Lagoon 1,Chuuk Lagoon 2,7.499201,151.844608,7.455969,151.827614
+Caroline Voyager,Mortlock Islands Regular Run,Chuuk Lagoon 2,Weno Port,7.455969,151.827614,7.445958983,151.8401653

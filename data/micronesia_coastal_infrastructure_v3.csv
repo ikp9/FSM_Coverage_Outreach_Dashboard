@@ -1,0 +1,288 @@
+State,Region,Atoll,Name,Type,Latitude,Longitude,H3_res5,H3_res6
+Chuuk,Main,,Aleon Pass,Reef pass,7.21558486621,151.82123396,8577314bfffffff,8677314b7ffffff
+Chuuk,Main,,Chuuk International Airport,Airport,7.45809135234,151.841224282,85773153fffffff,86773151fffffff
+Chuuk,Main,,Eot Boat Pier,Pier,7.383031,151.740739,8577315bfffffff,8677315a7ffffff
+Chuuk,Main,,Epin Uratiw,Reef pass,7.23836350662,151.618453984,8577302ffffffff,8677302dfffffff
+Chuuk,Main,,Epin Uratiw,Reef pass,7.23753020149,151.618176178,8577302ffffffff,8677302dfffffff
+Chuuk,Main,,Fanusamoz Pass,Reef pass,7.21864068443,151.762899926,85773397fffffff,86773396fffffff
+Chuuk,Main,,Faro Boat Basin,Boat Basin,7.327581,151.630858,8577302ffffffff,8677302c7ffffff
+Chuuk,Main,,Fason Pier,Pier,7.343511,151.634628,8577302ffffffff,8677302efffffff
+Chuuk,Main,,Ilick Harbor,Harbor,7.332161,151.563736,8577302ffffffff,8677302f7ffffff
+Chuuk,Main,,JP Army Docks,Dock,7.37525,151.707017,8577315bfffffff,8677315b7ffffff
+Chuuk,Main,,JP Aun Pier,Pier,7.334719,151.852128,85773143fffffff,86773158fffffff
+Chuuk,Main,,JP Coal Dock,Dock,7.363569,151.883178,85773143fffffff,867731437ffffff
+Chuuk,Main,,JP Main Oil Dock WW2,Dock,7.366231,151.886794,85773143fffffff,867731437ffffff
+Chuuk,Main,,JP Nepinom Pier,Pier,7.445392,151.899058,85773143fffffff,867731427ffffff
+Chuuk,Main,,JP Penia Pier WW2,Pier,7.454161,151.882767,85773153fffffff,86773150fffffff
+Chuuk,Main,,JP Sapota Pier,Pier,7.316481,151.853317,85773143fffffff,86773158fffffff
+Chuuk,Main,,JP Sapou Pier,Pier,7.286081,151.878236,8577314bfffffff,867731417ffffff
+Chuuk,Main,,Local Fishery Basin,Boat Basin,7.447661,151.841386,85773153fffffff,86773151fffffff
+Chuuk,Main,,Mochen Eparit,Reef pass,7.66364347204,151.86123603,857731cffffffff,867731cc7ffffff
+Chuuk,Main,,Mochenap,Reef pass,7.50614197864,151.965958792,85773157fffffff,867731547ffffff
+Chuuk,Main,,Mochon Boat Pier,Pier,7.31,151.884233,85773143fffffff,867731417ffffff
+Chuuk,Main,,Mochonap,Reef pass,7.68169938058,151.787901875,857731cbfffffff,867731cafffffff
+Chuuk,Main,,Mochun Anaw,Reef pass,7.5711434914,151.681233653,857731cbfffffff,867731c97ffffff
+Chuuk,Main,,Mochun Fanananei,Reef pass,7.43725407824,151.552620614,85773023fffffff,86773020fffffff
+Chuuk,Main,,Mochun Fanew,Reef pass,7.22752955401,151.790678063,8577314bfffffff,8677314b7ffffff
+Chuuk,Main,,Mochun Fein,Reef pass,7.22225102421,151.992624753,8577314ffffffff,8677314c7ffffff
+Chuuk,Main,,Mochun Fouichen,Reef pass,7.53392109438,151.634010782,85773027fffffff,867730267ffffff
+Chuuk,Main,,Mochun Mutukun,Reef pass,7.14836193767,151.897345665,8577314bfffffff,86773149fffffff
+Chuuk,Main,,Mochun Nenno,Reef pass,7.13391735722,151.89123445,8577314bfffffff,86773149fffffff
+Chuuk,Main,,Mochun Nenom,Reef pass,7.40864293119,151.505119973,85773023fffffff,86773021fffffff
+Chuuk,Main,,Mochun Nepis,Reef pass,7.22752986429,151.698177038,85773397fffffff,867733967ffffff
+Chuuk,Main,,Mochun Neuri,Reef pass,7.21391757453,151.9904024,8577314ffffffff,8677314d7ffffff
+Chuuk,Main,,Mochun Ocha,Reef pass,7.15558424134,151.881512217,8577314bfffffff,86773149fffffff
+Chuuk,Main,,Mochun Ochopach,Reef pass,7.51808773649,151.618177145,85773027fffffff,867730267ffffff
+Chuuk,Main,,Mochun Pianu,Reef pass,7.35058714483,151.432618948,8577302bfffffff,8677302a7ffffff
+Chuuk,Main,,Mochun Pisamwe,Reef pass,7.63447724644,151.681233888,857731cbfffffff,867731cb7ffffff
+Chuuk,Main,,Mochun Pisininin,Reef pass,7.6455884273,151.680956126,857731cbfffffff,867731cb7ffffff
+Chuuk,Main,,Mochun Pweynap,Reef pass,7.28614178942,151.577620383,8577302ffffffff,8677302d7ffffff
+Chuuk,Main,,Mochun Sopweru,Reef pass,7.65336551888,151.882347326,857731cffffffff,867731cc7ffffff
+Chuuk,Main,,Mochun Tauanap,Reef pass,7.47586533803,151.587621147,85773027fffffff,867730277ffffff
+Chuuk,Main,,Mochun Tawanap,Reef pass,7.14919525282,151.894567838,8577314bfffffff,86773149fffffff
+Chuuk,Main,,Mochun Unen,Reef pass,7.54308783964,151.639844181,85773027fffffff,867730267ffffff
+Chuuk,Main,,Mochun Unikar,Reef pass,7.18002864208,151.960957564,8577314ffffffff,8677314d7ffffff
+Chuuk,Main,,Mochun Uranu,Reef pass,7.52447666888,151.622066112,85773027fffffff,867730267ffffff
+Chuuk,Main,,Mochun Wininen,Reef pass,7.17141742515,151.948457399,857733b3fffffff,867733b27ffffff
+Chuuk,Main,,Mochun Winion,Reef pass,7.23891767573,152.010680507,8577314ffffffff,8677314c7ffffff
+Chuuk,Main,,Mochun Winipiru,Reef pass,7.29697523501,151.557620193,8577302ffffffff,8677302d7ffffff
+Chuuk,Main,,Mokuchis,Reef pass,7.67503284881,151.757623807,857731cbfffffff,867731cafffffff
+Chuuk,Main,,Munien Blasted Boat Channel,Channel,7.319731,151.616075,8577302ffffffff,8677302c7ffffff
+Chuuk,Main,,Mwanitiw Boat Pier,Pier,7.378831,151.704147,8577315bfffffff,8677315b7ffffff
+Chuuk,Main,,Namun Nenomonen,Channel,7.46197534145,151.865957523,85773153fffffff,86773150fffffff
+Chuuk,Main,,Namun Tawanap,Channel,7.46503096996,151.864013113,85773153fffffff,86773150fffffff
+Chuuk,Main,,Neout,Channel,7.35197547066,151.606787534,8577302ffffffff,8677302c7ffffff
+Chuuk,Main,,Netutu,Channel,7.36197550916,151.616787681,8577302ffffffff,8677302efffffff
+Chuuk,Main,,Penia Pier,Pier,7.393069,151.708175,8577315bfffffff,86773025fffffff
+Chuuk,Main,,Piis Pier,Pier,7.676981,151.767653,857731cbfffffff,867731cafffffff
+Chuuk,Main,,Pispis Pass,Reef pass,7.2144737198,151.832622981,8577314bfffffff,8677314b7ffffff
+Chuuk,Main,,Pizion Pass,Reef pass,7.19280684186,151.84012299,8577314bfffffff,867731497ffffff
+Chuuk,Main,,Ramanum Pier,Pier,7.406569,151.673461,85773027fffffff,86773025fffffff
+Chuuk,Main,,Sapotiw Pier,Pier,7.293289,151.888947,85773143fffffff,867731417ffffff
+Chuuk,Main,,Siis Anchorage,Anchorage,7.296411,151.816161,8577315bfffffff,86773159fffffff
+Chuuk,Main,,South Pass,Reef pass,7.22558500267,151.801789279,8577314bfffffff,8677314b7ffffff
+Chuuk,Main,,Truk Stop Pier,Pier,7.442161,151.838378,85773153fffffff,86773151fffffff
+Chuuk,Main,,Ununo Pier,Pier,7.366789,151.817903,8577315bfffffff,8677315afffffff
+Chuuk,Main,,Ushi Island Pass,Reef pass,7.67392137555,151.827068986,857731cffffffff,867731cf7ffffff
+Chuuk,Main,,Weno Commercial Docks,Wharf,7.444781,151.839522,85773153fffffff,86773151fffffff
+Chuuk,Main,,Weno Port (Port of Chuuk State),Port,7.44595898252,151.840165257,85773153fffffff,86773151fffffff
+Chuuk,Main,,Weno Sailboat Anchorage,Anchorage,7.4144,151.841994,85773153fffffff,86773151fffffff
+Chuuk,Outer,,Houk (Polusuk) Civil Airfield,Airfield,6.674861111111111,149.29869166666666,85724d9bfffffff,86724d98fffffff
+Chuuk,Outer,Etal Atoll,,Shallow passage,5.56919,153.569147,85770273fffffff,867702717ffffff
+Chuuk,Outer,Kuop Atoll,,Shallow passage,7.057742,151.886808,85773387fffffff,86773384fffffff
+Chuuk,Outer,Kuop Atoll,,Very deep passage,7.00371,151.98883,857733b3fffffff,867733b1fffffff
+Chuuk,Outer,Kuop Atoll,,Very deep passage,7.007524,151.931654,857733bbfffffff,867733b17ffffff
+Chuuk,Outer,Losap Atoll,,Shallow passage,6.859323,152.674356,857706c7fffffff,867706c4fffffff
+Chuuk,Outer,Losap Atoll,,Shallow passage,6.855358,152.674615,857706c7fffffff,867706c4fffffff
+Chuuk,Outer,Losap Atoll,,Shallow passage,6.881238,152.674624,857706c7fffffff,867706c4fffffff
+Chuuk,Outer,Losap Atoll,,Shallow passage,6.87555,152.674498,857706c7fffffff,867706c4fffffff
+Chuuk,Outer,Losap Atoll,,Shallow passage,6.871339,152.674403,857706c7fffffff,867706c4fffffff
+Chuuk,Outer,Losap Atoll,,Pier/jetty,6.836715608773412,152.7015821953179,8577061bfffffff,8677061a7ffffff
+Chuuk,Outer,Losap Atoll,Morchan Channel,Very deep passage,6.864862,152.711073,857706c7fffffff,867706c4fffffff
+Chuuk,Outer,Losap Atoll,Morrappu Channel,Very deep passage,6.864584,152.674407,857706c7fffffff,867706c4fffffff
+Chuuk,Outer,Lukunor Atoll,,Shallow passage,5.501042,153.718931,85770263fffffff,867702607ffffff
+Chuuk,Outer,Lukunor Atoll,,Very deep passage,5.497448,153.795006,85770267fffffff,867702677ffffff
+Chuuk,Outer,Lukunor Atoll,,Pier/jetty,5.502396179599564,153.8163125472263,85770267fffffff,867702677ffffff
+Chuuk,Outer,Lukunor Atoll,,Pier/jetty,5.509167690346513,153.71255965477283,85770263fffffff,867702627ffffff
+Chuuk,Outer,Murilo Atoll,,Deep passage,8.736094,152.179929,857722cbfffffff,867722cafffffff
+Chuuk,Outer,Murilo Atoll,,Deep passage,8.573615,152.058676,85773527fffffff,867735267ffffff
+Chuuk,Outer,Murilo Atoll,,Deep passage,8.583641,152.046509,85773527fffffff,867735267ffffff
+Chuuk,Outer,Murilo Atoll,,Shallow passage,8.743398,152.178669,857722cbfffffff,867722cafffffff
+Chuuk,Outer,Murilo Atoll,,Shallow passage,8.723977,152.178017,857722cbfffffff,867722cafffffff
+Chuuk,Outer,Murilo Atoll,,Shallow passage,8.714868,152.174409,857722cbfffffff,867722cafffffff
+Chuuk,Outer,Murilo Atoll,,Shallow passage,8.696349,152.165845,857722cbfffffff,867722c87ffffff
+Chuuk,Outer,Murilo Atoll,,Shallow passage,8.614926,152.196177,85772253fffffff,867722527ffffff
+Chuuk,Outer,Murilo Atoll,,Shallow passage,8.615461,152.210397,85772253fffffff,867722527ffffff
+Chuuk,Outer,Murilo Atoll,,Submerged reef,8.610389,152.15251,857722cbfffffff,867722c9fffffff
+Chuuk,Outer,Murilo Atoll,,Submerged reef,8.631839,152.282277,857722cffffffff,867722cd7ffffff
+Chuuk,Outer,Murilo Atoll,,Submerged reef,8.66976,152.320755,857722cffffffff,867722cdfffffff
+Chuuk,Outer,Murilo Atoll,,Very deep passage,8.58368,152.096312,85773527fffffff,86773526fffffff
+Chuuk,Outer,Murilo Atoll,,Very deep passage,8.615232,152.229562,85772253fffffff,867722527ffffff
+Chuuk,Outer,Murilo Atoll,,Pier/jetty,8.692926611695937,152.33891365031775,857722cffffffff,867722ccfffffff
+Chuuk,Outer,Murilo Atoll,,Pier/jetty,8.61059877239881,152.2424306087829,85772253fffffff,867722527ffffff
+Chuuk,Outer,Murilo Atoll,Lady Blackwood Passage,Very deep passage,8.773819,152.203158,857722c3fffffff,867722c1fffffff
+Chuuk,Outer,Namonuito,Onoun (Ulul) Civil Airfield,Airfield,8.592772222222223,149.69086388888888,857269a7fffffff,867269a57ffffff
+Chuuk,Outer,Nomwin Atoll,,Deep passage,8.551114,151.687177,85773507fffffff,86773505fffffff
+Chuuk,Outer,Nomwin Atoll,,Deep passage,8.543126,151.687059,85773507fffffff,86773505fffffff
+Chuuk,Outer,Nomwin Atoll,,Deep passage,8.579,151.860153,85773533fffffff,86773531fffffff
+Chuuk,Outer,Nomwin Atoll,,Shallow passage,8.451188,151.775458,8577353bfffffff,86773539fffffff
+Chuuk,Outer,Nomwin Atoll,,Shallow passage,8.452358,151.780602,8577353bfffffff,86773539fffffff
+Chuuk,Outer,Nomwin Atoll,,Shallow passage,8.4701,151.797717,8577353bfffffff,86773538fffffff
+Chuuk,Outer,Nomwin Atoll,,Shallow passage,8.477975,151.806759,8577353bfffffff,86773538fffffff
+Chuuk,Outer,Nomwin Atoll,,Shallow passage,8.49276,151.836298,8577353bfffffff,86773538fffffff
+Chuuk,Outer,Nomwin Atoll,,Shallow passage,8.510213,151.858955,85773523fffffff,867735237ffffff
+Chuuk,Outer,Nomwin Atoll,,Very deep passage,8.596809,151.719592,85773507fffffff,86773504fffffff
+Chuuk,Outer,Nomwin Atoll,,Very deep passage,8.558693,151.686823,85773507fffffff,86773505fffffff
+Chuuk,Outer,Nomwin Atoll,,Very deep passage,8.463752,151.712522,8577353bfffffff,867735397ffffff
+Chuuk,Outer,Pulap Atoll,,Submerged reef,7.582079,149.434174,857736d3fffffff,867736d07ffffff
+Chuuk,Outer,Pulap Atoll,,Submerged reef,7.562582,149.402358,857736d3fffffff,867736d17ffffff
+Chuuk,Outer,Pulap Atoll,,Submerged reef,7.596414,149.39908,857736d3fffffff,867736d37ffffff
+Chuuk,Outer,Pulap Atoll,,Pier/jetty,7.633372725894998,149.42884750689709,857736d3fffffff,867736d27ffffff
+Chuuk,Outer,Pulusuk Island,,Submerged reef,6.87708,149.22702,85724d93fffffff,86724d937ffffff
+Chuuk,Outer,Puluwat Atoll,,Shallow passage,7.347542,149.191043,85726baffffffff,86726bad7ffffff
+Chuuk,Outer,Puluwat Atoll,,Submerged reef,7.210092,149.413918,85726b27fffffff,86726b267ffffff
+Chuuk,Outer,Puluwat Atoll,,Pier/jetty,7.3546187795893045,149.19329374956376,85726baffffffff,86726bad7ffffff
+Chuuk,Outer,Satawan Atoll,,Wharf,5.489886031849627,153.54009264551564,8577027bfffffff,8677027a7ffffff
+Chuuk,Outer,Satawan Atoll,,Wharf,5.335190283585108,153.73363100653904,8577026ffffffff,8677026f7ffffff
+Chuuk,Outer,Satawan Atoll,North Channel,Very deep passage,5.491425,153.536188,8577027bfffffff,8677027a7ffffff
+Chuuk,Outer,Satawan Atoll,South Channel,Very deep passage,5.29071,153.631246,8577026bfffffff,867702697ffffff
+Chuuk,Outer,Statwan,Mortlock Islands (Ta) Civil Airfield,Airfield,5.2843,153.653046,8577026bfffffff,86770269fffffff
+Kosrae,Main,,Kosrae International Airport,Airport,5.35344418984,162.9556570038344,85775913fffffff,867759117ffffff
+Kosrae,Main,,Lelu Dock,Dock,5.33026411525,163.02475479732652,85775913fffffff,86775911fffffff
+Kosrae,Main,,Lelu Marina,Marina,5.33615065719,163.0189698968274,85775913fffffff,86775911fffffff
+Kosrae,Main,,Molsron Lelu,Reef pass,5.32499193377,163.031954396,85775913fffffff,86775911fffffff
+Kosrae,Main,,Molsron Lelu Harbor,Port,5.3335983864,163.01758319304747,85775913fffffff,86775911fffffff
+Kosrae,Main,,Molsron Mwot,Reef pass,5.31776972294,162.925565573,857759c7fffffff,8677591a7ffffff
+Kosrae,Main,,Molsron Okat,Reef pass,5.34618811314,162.95064234,85775913fffffff,867759c4fffffff
+Kosrae,Main,,Molsron Taf,Reef pass,5.27165861561,162.972232187,8577591bfffffff,8677591afffffff
+Kosrae,Main,,Molsron Tukunsru,Reef pass,5.28729846174,162.904815164,8577591bfffffff,867759c5fffffff
+Kosrae,Main,,Molsron Utwa,Reef pass,5.27421951239,162.967373872,8577591bfffffff,8677591afffffff
+Kosrae,Main,,Molsron Yela,Reef pass,5.32860483441,162.939388816,857759c7fffffff,867759c4fffffff
+Kosrae,Main,,Okat Commercial Port,Port,5.35044544118,162.95677173956935,85775913fffffff,867759117ffffff
+Kosrae,Main,,Tafunsak Marina,Marina,5.35745893588,162.96451871857238,85775913fffffff,867759117ffffff
+Kosrae,Main,,Utwe Marina,Marina,5.27287058615,162.97596550421073,8577591bfffffff,8677591afffffff
+Kosrae,Main,,,Reef pass,5.36328065659,162.969686124,85775913fffffff,867759117ffffff
+Kosrae,Main,,,Dock,5.35500004385,162.961091944727,85775913fffffff,867759117ffffff
+Pohnpei,Main,,Areu pass,Reef pass,6.938992326,158.331741667,8577726bfffffff,867772687ffffff
+Pohnpei,Main,,Dauahk pass,Reef pass,6.903152732,158.093526742,857709b7fffffff,867709b0fffffff
+Pohnpei,Main,,Dauen Pehleng,Reef pass,6.863676403,158.108674146,857709b7fffffff,867709b57ffffff
+Pohnpei,Main,,Dauko,Reef pass,6.7859375705,158.193072702,857709a7fffffff,867709a77ffffff
+Pohnpei,Main,,Engen Saip,Reef pass,6.80231633649,158.158319681,857709a3fffffff,867709a2fffffff
+Pohnpei,Main,,Kehpara pass,Reef pass,6.792618478,158.118831707,857709a3fffffff,867709a07ffffff
+Pohnpei,Main,,Kepidau Deleur,Reef pass,6.8761519628,158.342350633,8577726bfffffff,86777269fffffff
+Pohnpei,Main,,Kepidau En Pohnahtik,Reef pass,6.79499586489,158.306836927,857709a7fffffff,867709a4fffffff
+Pohnpei,Main,,Kepidauen Nahkapw,Reef pass,6.840793076,158.342251534,857754d3fffffff,867754d37ffffff
+Pohnpei,Main,,Laiap pass,Reef pass,6.775026057,158.210607611,857709a7fffffff,867709a57ffffff
+Pohnpei,Main,,Lohd pass,Reef pass,6.76953555,158.271671747,857709a7fffffff,867709a47ffffff
+Pohnpei,Main,,Main pass,Reef pass,7.008852842,158.204045171,8577727bfffffff,867772797ffffff
+Pohnpei,Main,,Mwand pass,Reef pass,7.018754881,158.292413206,8577726bfffffff,8677726a7ffffff
+Pohnpei,Main,,Nahtik pass,Reef pass,6.773686327,158.22054127,857709a7fffffff,867709a57ffffff
+Pohnpei,Main,,Palikir pass,Reef pass,6.979151272,158.127350386,857709b7fffffff,867709b67ffffff
+Pohnpei,Main,,Pohnpei International Airport,Airport,6.98226457303,158.20371538,857709b7fffffff,867709b6fffffff
+Pohnpei,Main,,Pohnpei Port Authority,Port,6.98032145201,158.199560387,857709b7fffffff,867709b6fffffff
+Pohnpei,Main,,Ros pass,Reef pass,6.777131695,158.228066468,857709a7fffffff,867709a57ffffff
+Pohnpei,Main,,Sokehs pass,Reef pass,6.999704349,158.179113246,8577727bfffffff,867772797ffffff
+Pohnpei,Main,,,Reef pass,6.86817684203,158.355915419,857754d3fffffff,86777269fffffff
+Pohnpei,Outer,,,Shallow passage,1.077637,154.711075,85763603fffffff,867636017ffffff
+Pohnpei,Outer,,,Shallow passage,3.835381,154.911081,85771873fffffff,867718737ffffff
+Pohnpei,Outer,,Mwoakilloa Civil Airfield,Airfield,6.6791027777777785,159.76078333333334,8577551bfffffff,86775519fffffff
+Pohnpei,Outer,Ant Atoll,Tauenai Channel,Very deep passage,6.757402,157.995027,857709bbfffffff,867709b8fffffff
+Pohnpei,Outer,Kapingamarangi Atoll,,Very deep passage,1.030628,154.7622,85763603fffffff,8676360afffffff
+Pohnpei,Outer,Kapingamarangi Atoll,,Wharf,1.0780442408465096,154.80695893217936,85763603fffffff,86763600fffffff
+Pohnpei,Outer,Kapingamarangi Atoll,,Wharf,1.0775073766204544,154.80833561510582,85763603fffffff,86763600fffffff
+Pohnpei,Outer,Kapingamarangi Atoll,The Passage,Very deep passage,1.033672,154.759653,85763603fffffff,8676360afffffff
+Pohnpei,Outer,Minto Reef,,Very deep passage,8.082927,154.281803,85770513fffffff,867705107ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.691312730484794,159.76502248350786,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.690722347633036,159.7648640948926,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.691817769881117,159.76487127945225,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692596297035921,159.76401608807925,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692637614878,159.7637428465011,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692694685198909,159.76319294958245,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692458985505871,159.76196130942623,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692458985505871,159.76196130942623,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.691975359709154,159.7610687317844,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Nukuoro Atoll,Nukuoro Passage,Very deep passage,3.828188,154.962438,85771873fffffff,867718707ffffff
+Pohnpei,Outer,Oroluk Atoll,,Deep passage,7.537893,155.166213,857701b3fffffff,867701b37ffffff
+Pohnpei,Outer,Oroluk Atoll,,Deep passage,7.532031,155.171563,857701b3fffffff,867701b37ffffff
+Pohnpei,Outer,Oroluk Atoll,,Shallow passage,7.583515,155.157327,85772a4bfffffff,86772a49fffffff
+Pohnpei,Outer,Oroluk Atoll,,Shallow passage,7.525588,155.176161,857701b3fffffff,867701b37ffffff
+Pohnpei,Outer,Oroluk Atoll,,Shallow passage,7.500152,155.210127,857701b3fffffff,867701b17ffffff
+Pohnpei,Outer,Oroluk Atoll,,Shallow passage,7.480623,155.222328,857701b3fffffff,867701b17ffffff
+Pohnpei,Outer,Oroluk Atoll,,Shallow passage,7.453112,155.398542,857701b7fffffff,867701a2fffffff
+Pohnpei,Outer,Oroluk Atoll,,Very deep passage,7.513816,155.190866,857701b3fffffff,867701b37ffffff
+Pohnpei,Outer,Oroluk Atoll,,Very deep passage,7.471823,155.228688,857701b3fffffff,867701b17ffffff
+Pohnpei,Outer,Oroluk Atoll,,Very deep passage,7.428758,155.255649,857701b3fffffff,867701b1fffffff
+Pohnpei,Outer,Oroluk Atoll,,Very deep passage,7.422731,155.317519,857701a3fffffff,867701a27ffffff
+Pohnpei,Outer,Oroluk Atoll,,Very deep passage,7.414773,155.339019,857701a3fffffff,867701a07ffffff
+Pohnpei,Outer,Oroluk Atoll,,Very deep passage,7.412225,155.368425,857701a3fffffff,867701a2fffffff
+Pohnpei,Outer,Oroluk Atoll,Keltie Pass,Very deep passage,7.578477,155.341306,857701b7fffffff,867701b77ffffff
+Pohnpei,Outer,Oroluk Atoll,Pioneer Pass,Deep passage,7.592366,155.160195,85772a4bfffffff,86772a49fffffff
+Pohnpei,Outer,Oroluk Atoll,West Channel,Very deep passage,7.54681,155.15714,85770187fffffff,86770186fffffff
+Pohnpei,Outer,Pingelap,Pingelap Civil Airfield,Airfield,6.211111,160.704444,857751b3fffffff,867751b1fffffff
+Pohnpei,Outer,Sapwuahfik,Sapwuahfk Civil Airfield,Airfield,5.7836694444444445,157.16713888888887,85770b9bfffffff,86770b987ffffff
+Pohnpei,Outer,Sapwuahfik Atoll,,Very deep passage,5.778483,157.293252,85770b83fffffff,86770b817ffffff
+Yap,Main,,Changad,Channel,9.49509775217,138.109478376,8573562bfffffff,8673562a7ffffff
+Yap,Main,,Cheen,Channel,9.52426575129,138.141144646,85735623fffffff,867356217ffffff
+Yap,Main,,Fil'eenguuy,Channel,9.53148757654,138.126144199,85735623fffffff,867356217ffffff
+Yap,Main,,Gabach,Channel,9.47787497524,138.096978722,8573562bfffffff,8673562a7ffffff
+Yap,Main,,Gachuug,Reef pass,9.51916923356,138.065534724,8573563bfffffff,86735638fffffff
+Yap,Main,,Goofnuw,Reef pass,9.56942307928,138.203167072,85735623fffffff,867356207ffffff
+Yap,Main,,M'iil,Channel,9.5973220565,138.140031262,85735623fffffff,867356237ffffff
+Yap,Main,,Miil,Reef pass,9.60704002567,138.125002689,85735623fffffff,867356237ffffff
+Yap,Main,,Nimpal,Reef pass,9.54793904033,138.080278038,8573563bfffffff,86735638fffffff
+Yap,Main,,P'aaramach,Reef pass,9.55954252953,138.094476157,85735623fffffff,86735638fffffff
+Yap,Main,,Peelaek,Reef pass,9.5155477817,138.182910295,85735623fffffff,86735621fffffff
+Yap,Main,,Port of Yap State & WAAB Shipping (YFTI Dock),Port,9.51552888806,138.12556371,85735623fffffff,867356217ffffff
+Yap,Main,,Qatliirow,Channel,9.52593218404,138.135033403,85735623fffffff,867356217ffffff
+Yap,Main,,Qayong,Channel,9.53204307269,138.122533027,85735623fffffff,867356217ffffff
+Yap,Main,,Qeetum,Reef pass,9.48197769239,138.122712923,8573562bfffffff,8673562a7ffffff
+Yap,Main,,Qeetuun,Channel,9.4873201338,138.118367648,8573562bfffffff,8673562a7ffffff
+Yap,Main,,Tungunbinaew,Channel,9.57704500771,138.168921226,85735623fffffff,867356207ffffff
+Yap,Main,,Woneedaey,Reef pass,9.49003048431,138.131885044,8573562bfffffff,8673562afffffff
+Yap,Main,,YFA Dock,Port,9.51418727456,138.125004812,8573562bfffffff,867356217ffffff
+Yap,Main,,Yap International Airport,Airport,9.49837699564,138.086332202,8573562bfffffff,8673562a7ffffff
+Yap,Main,,Yinbinaew,Reef pass,9.61104446174,138.16268637,85735623fffffff,867356207ffffff
+Yap,Main,,Yunearawey,Channel,9.5734334601,138.158921188,85735623fffffff,867356207ffffff
+Yap,Outer,,Fais Civil Airfield,Airfield,9.762916666666667,140.51796944444445,8573512bfffffff,86735128fffffff
+Yap,Outer,Elato Atoll,,Deep passage,7.493882,146.161161,85726367fffffff,86726366fffffff
+Yap,Outer,Elato Atoll,,Deep passage,7.476912,146.145633,85726367fffffff,86726366fffffff
+Yap,Outer,Faraulep Atoll,,Deep passage,8.578386,144.5111,85726627fffffff,867266267ffffff
+Yap,Outer,Faraulep Atoll,,Deep passage,8.578948,144.509325,85726627fffffff,867266267ffffff
+Yap,Outer,Faraulep Atoll,,Shallow passage,8.579931,144.506627,85726627fffffff,867266267ffffff
+Yap,Outer,Ifalik Atoll,,Shallow passage,7.24401,144.449976,8572624ffffffff,8672624e7ffffff
+Yap,Outer,Lamolior Atoll,,Shallow passage,7.41754,146.168818,85726367fffffff,86726364fffffff
+Yap,Outer,Lamotrek Atoll,,Deep passage,7.502308,146.33449,85724593fffffff,86724592fffffff
+Yap,Outer,Lamotrek Atoll,,Deep passage,7.467428,146.333451,85724593fffffff,86724592fffffff
+Yap,Outer,Lamotrek Atoll,,Deep passage,7.475194,146.312564,85724593fffffff,86724592fffffff
+Yap,Outer,Lamotrek Atoll,,Deep passage,7.479796,146.297189,85724593fffffff,867245927ffffff
+Yap,Outer,Lamotrek Atoll,,Deep passage,7.486124,146.288293,85724593fffffff,867245927ffffff
+Yap,Outer,Lamotrek Atoll,,Shallow passage,7.474595,146.354736,85724593fffffff,86724592fffffff
+Yap,Outer,Ngulu Atoll,,Submerged reef,8.532081,137.577451,8572253bfffffff,8672253a7ffffff
+Yap,Outer,Ngulu Atoll,,Submerged reef,8.414994,137.538891,8572253bfffffff,867225397ffffff
+Yap,Outer,Ngulu Atoll,,Very deep passage,8.335305,137.518484,85722577fffffff,867225767ffffff
+Yap,Outer,Ngulu Atoll,,Very deep passage,8.494838,137.568447,8572253bfffffff,8672253a7ffffff
+Yap,Outer,Ngulu Atoll,,Very deep passage,8.3944,137.403531,8572250ffffffff,8672250d7ffffff
+Yap,Outer,Ngulu Atoll,,Very deep passage,8.343754,137.522902,85722577fffffff,867225767ffffff
+Yap,Outer,Ngulu Atoll,Dobutsuoruniiga Passage,Very deep passage,8.52393,137.45929,85722507fffffff,867225057ffffff
+Yap,Outer,Ngulu Atoll,Donibureeku Passage,Very deep passage,8.470875,137.358179,8572250ffffffff,8672250f7ffffff
+Yap,Outer,Ngulu Atoll,Donigoppin Passage,Very deep passage,8.384764,137.430679,8572250ffffffff,8672250dfffffff
+Yap,Outer,Ngulu Atoll,Doniparo Passage,Very deep passage,8.57449,137.51401,85722507fffffff,86722504fffffff
+Yap,Outer,Ngulu Atoll,Doriyappu Passage,Deep passage,8.586977,137.528489,85722507fffffff,86722504fffffff
+Yap,Outer,Ngulu Atoll,Dossororu Passage,Deep passage,8.341086,137.471859,85722577fffffff,867225777ffffff
+Yap,Outer,Ngulu Atoll,Dotchikichiki Passage,Deep passage,8.316709,137.478179,85722577fffffff,867225777ffffff
+Yap,Outer,Ngulu Atoll,East Passage,Deep passage,8.302265,137.495123,85722577fffffff,867225747ffffff
+Yap,Outer,Ngulu Atoll,West Passage,Very deep passage,8.306709,137.481234,85722577fffffff,867225777ffffff
+Yap,Outer,Ngulu Atoll,Zoniparegoku Passage,Deep passage,8.401431,137.375401,8572250ffffffff,8672250d7ffffff
+Yap,Outer,Ngulu Atoll,Zoniyarangachieru Passage,Very deep passage,8.395042,137.413734,8572250ffffffff,8672250dfffffff
+Yap,Outer,Ngulu Atoll,Zoroppu Passage,Very deep passage,8.368931,137.464568,8572250ffffffff,8672250dfffffff
+Yap,Outer,Olimarao Atoll,,Shallow passage,7.676942,145.871967,8572630ffffffff,8672630f7ffffff
+Yap,Outer,Olimarao Atoll,,Shallow passage,7.678635,145.864679,8572630ffffffff,8672630f7ffffff
+Yap,Outer,Olimarao Atoll,,Shallow passage,7.680184,145.859859,8572630ffffffff,8672630f7ffffff
+Yap,Outer,Ulithi,Ulithi Civil Airfield,Airfield,10.020386111111112,139.78897777777777,857351cffffffff,867351cefffffff
+Yap,Outer,Ulithi Atoll,Dao Channel,Shallow passage,10.072335,139.653265,857351c3fffffff,867351c1fffffff
+Yap,Outer,Ulithi Atoll,Dochirichi Channel,Very deep passage,10.024278,139.781043,857351cffffffff,867351cefffffff
+Yap,Outer,Ulithi Atoll,Dowarugui Channel,Submerged reef,10.029834,139.746321,857351cffffffff,867351ce7ffffff
+Yap,Outer,Ulithi Atoll,Hanmarin Channel,Submerged reef,10.020186,139.729001,857351cffffffff,867351ce7ffffff
+Yap,Outer,Ulithi Atoll,Metaregato Channel,Submerged reef,9.77872,139.666043,85735153fffffff,867351517ffffff
+Yap,Outer,Ulithi Atoll,Mugai Channel,Submerged reef,9.961222,139.699932,857351cffffffff,867351cd7ffffff
+Yap,Outer,Ulithi Atoll,Piiriperiperi Channel,Deep passage,9.836776,139.640487,85735153fffffff,867351537ffffff
+Yap,Outer,Ulithi Atoll,Rowaruerii Channel,Deep passage,9.858443,139.616321,85735153fffffff,867351537ffffff
+Yap,Outer,Ulithi Atoll,Rowaryu Channel,Deep passage,10.018167,139.601043,857351cbfffffff,867351cafffffff
+Yap,Outer,Ulithi Atoll,Towachi Channel,Deep passage,9.970389,139.605765,857351cbfffffff,867351c87ffffff
+Yap,Outer,Ulithi Atoll,Towamudo Channel,Deep passage,10.000945,139.616876,857351cbfffffff,867351cafffffff
+Yap,Outer,Ulithi Atoll,Zaowachiichi Channel,Very deep passage,9.889554,139.586043,857351cbfffffff,867351c9fffffff
+Yap,Outer,Ulithi Atoll,Zau Channel,Deep passage,9.934277,139.674098,857351cffffffff,867351c8fffffff
+Yap,Outer,Ulithi Atoll,Zowariyau Channel,Very deep passage,9.868443,139.601876,857351cbfffffff,867351c9fffffff
+Yap,Outer,Ulithi Atoll,Zowariyoru Channel,Deep passage,9.853776,139.628016,85735153fffffff,867351537ffffff
+Yap,Outer,Ulithi Atoll,Zowatabu Channel,Deep passage,9.845694,139.699885,85735153fffffff,867351507ffffff
+Yap,Outer,West Fayu Atoll,,Deep passage,8.072166,146.727745,85726ec7fffffff,86726ec47ffffff
+Yap,Outer,West Fayu Atoll,,Shallow passage,8.067786,146.722937,85726ec7fffffff,86726ec47ffffff
+Yap,Outer,West Fayu Atoll,,Shallow passage,8.06373,146.704061,85726ec7fffffff,86726ec47ffffff
+Yap,Outer,Woleai,Woleai Civil Airfield,Airfield,7.376833333333333,143.90848333333335,85727523fffffff,867275207ffffff
+Yap,Outer,Woleai Atoll,,Shallow passage,7.364096,143.886037,85727523fffffff,867275217ffffff
+Yap,Outer,Woleai Atoll,,Shallow passage,7.341584,143.883935,85727523fffffff,867275217ffffff
+Yap,Outer,Woleai Atoll,North Channel,Deep passage,7.362612,143.866025,85727523fffffff,86727538fffffff
+Yap,Outer,Woleai Atoll,Orarai Channel,Submerged reef,7.326908,143.859591,8572753bfffffff,8672752a7ffffff
+Yap,Outer,Woleai Atoll,Raur Channel,Deep passage,7.341075,143.89848,85727523fffffff,867275217ffffff
+Yap,Outer,Woleai Atoll,West Channel,Deep passage,7.341908,143.831813,8572753bfffffff,86727538fffffff
+Yap,Outer,Zohhoiiyoru Bank,,Submerged reef,9.784502,139.96536,85735147fffffff,867351467ffffff

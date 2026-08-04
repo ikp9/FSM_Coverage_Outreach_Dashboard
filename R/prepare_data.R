@@ -23,12 +23,11 @@ library(tibble)
 # Run this script from the NEW R project root:
 # C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard
 #
-# Raw source files remain in the original ShoreToShot project. Dashboard-ready
 # CSV files are written to the data/ folder inside the new project.
 
 raw_data_dir <- file.path(
   "C:/Users/ikp9/R/USAPI/FSM",
-  "ShoreToShot_R_Prototype_Vaccination_Coverage",
+  "FSM_Coverage_Outreach_Dashboard",
   "data"
 )
 
@@ -41,7 +40,7 @@ patient_data_dir <- file.path(
 # either a CSV or an Excel workbook with the same stem and prefers CSV when both
 # versions exist.
 patient_file_stem <-
-  "Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_072926"
+  "Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_080426"
 
 resolve_patient_file <- function(directory, file_stem) {
   preferred_files <- file.path(

@@ -1,0 +1,14 @@
+State,Region,Atoll,Name,Type,Latitude,Longitude,H3_res5,H3_res6
+Chuuk,Main,,Chuuk International Airport,Airport,7.45809135234,151.841224282,85773153fffffff,86773151fffffff
+Chuuk,Outer,,Houk (Polusuk) Civil Airfield,Airfield,6.674861111111111,149.29869166666666,85724d9bfffffff,86724d98fffffff
+Chuuk,Outer,Namonuito,Onoun (Ulul) Civil Airfield,Airfield,8.592772222222223,149.69086388888888,857269a7fffffff,867269a57ffffff
+Chuuk,Outer,Statwan,Mortlock Islands (Ta) Civil Airfield,Airfield,5.2843,153.653046,8577026bfffffff,86770269fffffff
+Kosrae,Main,,Kosrae International Airport,Airport,5.35344418984,162.9556570038344,85775913fffffff,867759117ffffff
+Pohnpei,Main,,Pohnpei International Airport,Airport,6.98226457303,158.20371538,857709b7fffffff,867709b6fffffff
+Pohnpei,Outer,,Mwoakilloa Civil Airfield,Airfield,6.6791027777777785,159.76078333333334,8577551bfffffff,86775519fffffff
+Pohnpei,Outer,Pingelap,Pingelap Civil Airfield,Airfield,6.211111,160.704444,857751b3fffffff,867751b1fffffff
+Pohnpei,Outer,Sapwuahfik,Sapwuahfk Civil Airfield,Airfield,5.7836694444444445,157.16713888888887,85770b9bfffffff,86770b987ffffff
+Yap,Main,,Yap International Airport,Airport,9.49837699564,138.086332202,8573562bfffffff,8673562a7ffffff
+Yap,Outer,,Fais Civil Airfield,Airfield,9.762916666666667,140.51796944444445,8573512bfffffff,86735128fffffff
+Yap,Outer,Ulithi,Ulithi Civil Airfield,Airfield,10.020386111111112,139.78897777777777,857351cffffffff,867351cefffffff
+Yap,Outer,Woleai,Woleai Civil Airfield,Airfield,7.376833333333333,143.90848333333335,85727523fffffff,867275207ffffff

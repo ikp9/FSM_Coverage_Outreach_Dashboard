@@ -68,7 +68,7 @@ CHUUK__MORTLOCK,Chuuk,Mortlock,Vaxelis,15
 CHUUK__MORTLOCK,Chuuk,Mortlock,Pediarix,1
 CHUUK__MORTLOCK,Chuuk,Mortlock,DTaP_Single,15
 CHUUK__MORTLOCK,Chuuk,Mortlock,IPV_Single,2
-CHUUK__MORTLOCK,Chuuk,Mortlock,MMR_Single,15
+CHUUK__MORTLOCK,Chuuk,Mortlock,MMR_Single,16
 CHUUK__MORTLOCK,Chuuk,Mortlock,Prevnar,18
 CHUUK__MORTLOCK,Chuuk,Mortlock,RotaTeq,1
 CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,PedVaxHib,1
@@ -188,7 +188,7 @@ CHUUK__TOLENSOM,Chuuk,Tolensom,Vaxelis,116
 CHUUK__TOLENSOM,Chuuk,Tolensom,Pediarix,62
 CHUUK__TOLENSOM,Chuuk,Tolensom,DTaP_Single,163
 CHUUK__TOLENSOM,Chuuk,Tolensom,IPV_Single,98
-CHUUK__TOLENSOM,Chuuk,Tolensom,MMR_Single,172
+CHUUK__TOLENSOM,Chuuk,Tolensom,MMR_Single,173
 CHUUK__TOLENSOM,Chuuk,Tolensom,Prevnar,149
 CHUUK__TOLENSOM,Chuuk,Tolensom,RotaTeq,10
 CHUUK__TONOAS,Chuuk,Tonoas,PedVaxHib,17
@@ -220,7 +220,7 @@ CHUUK__WENO,Chuuk,Weno,Vaxelis,141
 CHUUK__WENO,Chuuk,Weno,Pediarix,56
 CHUUK__WENO,Chuuk,Weno,DTaP_Single,214
 CHUUK__WENO,Chuuk,Weno,IPV_Single,141
-CHUUK__WENO,Chuuk,Weno,MMR_Single,241
+CHUUK__WENO,Chuuk,Weno,MMR_Single,244
 CHUUK__WENO,Chuuk,Weno,Prevnar,206
 CHUUK__WENO,Chuuk,Weno,RotaTeq,17
 CHUUK__WONEI,Chuuk,Wonei,PedVaxHib,0
@@ -244,7 +244,7 @@ KOSRAE__MALEM,Kosrae,Malem,Vaxelis,9
 KOSRAE__MALEM,Kosrae,Malem,Pediarix,2
 KOSRAE__MALEM,Kosrae,Malem,DTaP_Single,9
 KOSRAE__MALEM,Kosrae,Malem,IPV_Single,8
-KOSRAE__MALEM,Kosrae,Malem,MMR_Single,12
+KOSRAE__MALEM,Kosrae,Malem,MMR_Single,13
 KOSRAE__MALEM,Kosrae,Malem,Prevnar,20
 KOSRAE__MALEM,Kosrae,Malem,RotaTeq,5
 KOSRAE__TAFUNSAK,Kosrae,Tafunsak,PedVaxHib,28
@@ -260,7 +260,7 @@ KOSRAE__UTWE,Kosrae,Utwe,Vaxelis,2
 KOSRAE__UTWE,Kosrae,Utwe,Pediarix,0
 KOSRAE__UTWE,Kosrae,Utwe,DTaP_Single,12
 KOSRAE__UTWE,Kosrae,Utwe,IPV_Single,12
-KOSRAE__UTWE,Kosrae,Utwe,MMR_Single,5
+KOSRAE__UTWE,Kosrae,Utwe,MMR_Single,6
 KOSRAE__UTWE,Kosrae,Utwe,Prevnar,6
 KOSRAE__UTWE,Kosrae,Utwe,RotaTeq,0
 KOSRAE__WALUNG,Kosrae,Walung,PedVaxHib,0
@@ -300,7 +300,7 @@ POHNPEI__KITTI,Pohnpei,Kitti,Vaxelis,103
 POHNPEI__KITTI,Pohnpei,Kitti,Pediarix,72
 POHNPEI__KITTI,Pohnpei,Kitti,DTaP_Single,166
 POHNPEI__KITTI,Pohnpei,Kitti,IPV_Single,83
-POHNPEI__KITTI,Pohnpei,Kitti,MMR_Single,223
+POHNPEI__KITTI,Pohnpei,Kitti,MMR_Single,224
 POHNPEI__KITTI,Pohnpei,Kitti,Prevnar,161
 POHNPEI__KITTI,Pohnpei,Kitti,RotaTeq,23
 POHNPEI__KOLONIA,Pohnpei,Kolonia,PedVaxHib,27
@@ -316,7 +316,7 @@ POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Vaxelis,55
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Pediarix,12
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,DTaP_Single,72
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,IPV_Single,37
-POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,MMR_Single,63
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,MMR_Single,64
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Prevnar,72
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,RotaTeq,19
 POHNPEI__NETT,Pohnpei,Nett,PedVaxHib,45
@@ -324,7 +324,7 @@ POHNPEI__NETT,Pohnpei,Nett,Vaxelis,132
 POHNPEI__NETT,Pohnpei,Nett,Pediarix,93
 POHNPEI__NETT,Pohnpei,Nett,DTaP_Single,165
 POHNPEI__NETT,Pohnpei,Nett,IPV_Single,92
-POHNPEI__NETT,Pohnpei,Nett,MMR_Single,307
+POHNPEI__NETT,Pohnpei,Nett,MMR_Single,308
 POHNPEI__NETT,Pohnpei,Nett,Prevnar,193
 POHNPEI__NETT,Pohnpei,Nett,RotaTeq,16
 POHNPEI__NUKUORO,Pohnpei,Nukuoro,PedVaxHib,0
@@ -364,7 +364,7 @@ POHNPEI__SOKEHS,Pohnpei,Sokehs,Vaxelis,92
 POHNPEI__SOKEHS,Pohnpei,Sokehs,Pediarix,38
 POHNPEI__SOKEHS,Pohnpei,Sokehs,DTaP_Single,134
 POHNPEI__SOKEHS,Pohnpei,Sokehs,IPV_Single,72
-POHNPEI__SOKEHS,Pohnpei,Sokehs,MMR_Single,178
+POHNPEI__SOKEHS,Pohnpei,Sokehs,MMR_Single,179
 POHNPEI__SOKEHS,Pohnpei,Sokehs,Prevnar,140
 POHNPEI__SOKEHS,Pohnpei,Sokehs,RotaTeq,18
 POHNPEI__U,Pohnpei,U,PedVaxHib,20
@@ -372,7 +372,7 @@ POHNPEI__U,Pohnpei,U,Vaxelis,26
 POHNPEI__U,Pohnpei,U,Pediarix,9
 POHNPEI__U,Pohnpei,U,DTaP_Single,48
 POHNPEI__U,Pohnpei,U,IPV_Single,22
-POHNPEI__U,Pohnpei,U,MMR_Single,57
+POHNPEI__U,Pohnpei,U,MMR_Single,58
 POHNPEI__U,Pohnpei,U,Prevnar,46
 POHNPEI__U,Pohnpei,U,RotaTeq,7
 YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,PedVaxHib,0
@@ -428,7 +428,7 @@ YAP__GAGIL,Yap,Gagil,Vaxelis,4
 YAP__GAGIL,Yap,Gagil,Pediarix,0
 YAP__GAGIL,Yap,Gagil,DTaP_Single,6
 YAP__GAGIL,Yap,Gagil,IPV_Single,3
-YAP__GAGIL,Yap,Gagil,MMR_Single,3
+YAP__GAGIL,Yap,Gagil,MMR_Single,4
 YAP__GAGIL,Yap,Gagil,Prevnar,7
 YAP__GAGIL,Yap,Gagil,RotaTeq,4
 YAP__GILMAN,Yap,Gilman,PedVaxHib,0
@@ -468,7 +468,7 @@ YAP__MAAP,Yap,Maap,Vaxelis,3
 YAP__MAAP,Yap,Maap,Pediarix,1
 YAP__MAAP,Yap,Maap,DTaP_Single,3
 YAP__MAAP,Yap,Maap,IPV_Single,2
-YAP__MAAP,Yap,Maap,MMR_Single,2
+YAP__MAAP,Yap,Maap,MMR_Single,3
 YAP__MAAP,Yap,Maap,Prevnar,4
 YAP__MAAP,Yap,Maap,RotaTeq,3
 YAP__NGULU,Yap,Ngulu,PedVaxHib,1
@@ -524,7 +524,7 @@ YAP__WEELOEY,Yap,Weeloey,Vaxelis,4
 YAP__WEELOEY,Yap,Weeloey,Pediarix,0
 YAP__WEELOEY,Yap,Weeloey,DTaP_Single,8
 YAP__WEELOEY,Yap,Weeloey,IPV_Single,5
-YAP__WEELOEY,Yap,Weeloey,MMR_Single,2
+YAP__WEELOEY,Yap,Weeloey,MMR_Single,3
 YAP__WEELOEY,Yap,Weeloey,Prevnar,5
 YAP__WEELOEY,Yap,Weeloey,RotaTeq,1
 YAP__WOLEAI,Yap,Woleai,PedVaxHib,5

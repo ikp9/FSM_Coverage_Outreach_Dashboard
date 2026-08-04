@@ -1,0 +1,56 @@
+State,Region,Atoll,Name,Type,Latitude,Longitude,H3_res5,H3_res6
+Chuuk,Main,,Eot Boat Pier,Pier,7.383031,151.740739,8577315bfffffff,8677315a7ffffff
+Chuuk,Main,,Faro Boat Basin,Boat Basin,7.327581,151.630858,8577302ffffffff,8677302c7ffffff
+Chuuk,Main,,Fason Pier,Pier,7.343511,151.634628,8577302ffffffff,8677302efffffff
+Chuuk,Main,,Ilick Harbor,Harbor,7.332161,151.563736,8577302ffffffff,8677302f7ffffff
+Chuuk,Main,,JP Army Docks,Dock,7.37525,151.707017,8577315bfffffff,8677315b7ffffff
+Chuuk,Main,,JP Aun Pier,Pier,7.334719,151.852128,85773143fffffff,86773158fffffff
+Chuuk,Main,,JP Coal Dock,Dock,7.363569,151.883178,85773143fffffff,867731437ffffff
+Chuuk,Main,,JP Main Oil Dock WW2,Dock,7.366231,151.886794,85773143fffffff,867731437ffffff
+Chuuk,Main,,JP Nepinom Pier,Pier,7.445392,151.899058,85773143fffffff,867731427ffffff
+Chuuk,Main,,JP Penia Pier WW2,Pier,7.454161,151.882767,85773153fffffff,86773150fffffff
+Chuuk,Main,,JP Sapota Pier,Pier,7.316481,151.853317,85773143fffffff,86773158fffffff
+Chuuk,Main,,JP Sapou Pier,Pier,7.286081,151.878236,8577314bfffffff,867731417ffffff
+Chuuk,Main,,Local Fishery Basin,Boat Basin,7.447661,151.841386,85773153fffffff,86773151fffffff
+Chuuk,Main,,Mochon Boat Pier,Pier,7.31,151.884233,85773143fffffff,867731417ffffff
+Chuuk,Main,,Mwanitiw Boat Pier,Pier,7.378831,151.704147,8577315bfffffff,8677315b7ffffff
+Chuuk,Main,,Penia Pier,Pier,7.393069,151.708175,8577315bfffffff,86773025fffffff
+Chuuk,Main,,Piis Pier,Pier,7.676981,151.767653,857731cbfffffff,867731cafffffff
+Chuuk,Main,,Ramanum Pier,Pier,7.406569,151.673461,85773027fffffff,86773025fffffff
+Chuuk,Main,,Sapotiw Pier,Pier,7.293289,151.888947,85773143fffffff,867731417ffffff
+Chuuk,Main,,Siis Anchorage,Anchorage,7.296411,151.816161,8577315bfffffff,86773159fffffff
+Chuuk,Main,,Truk Stop Pier,Pier,7.442161,151.838378,85773153fffffff,86773151fffffff
+Chuuk,Main,,Ununo Pier,Pier,7.366789,151.817903,8577315bfffffff,8677315afffffff
+Chuuk,Main,,Weno Commercial Docks,Wharf,7.444781,151.839522,85773153fffffff,86773151fffffff
+Chuuk,Main,,Weno Port (Port of Chuuk State),Port,7.445958983,151.8401653,85773153fffffff,86773151fffffff
+Chuuk,Main,,Weno Sailboat Anchorage,Anchorage,7.4144,151.841994,85773153fffffff,86773151fffffff
+Chuuk,Outer,Losap Atoll,,Pier/jetty,6.836715608773412,152.7015821953179,8577061bfffffff,8677061a7ffffff
+Chuuk,Outer,Lukunor Atoll,,Pier/jetty,5.502396179599564,153.8163125472263,85770267fffffff,867702677ffffff
+Chuuk,Outer,Lukunor Atoll,,Pier/jetty,5.509167690346513,153.71255965477283,85770263fffffff,867702627ffffff
+Chuuk,Outer,Murilo Atoll,,Pier/jetty,8.692926611695937,152.33891365031775,857722cffffffff,867722ccfffffff
+Chuuk,Outer,Murilo Atoll,,Pier/jetty,8.610598772,152.2424306087829,85772253fffffff,867722527ffffff
+Chuuk,Outer,Pulap Atoll,,Pier/jetty,7.633372725894998,149.42884750689709,857736d3fffffff,867736d27ffffff
+Chuuk,Outer,Puluwat Atoll,,Pier/jetty,7.3546187795893045,149.19329374956376,85726baffffffff,86726bad7ffffff
+Chuuk,Outer,Satawan Atoll,,Wharf,5.489886031849627,153.54009264551564,8577027bfffffff,8677027a7ffffff
+Chuuk,Outer,Satawan Atoll,,Wharf,5.335190283585108,153.73363100653904,8577026ffffffff,8677026f7ffffff
+Kosrae,Main,,Lelu Dock,Dock,5.330264115,163.02475479732652,85775913fffffff,86775911fffffff
+Kosrae,Main,,Lelu Marina,Marina,5.336150657,163.0189698968274,85775913fffffff,86775911fffffff
+Kosrae,Main,,Molsron Lelu Harbor,Port,5.333598386,163.01758319304747,85775913fffffff,86775911fffffff
+Kosrae,Main,,Okat Commercial Port,Port,5.350445441,162.95677173956935,85775913fffffff,867759117ffffff
+Kosrae,Main,,Tafunsak Marina,Marina,5.357458936,162.96451871857238,85775913fffffff,867759117ffffff
+Kosrae,Main,,Utwe Marina,Marina,5.272870586,162.97596550421073,8577591bfffffff,8677591afffffff
+Kosrae,Main,,,Dock,5.355000044,162.9610919,85775913fffffff,867759117ffffff
+Pohnpei,Main,,Pohnpei Port Authority,Port,6.980321452,158.1995604,857709b7fffffff,867709b6fffffff
+Pohnpei,Outer,Kapingamarangi Atoll,,Wharf,1.0780442408465096,154.80695893217936,85763603fffffff,86763600fffffff
+Pohnpei,Outer,Kapingamarangi Atoll,,Wharf,1.0775073766204544,154.80833561510582,85763603fffffff,86763600fffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.691312730484794,159.76502248350786,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.690722347633036,159.7648640948926,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.691817769881117,159.76487127945225,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692596297035921,159.76401608807925,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692637615,159.7637428465011,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692694685198909,159.76319294958245,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692458985505871,159.76196130942623,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.692458985505871,159.76196130942623,8577551bfffffff,867755187ffffff
+Pohnpei,Outer,Mokil Atoll,,Wharf,6.691975359709154,159.7610687317844,8577551bfffffff,867755187ffffff
+Yap,Main,,Port of Yap State & WAAB Shipping (YFTI Dock),Port,9.515528888,138.1255637,85735623fffffff,867356217ffffff
+Yap,Main,,YFA Dock,Port,9.514187275,138.1250048,8573562bfffffff,867356217ffffff
