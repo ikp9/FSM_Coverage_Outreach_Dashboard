@@ -87,10 +87,10 @@ knitr::opts_chunk$set(
 )
 
 knitr::opts_knit$set(
-  root.dir = "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data"
+  root.dir = "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data"
 )
 
-setwd("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data")
+setwd("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data")
 
 getwd()
 
@@ -111,25 +111,25 @@ STEP 3: Import Reminder/Recall
 #STEP 1: Import roster
 
 #start highlight
-roster <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data/Roster_0-7_072926.xlsx")%>%
+roster <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Roster_0-7_072926.xlsx")%>%
   janitor::clean_names() #end highlight
 
 #STEP 2: Import patient detail with services
 
 #start highlight
-detail <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data/Details_0-7_072926.xlsx") %>%
+detail <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Details_0-7_072926.xlsx") %>%
   janitor::clean_names() #end highlight
 
 #STEP 3: Import REMINDER RECALL
 
 #start highlight
-reminder <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Raw Patient Data/RR_ALL_0-7_072726.xlsx") %>%
+reminder <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/RR_ALL_0-7_072726.xlsx") %>%
   janitor::clean_names() #end highlight
 
 #STEP 3: Import PlaceNames data for mapping later
 
 #start highlight
-placenames <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/placenames_micronesia_all_v2_index.xlsx") %>%
+placenames <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/placenames_micronesia_all_v2_index.xlsx") %>%
   janitor::clean_names() #end highlight
 
 
@@ -1444,7 +1444,7 @@ export_county <- clean2 %>%
 today <- format(Sys.Date(), "%m%d%y")
 
 county_file <- file.path(
-  "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output",
+  "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output",
   paste0(
     "Raw_Provider_Clinic_Locations_",
     today,
@@ -3097,7 +3097,7 @@ missing_latlon_table_unique <- clean11_merged %>%
   distinct() %>%
   arrange(rr_county, county, city)
 
-write_xlsx(missing_latlon_table_unique, "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output/Missing_Coordinates.xlsx")
+write_xlsx(missing_latlon_table_unique, "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output/Missing_Coordinates.xlsx")
 
 ```
 
@@ -3144,7 +3144,7 @@ if (!requireNamespace("openxlsx", quietly = TRUE)) {
 today <- format(Sys.Date(), "%m%d%y")
 
 dataset_file <- file.path(
-  "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output",
+  "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output",
   paste0(
     "Dataset 1_FSM_2-83 Mos_Full Dataset_",
     today,
@@ -3168,7 +3168,7 @@ deid_dataset <- clean12_merged %>%
   )
 
 deid_dataset_file <- file.path(
-  "C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/Analytic Code Output",
+  "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output",
   paste0(
     "Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_",
     today,
@@ -3193,7 +3193,7 @@ been able to find
 ```{r pop density, include=FALSE}
 
 
-pop_density <- import("C:/Users/ikp9/R/USAPI/FSM/ShoreToShot_R_Prototype_Vaccination_Coverage/data/FSM Counties_Census.xlsx")%>%
+pop_density <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/FSM Counties_Census.xlsx")%>%
   janitor::clean_names() 
 
 clean13_merged <- clean12_merged %>%
@@ -3246,7 +3246,7 @@ report_year <- format(Sys.Date(), "%Y")
 
 output_dir <- paste0(
   "C:/Users/ikp9/R/USAPI/FSM/",
-  "ShoreToShot_R_Prototype_Vaccination_Coverage/",
+  "FSM_Coverage_Outreach_Dashboard/",
   "data/Analytic Code Output"
 )
 
@@ -4377,3 +4377,7 @@ output_file
 
 ```
 
+#To Do
+Test this code
+Push to GitHub
+Update prepare data and app
