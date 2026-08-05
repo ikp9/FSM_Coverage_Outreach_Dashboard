@@ -30,3 +30,6 @@ Updated paths.
 #Changes made August 4, 2026 - AT
 Changed all paths to the FSM_Coverage_Outreach_Dashboard; moved all data here so no longer pulling from old folder
 
+#changes made August 5, 2026 - EB
+Made changes to directory pathways and import pathways
+

@@ -96,6 +96,28 @@ getwd()
 
 ```
 
+```{r elise's setup, include=FALSE}
+
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 10,
+  fig.height = 6,
+  dpi = 300,
+  out.width = "100%"
+)
+
+knitr::opts_knit$set(
+  root.dir = "C:/Users/stq9/OneDrive - CDC/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/FSM_Coverage_Outreach_Dashboard/data"
+)
+
+setwd("C:/Users/stq9/OneDrive - CDC/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/FSM_Coverage_Outreach_Dashboard/data")
+
+getwd()
+
+```
+
 # Import data from WebIZ
 
 STEP 1: Import Patient Roster
@@ -111,25 +133,25 @@ STEP 3: Import Reminder/Recall
 #STEP 1: Import roster
 
 #start highlight
-roster <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Roster_0-7_072926.xlsx")%>%
+roster <- import("C:/Users/stq9/OneDrive - CDC/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Roster_0-7_072926.xlsx")%>%
   janitor::clean_names() #end highlight
 
 #STEP 2: Import patient detail with services
 
 #start highlight
-detail <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Details_0-7_072926.xlsx") %>%
+detail <- import("C:/Users/stq9/OneDrive - CDC/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Details_0-7_072926.xlsx") %>%
   janitor::clean_names() #end highlight
 
 #STEP 3: Import REMINDER RECALL
 
 #start highlight
-reminder <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/RR_ALL_0-7_072726.xlsx") %>%
+reminder <- import("C:/Users/stq9/OneDrive - CDC/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/RR_ALL_0-7_072726.xlsx") %>%
   janitor::clean_names() #end highlight
 
 #STEP 3: Import PlaceNames data for mapping later
 
 #start highlight
-placenames <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/placenames_micronesia_all_v2_index.xlsx") %>%
+placenames <- import("C:/Users/stq9/OneDrive - CDC/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/FSM_Coverage_Outreach_Dashboard/data/placenames_micronesia_all_v2_index.xlsx") %>%
   janitor::clean_names() #end highlight
 
 
