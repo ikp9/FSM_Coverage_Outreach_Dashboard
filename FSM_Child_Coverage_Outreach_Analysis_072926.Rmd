@@ -24,6 +24,8 @@ STEP 1: Make a list of packages required to run code/reports
 STEP 2: Use a function to install/call on packages if they are not
 already installed/called on
 
+#ADD TEST COMMENT
+
 ```{r install and call on packages, include=FALSE}
 
 #STEP 1: Load packages and install if needed
