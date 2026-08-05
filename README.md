@@ -35,4 +35,5 @@ Made changes to directory pathways and import pathways
 
 #Changes made August 5, 2026 - AT
 Updated all paths to relative so any user with same folder setup can run without editing user names 
-
+Fixed issue with regions - e.g., Chuuk outer being too low
+Updated prepare_data to match path updates in analytic code

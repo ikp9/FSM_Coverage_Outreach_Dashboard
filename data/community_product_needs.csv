@@ -47,13 +47,13 @@ CHUUK__HOUK,Chuuk,Houk,IPV_Single,7
 CHUUK__HOUK,Chuuk,Houk,MMR_Single,2
 CHUUK__HOUK,Chuuk,Houk,Prevnar,8
 CHUUK__HOUK,Chuuk,Houk,RotaTeq,3
-CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,PedVaxHib,2
-CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Vaxelis,8
-CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Pediarix,5
-CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,DTaP_Single,19
-CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,IPV_Single,14
-CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,MMR_Single,12
-CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Prevnar,8
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,PedVaxHib,1
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Vaxelis,4
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Pediarix,3
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,DTaP_Single,15
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,IPV_Single,11
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,MMR_Single,6
+CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,Prevnar,3
 CHUUK__LOSAP ATOLL,Chuuk,Losap Atoll,RotaTeq,0
 CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,PedVaxHib,2
 CHUUK__LUKUNOR ATOLL,Chuuk,Lukunor Atoll,Vaxelis,8
@@ -68,7 +68,7 @@ CHUUK__MORTLOCK,Chuuk,Mortlock,Vaxelis,15
 CHUUK__MORTLOCK,Chuuk,Mortlock,Pediarix,1
 CHUUK__MORTLOCK,Chuuk,Mortlock,DTaP_Single,15
 CHUUK__MORTLOCK,Chuuk,Mortlock,IPV_Single,2
-CHUUK__MORTLOCK,Chuuk,Mortlock,MMR_Single,16
+CHUUK__MORTLOCK,Chuuk,Mortlock,MMR_Single,27
 CHUUK__MORTLOCK,Chuuk,Mortlock,Prevnar,18
 CHUUK__MORTLOCK,Chuuk,Mortlock,RotaTeq,1
 CHUUK__MURILO ATOLL,Chuuk,Murilo Atoll,PedVaxHib,1
@@ -108,7 +108,7 @@ CHUUK__NORTHWEST,Chuuk,Northwest,Vaxelis,34
 CHUUK__NORTHWEST,Chuuk,Northwest,Pediarix,6
 CHUUK__NORTHWEST,Chuuk,Northwest,DTaP_Single,5
 CHUUK__NORTHWEST,Chuuk,Northwest,IPV_Single,0
-CHUUK__NORTHWEST,Chuuk,Northwest,MMR_Single,38
+CHUUK__NORTHWEST,Chuuk,Northwest,MMR_Single,58
 CHUUK__NORTHWEST,Chuuk,Northwest,Prevnar,40
 CHUUK__NORTHWEST,Chuuk,Northwest,RotaTeq,0
 CHUUK__ONEI,Chuuk,Onei,PedVaxHib,3
@@ -135,6 +135,22 @@ CHUUK__PATTA,Chuuk,Patta,IPV_Single,11
 CHUUK__PATTA,Chuuk,Patta,MMR_Single,21
 CHUUK__PATTA,Chuuk,Patta,Prevnar,21
 CHUUK__PATTA,Chuuk,Patta,RotaTeq,1
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,PedVaxHib,0
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,Vaxelis,0
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,Pediarix,0
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,DTaP_Single,0
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,IPV_Single,0
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,MMR_Single,1
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,Prevnar,0
+CHUUK__PIIS MOEN,Chuuk,Piis Moen,RotaTeq,0
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,PedVaxHib,1
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,Vaxelis,4
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,Pediarix,2
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,DTaP_Single,4
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,IPV_Single,3
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,MMR_Single,6
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,Prevnar,5
+CHUUK__PIIS PANEU,Chuuk,Piis Paneu,RotaTeq,0
 CHUUK__POLLE,Chuuk,Polle,PedVaxHib,12
 CHUUK__POLLE,Chuuk,Polle,Vaxelis,49
 CHUUK__POLLE,Chuuk,Polle,Pediarix,11
@@ -220,23 +236,23 @@ CHUUK__WENO,Chuuk,Weno,Vaxelis,141
 CHUUK__WENO,Chuuk,Weno,Pediarix,56
 CHUUK__WENO,Chuuk,Weno,DTaP_Single,214
 CHUUK__WENO,Chuuk,Weno,IPV_Single,141
-CHUUK__WENO,Chuuk,Weno,MMR_Single,244
+CHUUK__WENO,Chuuk,Weno,MMR_Single,239
 CHUUK__WENO,Chuuk,Weno,Prevnar,206
 CHUUK__WENO,Chuuk,Weno,RotaTeq,17
-CHUUK__WONEI,Chuuk,Wonei,PedVaxHib,0
-CHUUK__WONEI,Chuuk,Wonei,Vaxelis,0
-CHUUK__WONEI,Chuuk,Wonei,Pediarix,0
-CHUUK__WONEI,Chuuk,Wonei,DTaP_Single,0
-CHUUK__WONEI,Chuuk,Wonei,IPV_Single,0
-CHUUK__WONEI,Chuuk,Wonei,MMR_Single,0
-CHUUK__WONEI,Chuuk,Wonei,Prevnar,0
-CHUUK__WONEI,Chuuk,Wonei,RotaTeq,0
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,PedVaxHib,0
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,Vaxelis,1
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,Pediarix,0
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,DTaP_Single,0
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,IPV_Single,0
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,MMR_Single,41
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,Prevnar,1
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,RotaTeq,0
 KOSRAE__LELU,Kosrae,Lelu,PedVaxHib,18
 KOSRAE__LELU,Kosrae,Lelu,Vaxelis,11
-KOSRAE__LELU,Kosrae,Lelu,Pediarix,2
+KOSRAE__LELU,Kosrae,Lelu,Pediarix,3
 KOSRAE__LELU,Kosrae,Lelu,DTaP_Single,21
 KOSRAE__LELU,Kosrae,Lelu,IPV_Single,16
-KOSRAE__LELU,Kosrae,Lelu,MMR_Single,17
+KOSRAE__LELU,Kosrae,Lelu,MMR_Single,18
 KOSRAE__LELU,Kosrae,Lelu,Prevnar,18
 KOSRAE__LELU,Kosrae,Lelu,RotaTeq,6
 KOSRAE__MALEM,Kosrae,Malem,PedVaxHib,12
@@ -271,22 +287,14 @@ KOSRAE__WALUNG,Kosrae,Walung,IPV_Single,0
 KOSRAE__WALUNG,Kosrae,Walung,MMR_Single,0
 KOSRAE__WALUNG,Kosrae,Walung,Prevnar,0
 KOSRAE__WALUNG,Kosrae,Walung,RotaTeq,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,PedVaxHib,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,Vaxelis,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,Pediarix,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,DTaP_Single,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,IPV_Single,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,MMR_Single,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,Prevnar,0
-KOSRAE__WEELOEY,Kosrae,Weeloey,RotaTeq,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,PedVaxHib,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,Vaxelis,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,Pediarix,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,DTaP_Single,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,IPV_Single,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,MMR_Single,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,Prevnar,0
-POHNPEI__ELATO ISLAND,Pohnpei,Elato Island,RotaTeq,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,PedVaxHib,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,Vaxelis,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,Pediarix,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,DTaP_Single,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,IPV_Single,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,MMR_Single,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,Prevnar,0
+KOSRAE__ZZ-UNKNOWN-KOSRAE,Kosrae,Zz-Unknown-Kosrae,RotaTeq,0
 POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,PedVaxHib,1
 POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,Vaxelis,0
 POHNPEI__KAPINGAMARANGI,Pohnpei,Kapingamarangi,Pediarix,0
@@ -300,7 +308,7 @@ POHNPEI__KITTI,Pohnpei,Kitti,Vaxelis,103
 POHNPEI__KITTI,Pohnpei,Kitti,Pediarix,72
 POHNPEI__KITTI,Pohnpei,Kitti,DTaP_Single,166
 POHNPEI__KITTI,Pohnpei,Kitti,IPV_Single,83
-POHNPEI__KITTI,Pohnpei,Kitti,MMR_Single,224
+POHNPEI__KITTI,Pohnpei,Kitti,MMR_Single,225
 POHNPEI__KITTI,Pohnpei,Kitti,Prevnar,161
 POHNPEI__KITTI,Pohnpei,Kitti,RotaTeq,23
 POHNPEI__KOLONIA,Pohnpei,Kolonia,PedVaxHib,27
@@ -313,7 +321,7 @@ POHNPEI__KOLONIA,Pohnpei,Kolonia,Prevnar,126
 POHNPEI__KOLONIA,Pohnpei,Kolonia,RotaTeq,15
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,PedVaxHib,16
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Vaxelis,55
-POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Pediarix,12
+POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,Pediarix,13
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,DTaP_Single,72
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,IPV_Single,37
 POHNPEI__MADOLENIHMW,Pohnpei,Madolenihmw,MMR_Single,64
@@ -343,14 +351,6 @@ POHNPEI__PINGILAP,Pohnpei,Pingilap,IPV_Single,1
 POHNPEI__PINGILAP,Pohnpei,Pingilap,MMR_Single,5
 POHNPEI__PINGILAP,Pohnpei,Pingilap,Prevnar,4
 POHNPEI__PINGILAP,Pohnpei,Pingilap,RotaTeq,0
-POHNPEI__RUUL,Pohnpei,Ruul,PedVaxHib,0
-POHNPEI__RUUL,Pohnpei,Ruul,Vaxelis,0
-POHNPEI__RUUL,Pohnpei,Ruul,Pediarix,0
-POHNPEI__RUUL,Pohnpei,Ruul,DTaP_Single,0
-POHNPEI__RUUL,Pohnpei,Ruul,IPV_Single,0
-POHNPEI__RUUL,Pohnpei,Ruul,MMR_Single,0
-POHNPEI__RUUL,Pohnpei,Ruul,Prevnar,0
-POHNPEI__RUUL,Pohnpei,Ruul,RotaTeq,0
 POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,PedVaxHib,1
 POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,Vaxelis,4
 POHNPEI__SAPWUAHFIK,Pohnpei,Sapwuahfik,Pediarix,5
@@ -375,6 +375,14 @@ POHNPEI__U,Pohnpei,U,IPV_Single,22
 POHNPEI__U,Pohnpei,U,MMR_Single,58
 POHNPEI__U,Pohnpei,U,Prevnar,46
 POHNPEI__U,Pohnpei,U,RotaTeq,7
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,PedVaxHib,0
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,Vaxelis,1
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,Pediarix,1
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,DTaP_Single,0
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,IPV_Single,0
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,MMR_Single,1
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,Prevnar,2
+POHNPEI__ZZ-UNKNOWN-POHNPEI,Pohnpei,Zz-Unknown-Pohnpei,RotaTeq,0
 YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,PedVaxHib,0
 YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,Vaxelis,1
 YAP__DALIPEEBINAEW,Yap,Dalipeebinaew,Pediarix,0
@@ -535,3 +543,11 @@ YAP__WOLEAI,Yap,Woleai,IPV_Single,3
 YAP__WOLEAI,Yap,Woleai,MMR_Single,12
 YAP__WOLEAI,Yap,Woleai,Prevnar,13
 YAP__WOLEAI,Yap,Woleai,RotaTeq,6
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,PedVaxHib,0
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,Vaxelis,1
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,Pediarix,0
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,DTaP_Single,0
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,IPV_Single,0
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,MMR_Single,1
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,Prevnar,1
+YAP__ZZ-UNKNOWN-YAP,Yap,Zz-Unknown-Yap,RotaTeq,0

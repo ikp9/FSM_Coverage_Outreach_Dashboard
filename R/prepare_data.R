@@ -16,48 +16,68 @@ library(stringr)
 library(tidyr)
 library(readxl)
 library(tibble)
+library(here)
 
 # ==============================================================================
 # 1. File paths and analytic settings
 # ==============================================================================
-# Run this script from the NEW R project root:
-# C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard
-#
-# CSV files are written to the data/ folder inside the new project.
 
-raw_data_dir <- file.path(
-  "C:/Users/ikp9/R/USAPI/FSM",
-  "FSM_Coverage_Outreach_Dashboard",
+# The project root is detected from the Git repository or R project.
+# Collaborators should open the .Rproj file or work from the cloned repository.
+
+project_dir <- here::here()
+
+data_dir <- here::here(
   "data"
 )
 
-patient_data_dir <- file.path(
-  raw_data_dir,
+patient_data_dir <- here::here(
+  "data",
   "Analytic Code Output"
 )
 
-# Update only this stem when using a newer analytic dataset. The script accepts
-# either a CSV or an Excel workbook with the same stem and prefers CSV when both
-# versions exist.
-patient_file_stem <-
-  "Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_080426"
+# Use the same canonical Census filename as the analytic code.
+census_file <- here::here(
+  "data",
+  "FSM Counties_Census.xlsx"
+)
 
-resolve_patient_file <- function(directory, file_stem) {
-  preferred_files <- file.path(
-    directory,
-    paste0(file_stem, c(".csv", ".xlsx", ".xls"))
-  )
+census_sheet <- "FSM Villages"
+
+# Dashboard-ready output files are written to the project's data folder.
+dashboard_data_dir <- data_dir
+
+dir.create(
+  dashboard_data_dir,
+  showWarnings = FALSE,
+  recursive = TRUE
+)
+
+
+# ------------------------------------------------------------------------------
+# Automatically identify the newest deidentified analytic patient file
+# ------------------------------------------------------------------------------
+
+resolve_patient_file <- function(directory) {
   
-  existing_preferred <- preferred_files[file.exists(preferred_files)]
-  
-  if (length(existing_preferred) > 0) {
-    return(existing_preferred[[1]])
+  if (!dir.exists(directory)) {
+    stop(
+      paste0(
+        "The analytic output directory was not found:\n  ",
+        directory,
+        "\n\nRun the analytic code first or create the expected directory:\n  ",
+        here::here("data", "Analytic Code Output")
+      ),
+      call. = FALSE
+    )
   }
   
-  # Fallback: use the most recently modified matching deidentified dataset.
   matching_files <- list.files(
-    directory,
-    pattern = "^Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_.*\\.(csv|xlsx|xls)$",
+    path = directory,
+    pattern = paste0(
+      "^Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_",
+      ".*\\.(csv|xlsx|xls)$"
+    ),
     full.names = TRUE,
     ignore.case = TRUE
   )
@@ -65,40 +85,34 @@ resolve_patient_file <- function(directory, file_stem) {
   if (length(matching_files) == 0) {
     stop(
       paste0(
-        "No patient dataset was found in:\n  ",
+        "No deidentified patient dataset was found in:\n  ",
         directory,
         "\n\nExpected a file named like:\n  ",
-        file_stem,
-        ".csv\n\nor the corresponding .xlsx file."
+        "Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_MMDDYY.xlsx"
       ),
       call. = FALSE
     )
   }
   
   file_information <- file.info(matching_files)
-  matching_files[[order(file_information$mtime, decreasing = TRUE)[[1]]]]
+  
+  newest_file_index <- order(
+    file_information$mtime,
+    decreasing = TRUE
+  )[1]
+  
+  matching_files[[newest_file_index]]
 }
 
+
 patient_file <- resolve_patient_file(
-  patient_data_dir,
-  patient_file_stem
+  patient_data_dir
 )
 
-census_file <- file.path(
-  raw_data_dir,
-  "FSM Counties_Census_ChatGPT_11Jun2026.xlsx"
-)
 
-census_sheet <- "FSM Villages"
-
-# Dashboard-ready outputs belong to the NEW project.
-dashboard_data_dir <- "data"
-
-dir.create(
-  dashboard_data_dir,
-  showWarnings = FALSE,
-  recursive = TRUE
-)
+# ------------------------------------------------------------------------------
+# Dashboard output files
+# ------------------------------------------------------------------------------
 
 community_output_file <- file.path(
   dashboard_data_dir,
@@ -135,12 +149,46 @@ census_atoll_members_output_file <- file.path(
   "qa_census_atoll_members.csv"
 )
 
-message("Using patient dataset: ", patient_file)
-message("Writing dashboard files to: ", normalizePath(
-  dashboard_data_dir,
-  winslash = "/",
-  mustWork = FALSE
-))
+
+# ------------------------------------------------------------------------------
+# Path confirmation
+# ------------------------------------------------------------------------------
+
+message(
+  "Project root: ",
+  normalizePath(
+    project_dir,
+    winslash = "/",
+    mustWork = FALSE
+  )
+)
+
+message(
+  "Using patient dataset: ",
+  normalizePath(
+    patient_file,
+    winslash = "/",
+    mustWork = FALSE
+  )
+)
+
+message(
+  "Using Census dataset: ",
+  normalizePath(
+    census_file,
+    winslash = "/",
+    mustWork = FALSE
+  )
+)
+
+message(
+  "Writing dashboard files to: ",
+  normalizePath(
+    dashboard_data_dir,
+    winslash = "/",
+    mustWork = FALSE
+  )
+)
 
 
 # Threshold used to identify children with elevated individual risk.
@@ -322,8 +370,6 @@ atoll_crosswalk <- tribble(
   
   # Losap Atoll
   "LOSAP",             "Losap Atoll",
-  "PIIS PANEU",        "Losap Atoll",
-  "PIIS-PANEU",        "Losap Atoll",
   "NAMA",              "Losap Atoll",
   
   # Lukunor Atoll
