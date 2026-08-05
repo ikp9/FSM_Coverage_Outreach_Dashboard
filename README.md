@@ -33,3 +33,6 @@ Changed all paths to the FSM_Coverage_Outreach_Dashboard; moved all data here so
 #changes made August 5, 2026 - EB
 Made changes to directory pathways and import pathways
 
+#Changes made August 5, 2026 - AT
+Updated all paths to relative so any user with same folder setup can run without editing user names 
+

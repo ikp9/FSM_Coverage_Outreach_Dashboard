@@ -24,14 +24,6 @@ STEP 1: Make a list of packages required to run code/reports
 STEP 2: Use a function to install/call on packages if they are not
 already installed/called on
 
-#ADD TEST COMMENT
-
-#Add Test Comment 2
-
-#Add test comment 3
-
-#Add test comment 4
-
 ```{r install and call on packages, include=FALSE}
 
 #STEP 1: Load packages and install if needed
@@ -84,46 +76,90 @@ library(readxl)
 
 ```{r setup, include=FALSE}
 
-knitr::opts_chunk$set(
-  echo = FALSE,
-  warning = FALSE,
-  message = FALSE,
-  fig.width = 10,
-  fig.height = 6,
-  dpi = 300,
-  out.width = "100%"
+# -------------------------------------------------------------------
+# Project directories
+# here::here() automatically identifies the Git repository root
+# -------------------------------------------------------------------
+
+project_dir <- here::here()
+
+data_dir <- here::here("data")
+
+raw_data_dir <- here::here(
+  "data",
+  "Raw Patient Data"
 )
 
-knitr::opts_knit$set(
-  root.dir = "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data"
+output_dir <- here::here(
+  "data",
+  "Analytic Code Output"
 )
 
-setwd("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data")
+# Create the output directory if it does not already exist
+dir.create(
+  output_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
-getwd()
+# Optional QA
+here::dr_here()
 
 ```
 
-```{r elise's setup, include=FALSE}
+## !!!! Make sure to update file paths for each new run (e.g., date) !!!!
+```{r input files, include=FALSE}
+# -------------------------------------------------------------------
+# Input files
+# Update filenames here when new WebIZ reports are downloaded
+# -------------------------------------------------------------------
 
-knitr::opts_chunk$set(
-  echo = FALSE,
-  warning = FALSE,
-  message = FALSE,
-  fig.width = 10,
-  fig.height = 6,
-  dpi = 300,
-  out.width = "100%"
+roster_file <- file.path(
+  raw_data_dir,
+  "Roster_0-7_072926.xlsx"
 )
 
-knitr::opts_knit$set(
-  root.dir = "C:/Users/stq9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data"
+detail_file <- file.path(
+  raw_data_dir,
+  "Details_0-7_072926.xlsx"
 )
 
-setwd("C:/Users/stq9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data")
+reminder_file <- file.path(
+  raw_data_dir,
+  "RR_ALL_0-7_072726.xlsx"
+)
 
-getwd()
+placenames_file <- file.path(
+  data_dir,
+  "placenames_micronesia_all_v2_index.xlsx"
+)
 
+census_file <- file.path(
+  data_dir,
+  "FSM Counties_Census.xlsx"
+)
+
+# Verify that all required files exist
+required_input_files <- c(
+  roster_file,
+  detail_file,
+  reminder_file,
+  placenames_file,
+  census_file
+)
+
+missing_input_files <- required_input_files[
+  !file.exists(required_input_files)
+]
+
+if (length(missing_input_files) > 0) {
+  stop(
+    paste0(
+      "The following required input files were not found:\n",
+      paste(missing_input_files, collapse = "\n")
+    )
+  )
+}
 ```
 
 # Import data from WebIZ
@@ -134,34 +170,24 @@ STEP 2: Import Patient Detail with Services
 
 STEP 3: Import Reminder/Recall
 
-## !!!! Make sure to update file paths for each new run (e.g., date) !!!!
 
 ```{r import data, include=FALSE}
 
-#STEP 1: Import roster
+# Import roster
+roster <- rio::import(roster_file) %>%
+  janitor::clean_names()
 
-#start highlight
-roster <- import("C:/Users/stq9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Roster_0-7_072926.xlsx")%>%
-  janitor::clean_names() #end highlight
+# Import patient detail with services
+detail <- rio::import(detail_file) %>%
+  janitor::clean_names()
 
-#STEP 2: Import patient detail with services
+# Import reminder/recall
+reminder <- rio::import(reminder_file) %>%
+  janitor::clean_names()
 
-#start highlight
-detail <- import("C:/Users/stq9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/Details_0-7_072926.xlsx") %>%
-  janitor::clean_names() #end highlight
-
-#STEP 3: Import REMINDER RECALL
-
-#start highlight
-reminder <- import("C:/Users/stq9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Raw Patient Data/RR_ALL_0-7_072726.xlsx") %>%
-  janitor::clean_names() #end highlight
-
-#STEP 3: Import PlaceNames data for mapping later
-
-#start highlight
-placenames <- import("C:/Users/stq9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/placenames_micronesia_all_v2_index.xlsx") %>%
-  janitor::clean_names() #end highlight
-
+# Import place names
+placenames <- rio::import(placenames_file) %>%
+  janitor::clean_names()
 
 ```
 
@@ -1474,7 +1500,7 @@ export_county <- clean2 %>%
 today <- format(Sys.Date(), "%m%d%y")
 
 county_file <- file.path(
-  "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output",
+  output_dir,
   paste0(
     "Raw_Provider_Clinic_Locations_",
     today,
@@ -3127,7 +3153,15 @@ missing_latlon_table_unique <- clean11_merged %>%
   distinct() %>%
   arrange(rr_county, county, city)
 
-write_xlsx(missing_latlon_table_unique, "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output/Missing_Coordinates.xlsx")
+missing_coordinates_file <- file.path(
+  output_dir,
+  "Missing_Coordinates.xlsx"
+)
+
+writexl::write_xlsx(
+  missing_latlon_table_unique,
+  path = missing_coordinates_file
+)
 
 ```
 
@@ -3174,7 +3208,7 @@ if (!requireNamespace("openxlsx", quietly = TRUE)) {
 today <- format(Sys.Date(), "%m%d%y")
 
 dataset_file <- file.path(
-  "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output",
+  output_dir,
   paste0(
     "Dataset 1_FSM_2-83 Mos_Full Dataset_",
     today,
@@ -3182,7 +3216,7 @@ dataset_file <- file.path(
   )
 )
 
-write.xlsx(
+openxlsx::write.xlsx(
   clean12_merged,
   file = dataset_file,
   overwrite = TRUE
@@ -3198,7 +3232,7 @@ deid_dataset <- clean12_merged %>%
   )
 
 deid_dataset_file <- file.path(
-  "C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/Analytic Code Output",
+  output_dir,
   paste0(
     "Dataset 2_FSM_2-83 Mos_DeID_Full_Dataset_",
     today,
@@ -3223,8 +3257,8 @@ been able to find
 ```{r pop density, include=FALSE}
 
 
-pop_density <- import("C:/Users/ikp9/R/USAPI/FSM/FSM_Coverage_Outreach_Dashboard/data/FSM Counties_Census.xlsx")%>%
-  janitor::clean_names() 
+pop_density <- rio::import(census_file) %>%
+  janitor::clean_names()
 
 clean13_merged <- clean12_merged %>%
   mutate(county_join = str_to_upper(str_trim(as.character(county)))) %>%
@@ -3273,12 +3307,6 @@ library(openxlsx)
 # ---- Output settings ----------------------------------------------------------
 today <- format(Sys.Date(), "%m%d%y")
 report_year <- format(Sys.Date(), "%Y")
-
-output_dir <- paste0(
-  "C:/Users/ikp9/R/USAPI/FSM/",
-  "FSM_Coverage_Outreach_Dashboard/",
-  "data/Analytic Code Output"
-)
 
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
