@@ -30,6 +30,8 @@ already installed/called on
 
 #Add test comment 3
 
+#Add test comment 4
+
 ```{r install and call on packages, include=FALSE}
 
 #STEP 1: Load packages and install if needed
