@@ -26,6 +26,8 @@ already installed/called on
 
 #ADD TEST COMMENT
 
+#Add Test Comment 2
+
 ```{r install and call on packages, include=FALSE}
 
 #STEP 1: Load packages and install if needed
