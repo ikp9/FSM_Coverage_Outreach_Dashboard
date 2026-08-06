@@ -25,6 +25,8 @@ STEP 2: Use a function to install/call on packages if they are not
 already installed/called on
 #glodi test 1
 #ashley test 6
+#glodi test 2
+
 
 ```{r install and call on packages, include=FALSE}
 
