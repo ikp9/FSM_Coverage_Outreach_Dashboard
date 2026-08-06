@@ -7,10 +7,34 @@ library(stringr)
 library(DT)
 library(leaflet)
 library(plotly)
+library(here)
+
+# ==============================================================================
+# Project paths and required files
+# ==============================================================================
+
+# here::here() anchors paths to the cloned Git repository / R project, so the
+# app can run from different user directories without editing local paths.
+project_dir <- here::here()
+
+route_functions_file <- here::here(
+  "R",
+  "route_functions.R"
+)
+
+prepare_data_file <- here::here(
+  "R",
+  "prepare_data.R"
+)
+
+styles_file <- here::here(
+  "www",
+  "styles.css"
+)
 
 required_project_files <- c(
-  "R/route_functions.R",
-  "R/prepare_data.R"
+  route_functions_file,
+  prepare_data_file
 )
 
 missing_project_files <- required_project_files[
@@ -20,28 +44,74 @@ missing_project_files <- required_project_files[
 if (length(missing_project_files) > 0) {
   stop(
     paste0(
-      "The app is not running from the FSM_Coverage_Outreach_Dashboard project root.\n",
-      "Current working directory: ", getwd(), "\n\n",
-      "Missing project file(s):\n  - ",
-      paste(missing_project_files, collapse = "\n  - "),
+      "Required project file(s) could not be found:\n  - ",
+      paste(
+        missing_project_files,
+        collapse = "\n  - "
+      ),
+      "\n\nDetected project root:\n  ",
+      project_dir,
       "\n\nOpen FSM_Coverage_Outreach_Dashboard.Rproj and rerun the app."
     ),
     call. = FALSE
   )
 }
 
-source("R/route_functions.R")
+if (!file.exists(styles_file)) {
+  warning(
+    paste0(
+      "The dashboard stylesheet was not found:\n  ",
+      styles_file,
+      "\n\nPlace styles.css in the project's www/ folder. The app will ",
+      "still run, but custom formatting will not be applied."
+    ),
+    call. = FALSE
+  )
+}
 
-# All generated dashboard datasets are stored under data/ in the NEW project.
-dashboard_files <- c(
-  community = file.path("data", "community_summary.csv"),
-  vaccine_needs = file.path("data", "community_vaccine_needs.csv"),
-  product_needs = file.path("data", "community_product_needs.csv"),
-  patient = file.path("data", "patient_dashboard.csv")
+# Load route-planning functions.
+source(
+  route_functions_file,
+  local = FALSE
 )
 
+# ==============================================================================
+# Dashboard-ready data files
+# ==============================================================================
+
+dashboard_files <- c(
+  community = here::here(
+    "data",
+    "community_summary.csv"
+  ),
+  vaccine_needs = here::here(
+    "data",
+    "community_vaccine_needs.csv"
+  ),
+  product_needs = here::here(
+    "data",
+    "community_product_needs.csv"
+  ),
+  patient = here::here(
+    "data",
+    "patient_dashboard.csv"
+  )
+)
+
+# Run the preparation script when one or more dashboard files are missing.
 if (any(!file.exists(dashboard_files))) {
-  source("R/prepare_data.R", local = FALSE)
+  message(
+    paste0(
+      "One or more dashboard files are missing.\n",
+      "Running data preparation script:\n  ",
+      prepare_data_file
+    )
+  )
+
+  source(
+    prepare_data_file,
+    local = FALSE
+  )
 }
 
 missing_dashboard_files <- dashboard_files[
@@ -52,12 +122,35 @@ if (length(missing_dashboard_files) > 0) {
   stop(
     paste0(
       "Dashboard data preparation did not create the required file(s):\n  - ",
-      paste(missing_dashboard_files, collapse = "\n  - "),
-      "\n\nRun source(\"R/prepare_data.R\") from the project root and review the first error."
+      paste(
+        missing_dashboard_files,
+        collapse = "\n  - "
+      ),
+      "\n\nRun:\n  source(here::here(\"R\", ",
+      "\"prepare_data.R\"))",
+      "\n\nand review the first error."
     ),
     call. = FALSE
   )
 }
+
+message(
+  "Project root: ",
+  normalizePath(
+    project_dir,
+    winslash = "/",
+    mustWork = FALSE
+  )
+)
+
+message(
+  "Loading dashboard files from: ",
+  normalizePath(
+    here::here("data"),
+    winslash = "/",
+    mustWork = FALSE
+  )
+)
 
 community <- read_csv(
   dashboard_files[["community"]],
@@ -241,6 +334,7 @@ coverage_age_choices <- c(
   "5 years" = "5_years",
   "6 years" = "6_years",
   "2–59 months" = "2_59",
+  "2–83 months" = "2_83",
   "4–6 years" = "4_6_years"
 )
 
@@ -255,6 +349,7 @@ coverage_age_ranges <- list(
   "5_years" = c(60, 71),
   "6_years" = c(72, 83),
   "2_59" = c(2, 59),
+  "2_83" = c(2, 83),
   "4_6_years" = c(48, 83)
 )
 
@@ -318,6 +413,11 @@ coverage_definition_notes <- c(
   ),
   "2_59" = paste0(
     "Up to date for 2–59 months uses each child's exact age-specific ",
+    "dose requirements. MMR is included only for children aged ",
+    "≥12 months."
+  ),
+  "2_83" = paste0(
+    "Up to date for 2–83 months uses each child's exact age-specific ",
     "dose requirements. MMR is included only for children aged ",
     "≥12 months."
   ),
@@ -508,19 +608,19 @@ ui <- page_navbar(
       ),
       layout_columns(
         value_box(
-          title = "Children aged 2 months–6 years",
+          title = "Children in selected age group",
           value = textOutput("coverage_children"),
           showcase = bsicons::bs_icon("people"),
           class = "overview-value-box"
         ),
         value_box(
-          title = "Percent UTD for age",
+          title = "Percent UTD for selected age group",
           value = textOutput("coverage_utd_percent"),
           showcase = bsicons::bs_icon("shield-check"),
           class = "overview-value-box"
         ),
         value_box(
-          title = "Children with active reminder/recall",
+          title = "Active reminder/recall in selected age group",
           value = textOutput("coverage_reminder_count"),
           showcase = bsicons::bs_icon("bell"),
           class = "overview-value-box"
@@ -643,10 +743,30 @@ ui <- page_navbar(
             card(card_header("Prototype methods"),
                  tags$p("This version uses patient-level immunization data aggregated to planning communities. Route planning uses a transparent nearest-neighbor heuristic over geodesic distances."),
                  tags$ul(
-                   tags$li("Update patient_file_stem in R/prepare_data.R when a newer deidentified analytic dataset is available, then rerun the preparation script."),
-                   tags$li("Replace the provisional remoteness lookup with a validated community lookup."),
-                   tags$li("Add verified Census population/land-area fields before labeling any measure population density."),
-                   tags$li("Replace geodesic travel estimates with validated route-edge travel times, schedules, fuel, and weather constraints for production use.")
+                   tags$li(
+                     paste0(
+                       "Place the latest deidentified analytic dataset in ",
+                       "data/Analytic Code Output/. The preparation script ",
+                       "automatically uses the most recently modified matching file."
+                     )
+                   ),
+                   tags$li(
+                     "Replace the provisional remoteness lookup with a validated community lookup."
+                   ),
+                   tags$li(
+                     paste0(
+                       "Population density is calculated from aggregated Census ",
+                       "population and land-area values. Census matches and duplicate ",
+                       "keys are retained as quality-assurance outputs."
+                     )
+                   ),
+                   tags$li(
+                     paste0(
+                       "Replace geodesic travel estimates with validated route-edge ",
+                       "travel times, schedules, fuel, and weather constraints for ",
+                       "production use."
+                     )
+                   )
                  )
             )
   )
@@ -672,15 +792,24 @@ server <- function(input, output, session) {
     )
   })
   
+  # ---------------------------------------------------------------------------
+  # Vaccination coverage summary cards
+  # Values respond to both selected jurisdiction and selected age group.
+  # ---------------------------------------------------------------------------
   output$coverage_children <- renderText({
+    x <- coverage_age_data()
+    
     format(
-      n_distinct(coverage_scope()$patient_id),
+      n_distinct(
+        x$patient_id,
+        na.rm = TRUE
+      ),
       big.mark = ","
     )
   })
   
   output$coverage_utd_percent <- renderText({
-    x <- coverage_scope()
+    x <- coverage_age_data()
     eligible <- !is.na(x$coverage_utd)
     
     if (!any(eligible)) {
@@ -689,7 +818,10 @@ server <- function(input, output, session) {
     
     paste0(
       formatC(
-        100 * mean(x$coverage_utd[eligible]),
+        100 * mean(
+          x$coverage_utd[eligible],
+          na.rm = TRUE
+        ),
         format = "f",
         digits = 1
       ),
@@ -698,8 +830,16 @@ server <- function(input, output, session) {
   })
   
   output$coverage_reminder_count <- renderText({
+    x <- coverage_age_data()
+    
     format(
-      sum(coverage_scope()$onreminder == 1, na.rm = TRUE),
+      n_distinct(
+        x$patient_id[
+          !is.na(x$onreminder) &
+            x$onreminder == 1
+        ],
+        na.rm = TRUE
+      ),
       big.mark = ","
     )
   })
@@ -809,7 +949,7 @@ server <- function(input, output, session) {
         class = "small-note coverage-definition-note",
         coverage_definition_notes[[input$coverage_age_group]]
       ),
-      if (input$coverage_age_group == "2_59") {
+      if (input$coverage_age_group %in% c("2_59", "2_83")) {
         tags$p(
           class = "small-note coverage-definition-note",
           "The MMR denominator excludes children younger than 12 months."

@@ -1531,539 +1531,8 @@ STEP 5: complete cleaning region
 STEP 6: complete identifying state
 
 STEP 7: complete identifying county
-
-STEP 8: revert data set name to clean2
-
-```{r cleaning counties, include=FALSE}
-####################################
-#    STEP 1:  cleaning providers   #
-####################################
-
-clean3 <- clean2 %>%
-
-  mutate(
-    region = as.character(
-      if ("region" %in% names(.)) region else NA_character_
-    ),
-    across(region, ~ replace_na(.x, ""))
-  ) %>%
-
-  # Provider cleaning
-  mutate(
-    provider = case_when(
-      provider %in% c(
-        "POHNPEI FAMILY  HEALTH CLINIC",
-        "POHNPEI FAMILY HEALTH CLINIC",
-        "FSM NATIONAL IMMUNIZATION OFFICE",
-        "GENESIS HOSPITAL"
-      ) ~ "POHNPEI STATE",
-      TRUE ~ provider
-    )
-  ) %>%
-
-  # Initial county cleaning
-  mutate(
-    county = str_to_upper(
-      str_squish(as.character(county))
-    ),
-    rr_county = str_to_upper(
-      str_squish(as.character(rr_county))
-    ),
-    city = str_to_upper(
-      str_squish(as.character(city))
-    ),
-
-    county = na_if(county, ""),
-    county = na_if(county, "UNKNOWN"),
-
-    rr_county = na_if(rr_county, ""),
-    rr_county = na_if(rr_county, "UNKNOWN"),
-
-    city = na_if(city, ""),
-    city = na_if(city, "UNKNOWN")
-  ) %>%
-
-  mutate(
-    county = case_when(
-      county %in% c("MORTLOCK", "NORTHWEST") ~
-        coalesce(city, county),
-
-      !is.na(county) ~ county,
-      !is.na(rr_county) ~ rr_county,
-      !is.na(city) ~ city,
-      TRUE ~ NA_character_
-    ),
-
-    city = coalesce(city, county)
-  ) %>%
   
-  # --- DETAILED VILLAGE CLEANING  ---
-  mutate(
-    city = case_when(
       
-  #Chuuk villages 
-      state == "CH" & city == "FANIF" ~ "FANIP",
-      city == "EOT" ~ "EOT ISLAND",
-      city == "ETTAL" ~ "ETAL",
-      city == "FANANU" ~ "FANANU ISLAND",
-      city == "KUTTU" ~ "KUTU ISLAND",
-      city == "LOSAP" ~ "LOSAP ISLAND",
-      city == "MAKUR" ~ "MAGUR ISLAND",
-      city == "MURILO" ~ "MURILO ATOLL",
-      city == "NOMWIN" ~ "NOMWIN ISLAND",
-      city == "ONARI" ~ "ONARI ISLAND",
-      city == "ONO" ~ "ONO ISLAND",
-      city == "ONEI" ~ "WONEI",
-      city == "PAREM-CHUUK" ~ "PAREM",
-      city == "POLLE-PPO" ~ "POLLE",
-      city == "PPO-POLLE" ~ "POLLE",
-      city == "POLLE=PPO" ~ "POLLE",
-      city == "POLLAP" ~ "PULAP",
-      city == "POLOWAT" ~ "PULUWAT",
-      city == "PIIS PANEU" ~ "PIIS MOEN",
-      city == "PISEMWAR" ~ "PISEMEW",
-      city == "PIISEMWAR" ~ "PISEMEW",
-      city == "PPO-PAATA" ~ "PATA",
-      city == "PPO-ONEI" ~ "WONEI",
-      city == "SAPETIW" ~ "SAPOTIW",
-      city == "SOPOTIW" ~ "SAPOTIW",
-      city == "TOLENSOM" ~ "TOL",
-      city == "TUNNUK" ~ "TUNUK",
-      city == "NEIRENON-NEPPI" ~ "NEIRENOM",
-      city == "NEIRENON-PENIENUK" ~ "PENIENUK",
-      city == "ROMALUM" ~ "ROMONUM",
-      city == "TAA" ~ "TA",
-      
-    #Yap
-     city == "DALIPEBINAW" ~ "DALIPEEBINAEW",
-     city == "RULL" ~ "RUUL",
-     city == "ELATO" ~ "ELATO ISLAND",
-     city == "LAMOTREK" ~ "LAMOTREK ISLAND",
-     city == "LAMORREK" ~ "LAMOTREK ISLAND",
-     city == "TOMIL" ~ "TAMIL",
-     city == "TAFNITH" ~ "TAFGIF",
-     city == "ULITHI" ~ "ULITHI ATOLL",
-     city == "WELOY" ~ "WEELOEY",
-     
-    
-    #Kosrae
-    city == "LELU" ~ "LELU ISLAND",
-    city == "UTWE" ~ "UTWA",
-    
-    #Pohnpei
-     city == "PINGILAP" ~ "PINGELAP",
-     
-    
-     TRUE ~ city
-    )
-  ) %>%
-
-  
-  # --- DETAILED COUNTY CLEANING  ---
-  mutate(
-    county = case_when(
-      
-  #Chuuk counties 
-      county == "CHK_TOL" ~ "TOLENSOM",
-      county == "EOT" ~ "EOT ISLAND",
-      county == "ETTAL" ~ "ETAL",
-      county %in% c("CHK_TONOAS", "ETTEN") ~ "TONOAS",
-      county %in% c("CHK-UDOT", "UDOT-TUNNUK") ~ "UDOT",
-      county == "CHK_UMAN" ~ "UMAN",
-      county == "ONEI" ~ "WONEI",
-      county == "ONO" ~ "ONOUN",
-      county == "ONARI" ~ "UNANU",
-      county == "PAREM-CHUUK" ~ "PAREM",
-      county == "PIIS PANEW" ~ "PIIS MOEN",
-      county == "PISEMWAR" ~ "PIISEMWAR",
-      county %in% c("ONEI", "PPO-ONEISOM", "PPO-ONEI") ~ "ONEI",
-      county == "POLLE-PPO" ~ "POLLE",
-      county == "POLLE=PPO" ~ "POLLE",
-      county == "PPO-POLLE" ~ "POLLE",
-      county == "PPO-PAATA" ~ "PATTA",
-      county == "POLLAP" ~ "PULAP",
-      county == "POLOWAT" ~ "PULUWAT",
-      county == "ROMALUM" ~ "ROMONUM",
-      county == "SAPETIW" ~ "SAPOTIW",
-      county == "SOPOTIW" ~ "SAPOTIW",
-      county == "TAA" ~ "TA",
-      
-      county %in% c("CCHC", "CCHC CHUUK", "CHUUK STATE L&D",  
-                    "IRAS", "MECHITIW", "MWAN", "NEPUKOS",                                           "PENIESENE", "TUNNUK", "WICHAP") ~ "WENO",
-      
-  #Kosrae counties
-    county %in% c("KOSRAE HD", "KOSRAE STATE PUBLIC HEALTH") ~   
-                  "LELU",
-  
-    county == "UTWA" ~ "UTWE",
-
-   #Pohnpei counties
-      county %in% c("WONE DISPENSARY", "WONE") ~ "KITTI",
-      
-      county %in% c("GENESIS HOSPITAL", "POHNPEI COMMUNITY HEALTH  
-                    CENTER", "POHNPEI  PUBLIC HEALTH CLINIC", 
-                    "PCHC", "POHNPEI HD", "POHNPEI LABOR AND 
-                    DELIVERY", "POHNPEI PUBLIC HEALTH CLINIC") ~  
-                    "KOLONIA",
-      
-      county %in% c("POHNLANGAS DISPENSARY", "POHNLANGAS", "LUKOP DISPENSARY", "LUKOP") ~                      "MADOLENIHMW",
-      
-      county == "SAPUK" ~ "SAPWUAHFIK",
-      county %in% c("OROLUK", "SOKEHS DISPENSARY") ~ "SOKEHS",
-      county == "U DISPENSARY" ~ "U",
- 
-  #Yap counties
-      county == "DALIPEBINAW" ~ "DALIPEEBINAEW",
-      county == "ELATO" ~ "ELATO ISLAND",
-      county == "LAMORREK" ~ "LAMOTREK ISLAND",
-      county == "LAMOTREK" ~ "LAMOTREK ISLAND",
-      county == "RULL" ~ "RUUL",
-      county == "SATAWAL-YAP" ~ "SATAWAL",
-      county == "TOMIL" ~ "TAMIL",
-      county == "WELOY" ~ "WEELOEY",
-      county %in% c("ULITHI", "FECHAILAP", "SOROL") ~ "ULITHI ATOLL",
-      county %in% c("COLONIA", "YAP STATE PUBLIC HEALTH") ~ "WELOY",
-      
- # Specific logic override from SAS
-      provider == "YAP STATE" & county == "TA" ~ "LAMOTREK",
-      county %in% c("OUT-REACH", "OUTREACH", "GUAM IMMUNIZATION PROGRAM (AUTOMATED EXCHANGE)") ~ "UNKNOWN",
-      
-  TRUE ~ county
-    )
-  ) %>%
-  
-  # --- FILL COUNTY FROM CLINIC WHEN CITY, COUNTY, AND RR_COUNTY ARE ALL MISSING ---
-  mutate(
-    clinic_key = str_squish(str_to_upper(as.character(clinic))),
-    
-    county = case_when(
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "CHUUK STATE L&D" ~ "WENO",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "FEFAN" ~ "FEFAN",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "PPO-ONEI" ~ "WONEI",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "PPO-POLLE" ~ "POLLE",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "TOLENSOM" ~ "TOLENSOM",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "TONOAS" ~ "TONOAS",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "UDOT" ~ "UDOT",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "UMAN" ~ "UMAN",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "WENO" ~ "WENO",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "KOSRAE LABOR AND DELIVER" ~ "LELU",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "KOSRAE STATE PUBLIC HEALTH" ~ "LELU",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "MALEM" ~ "MALEM",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "TAFUNSAK" ~ "TAFUNSAK",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "GENESIS HOSPITAL" ~ "NETT",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "POHNPEI PUBLIC HEALTH CLINIC" ~ "NETT",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "POHNPEI COMMUNITY HEALTH CENTER" ~ "NETT",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "POHNPEI LABOR AND DELIVERY" ~ "NETT",
-      
-      (is.na(city) | str_squish(city) == "") &
-        (is.na(county) | str_squish(county) == "") &
-        (is.na(rr_county) | str_squish(rr_county) == "") &
-        clinic_key == "YAP STATE PUBLIC HEALTH" ~ "MAAP",
-      
-      TRUE ~ county
-    )
-  ) %>%
-    
-  mutate(
-  provider_key = str_squish(
-    str_to_upper(as.character(provider))
-  ),
-
-  clinic_key = str_squish(
-    str_to_upper(as.character(clinic))
-  ),
-
-  county_missing =
-    is.na(county) |
-    str_squish(as.character(county)) == "" |
-    str_to_upper(as.character(county)) %in% c(
-      "UNKNOWN",
-      "ZZ-UNKNOWN-CHUUK",
-      "ZZ-UNKNOWN-KOSRAE",
-      "ZZ-UNKNOWN-POHNPEI",
-      "ZZ-UNKNOWN-YAP"
-    )
-) %>%
-
-# Recover state from provider
-mutate(
-  state = case_when(
-    provider_key == "CHUUK STATE" ~ "CHUUK",
-    provider_key == "KOSRAE STATE" ~ "KOSRAE",
-    provider_key == "POHNPEI STATE" ~ "POHNPEI",
-    provider_key == "YAP STATE" ~ "YAP",
-    TRUE ~ state
-  )
-) %>%
-
-# Recover county from specific clinic values
-mutate(
-  county = case_when(
-    county_missing &
-      provider_key == "CHUUK STATE" &
-      clinic_key == "NORTHWEST" ~ "NORTHWEST",
-
-    county_missing &
-      provider_key == "CHUUK STATE" &
-      clinic_key == "MORTLOCK" ~ "MORTLOCK",
-
-    county_missing &
-      provider_key == "CHUUK STATE" &
-      clinic_key == "PIIS PANEW" ~ "PIIS MOEN",
-
-    county_missing &
-      provider_key == "CHUUK STATE" &
-      clinic_key == "PPO-PATTA" ~ "PATTA",
-
-    county_missing &
-      provider_key == "CHUUK STATE" &
-      clinic_key == "SIIS" ~ "SIIS",
-
-    county_missing &
-      provider_key == "KOSRAE STATE" &
-      clinic_key == "LELU" ~ "LELU",
-
-    county_missing &
-      provider_key == "KOSRAE STATE" &
-      clinic_key == "UTWA" ~ "UTWE",
-
-    county_missing &
-      provider_key == "KOSRAE STATE" &
-      clinic_key == "WALUNG" ~ "WALUNG",
-
-    county_missing &
-      provider_key == "POHNPEI STATE" &
-      clinic_key == "POHNLANGAS DISPENSARY" ~ "MADOLENIHMW",
-
-    county_missing &
-      provider_key == "POHNPEI STATE" &
-      clinic_key == "WONE DISPENSARY" ~ "KITTI",
-
-    TRUE ~ county
-  )
-)  
-    
-
-  # --- FILTER OUT MISSING PATIENT IDs ---
-  filter(!is.na(patient_id)) %>% # SAS: IF Patient_ID=. THEN DELETE;
-
-  # --- CLEAN STATE NAMES ---
-  mutate(
-    state = case_when(
-      state == "CH" ~ "CHUUK",
-      state == "KO" ~ "KOSRAE",
-      state == "PO" ~ "POHNPEI",
-      state == "YA" ~ "YAP",
-      TRUE ~ state
-    )
-  ) %>%
-    
-
-  # --- ASSIGN REGIONS ---
-    
-  mutate(
-  region = case_when(
-    # Chuuk outer
-    state == "CHUUK" &
-      county %in% c(
-        "NORTHWEST",
-        "MORTLOCK",
-        "LOSAP ATOLL"
-      ) ~ "OUTER",
-
-    # Chuuk lagoon
-    state == "CHUUK" &
-      county %in% c(
-        "PATTA",
-        "SIIS"
-      ) ~ "LAGOON",
-
-    # Kosrae is treated as main island
-    state == "KOSRAE" ~ "MAIN",
-
-    # Pohnpei recovered counties
-    state == "POHNPEI" &
-      county %in% c(
-        "MADOLENIHMW",
-        "KITTI"
-      ) ~ "MAIN",
-
-    TRUE ~ region
-  )
-) %>%
-
-select(
-  -county_missing,
-  -provider_key
-)
-  
-  mutate(
-    # Set default region first
-    region = region, 
-    
-    # CHUUK LAGOON
-    region = if_else(county %in% c("ETTEN", "EOT", "EOT ISLAND", "FANAPANGES", "FEFAN", "FONOTON","FONO","NEAUO","PAREM-CHUUK", "PIIS PANEU", "PIIS MOEN", "PPO-ONEI",  "ONEI", "WONEI", "PAATA", "PATA", "PPO-PATTA", "PPO-POLLE", "POLLE", "ROMALUM", "SAPOTA", "SAPOTIW", "SIIS", "TOLENSOM", "TONOAS", "UDOT", "UMAN"),  "LAGOON", region),
-    
-  state = if_else(county %in% c("ETTEN", "EOT", "FANAPANGES", "FEFAN", "FONOTON", "FONO", "PAREM-CHUUK", "PIIS PANEU", "PIIS MOEN", "PPO-ONEI", "PPO-PATTA", 
- "PPO-POLLE", "POLLE", "ROMALUM", "SAPOTIW", "SIIS", "TOLENSOM", 
-  "TONOAS", "UDOT", "UMAN"), "CHUUK", state),
-
-    # CHUUK MAIN
-    region = if_else(county %in% c("WENO", "IRAS", "MWAN", "NEPUKOS", "PENIESENE", "WICHAP"), "MAIN", region),
-    state  = if_else(county %in% c("WENO", "IRAS", "MWAN", "NEPUKOS", "PENIESENE", "WICHAP"), "CHUUK", state),
-
-    # CHUUK OUTER
-    region = if_else(county %in% c("ETTAL", "ETAL", "FANANU", "HOUK", "KUTTU", "LEKINIOCH",   "LOSAP", "MAKUR", "MOCH", "MORTLOCK", "MORTLOCKS", "MURILO", "NAMA", 
-  "NAMOLUK",  "NOMWIN", "NORTHWEST", "ONEOP", "ONO", 
-   "ONOUN", "PIHARAR", "PISEMWAR", "PIISEMWAR", "POLLAP", "PULAP",
-   "POLOWAT", "RUO", "SATAWAN", "TA", "TAMATAM", "CHK_MORT", 
-    "UNANU", "ONOU", "CHK_O"), "OUTER", region),
- 
-    state  = if_else(county %in% c("ETTAL", "FANANU", "HOUK", "KUTTU", "LEKINIOCH",  "LOSAP", "MAKUR", "MOCH", "MORTLOCK", "MORTLOCKS", "MURILO", "NAMA", 
- "NAMOLUK", "NEAUO", "NOMWIN", "NORTHWEST", "ONEOP", "ONO", 
- "ONOUN", "PIHARAR", "PISEMWAR", "PIISEMWAR", "POLLAP", 
- "POLOWAT", "RUO", "SATAWAN", "TA", "TAMATAM", "CHK_MORT", 
- "UNANU", "ONOU", "CHK_O"), "CHUUK", state),
-
-    # KOSRAE MAIN
-    region = if_else(county %in% c("LELU", "MALEM", "TAFUNSAK", "WALUNG", "UTWE"), "MAIN", region),
-    state  = if_else(county %in% c("LELU", "MALEM", "TAFUNSAK", "WALUNG", "UTWE"), "KOSRAE", state),
-
-    # POHNPEI MAIN
-    region = if_else(county %in% c("KITTI", "KOLONIA", "LUKOP", "MADOLENIHMW", "NETT", "PCHC", "POHNLANGAS", "POHNPEI HD", "SOKEHS", "TUNNUK", "U", "WONE"), "MAIN", region),
-    
-    state  = if_else(county %in% c("KITTI", "KOLONIA", "LUKOP", "MADOLENIHMW", "NETT", "PCHC", "POHNLANGAS", "POHNPEI HD", "SOKEHS", "TUNNUK", "U", "WONE"), "POHNPEI", state),
-
-    # POHNPEI OUTER
-    region = if_else(county %in% c("KAPINGAMARANGI", "MWOAKILLOA", "NUKUORO", "PINGILAP", "SAPWUAHFIK"), "OUTER", region),
- 
-    state  = if_else(county %in% c("KAPINGAMARANGI", "MWOAKILLOA", "NUKUORO", "PINGILAP", "SAPWUAHFIK"), "POHNPEI", state),
-
-    # YAP MAIN
-    region = if_else(county %in% c("COLONIA", "DALIPEBINAW", "DALIPEEBINAEW", "FANIF", "GAGIL", "GILMAN", "KANIFAY", "MAAP", "RULL", "RUUL", "RUMUNG", "TOMIL", "TAMIL", "WELOY", "WEELOEY", "YAP PH"), "MAIN", region),
-    
- state  = if_else(county %in% c("COLONIA", "DALIPEBINAW", "FANIF", "GAGIL", "GILMAN", "KANIFAY", "MAAP", "RULL", "RUMUNG", "TOMIL", "WELOY", "YAP PH"), "YAP", state),
-
-    # YAP OUTER
-    region = if_else(county %in% c("EAURIPIK","ELATO", "ELATO     
- ISLAND", "FAIS", "FARAULAP", "FECHAILAP", "IFALIK", "LAMOTREK", "NGULU", "SATAWAL", "ULITHI", "ULITHI ATOLL", "WOLEAI"), "OUTER", region),
-    
-  state  = if_else(county %in% c("EAURIPIK", "ELATO", "FAIS", "FARAULAP", "FECHAILAP", "IFALIK", "LAMOTREK","LAMOTREK ISLAND", "NGULU", "SATAWAL", "ULITHI", "WOLEAI"), "YAP", state),
-
-    # Special Region overrides
-    region = if_else(county == "MORTLOCK", "OUTER", region),
-    region = if_else(county == "TATIW", "OUTER", region)
-  ) %>%
-
-  # --- HANDLE UNKNOWNS AND INFER STATE FROM PROVIDER ---
-  mutate(
-    # State/Region inferences for Unknown Counties
-    state  = case_when(
-      county == "UNKNOWN" & provider == "CHUUK STATE" ~ "CHUUK",
-      county == "UNKNOWN" & provider == "KOSRAE STATE" ~ "KOSRAE",
-      county == "UNKNOWN" & provider == "POHNPEI STATE" ~ "POHNPEI",
-      county == "UNKNOWN" & provider == "YAP STATE" ~ "YAP",
-      TRUE ~ state
-    ),
-    
-    region = case_when(
-      county == "UNKNOWN" & provider %in% c("CHUUK STATE", "KOSRAE STATE", "POHNPEI 
-                                            STATE", "YAP STATE") ~ "UNKNOWN", 
-      TRUE ~ region
-    ),
-    
-    # Renaming County based on State for Unknowns
-    county = case_when(
-      county == "UNKNOWN" & state == "CHUUK" ~ "ZZ-UNKNOWN-CHUUK",
-      county == "UNKNOWN" & state == "KOSRAE" ~ "ZZ-UNKNOWN-KOSRAE",
-      county == "UNKNOWN" & state == "POHNPEI" ~ "ZZ-UNKNOWN-POHNPEI",
-      county == "UNKNOWN" & state == "YAP" ~ "ZZ-UNKNOWN-YAP",
-      TRUE ~ county
-    ),
-
-    # Final attempt to fill missing State from Provider
-    state = case_when(
-      is.na(state) & provider == "CHUUK STATE" ~ "CHUUK",
-      is.na(state) & provider == "KOSRAE STATE" ~ "KOSRAE",
-      is.na(state) & provider %in% c("POHNPEI FAMILY HEALTH CLINIC", "POHNPEI STATE") ~ "POHNPEI",
-      is.na(state) & provider == "YAP STATE" ~ "YAP",
-      TRUE ~ state
-    )
-  ) %>%
-
-  # --- FINAL FILTERS ---
-  filter(provider != "GUAM IMMUNIZATION REGISTRY")
-  
-
-```
-
 ```{r updated cleaning counties, include=FALSE}
 #Updated county cleaning 
 # =============================================================================
@@ -3381,8 +2850,7 @@ hib_utd = case_when(
 
 #----------------------------------------------------------------------------
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  # ROTA UTD: NEED TO ADD
-
+  # ROTA UTD: FSM exclusively uses 3 dose product
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #----------------------------------------------------------------------------
  
@@ -4132,7 +3600,6 @@ QA
 clean12_merged%>%
   count(individual_risk_score)
 
-
 ```
 
 # Dataset 1 - Export final full patient-level dataframe to Excel
@@ -4185,6 +3652,82 @@ openxlsx::write.xlsx(
   overwrite = TRUE
 )
 
+```
+
+#Export patients needing vaccination list
+```{r}
+# ==============================================================================
+# Export patients needing vaccination
+# ==============================================================================
+
+today <- format(
+  Sys.Date(),
+  "%m%d%y"
+)
+
+patients_needing_vaccination <- clean12_merged %>%
+
+  # Include children on reminder/recall plus children identified as needing
+  # an additional MMR dose through the FSM-specific MMR logic.
+  filter(
+    onreminder == 1 |
+      need_mmr == 1
+  ) %>%
+
+  select(
+    patient_id,
+    last_name,
+    first_name,
+    primary_contact_lastname_firstname,
+    gender,
+    dob,
+    age_months,
+    city,
+    county,
+    state,
+    immunization_recommendations,
+    mmr2utd,
+    PedVaxHib,
+    Vaxelis,
+    Pediarix,
+    DTaP_Single,
+    IPV_Single,
+    MMR_Single,
+    Prevnar,
+    RotaTeq
+  ) %>%
+
+  arrange(
+    state,
+    county,
+    city,
+    last_name,
+    first_name
+  )
+
+
+patients_needing_vaccination_file <- file.path(
+  output_dir,
+  paste0(
+    "FSM_Patients_Needing_Vaccination_",
+    today,
+    ".xlsx"
+  )
+)
+
+
+openxlsx::write.xlsx(
+  patients_needing_vaccination,
+  file = patients_needing_vaccination_file,
+  overwrite = TRUE,
+  asTable = TRUE
+)
+
+
+message(
+  "Created patient vaccination-needs file: ",
+  patients_needing_vaccination_file
+)
 ```
 
 # Import census data - population statistics and area by county and merge with clean patient dataset
@@ -5434,7 +4977,3 @@ output_file
 
 
 ```
-
-#To Do
-Push to GitHub
-Update prepare data and app
