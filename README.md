@@ -1,3 +1,6 @@
+#Raw data files can be found at:
+\\cdc.gov\locker\NCIRD_ISD_AB_DATA2\Island_Surveys\Data Collection\Federated States of Micronesia (FSM)\2026\Dashboard\Raw Patient Data
+
 # FSM_Coverage_Outreach_Dashboard
 FSM child vaccination coverage analysis code, along with outreach planning from DSU project - dashboard with vaccination coverage and outreach planning tools
 

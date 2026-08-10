@@ -2,3 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Ignore only the specific raw data folder containing PII
+data/Raw Patient Data
