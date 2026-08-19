@@ -6,8 +6,14 @@
 # Ignore only the specific raw data folder containing PII
 data/Raw Patient Data
 
+# Ignore the Archive folder containing PII
+data/Analytic Code Output/Archive
+
 # Ignore Dataset 1 with any date suffix or extension
 data/Analytic Code Output/Dataset 1_FSM_*
 
 # Ignore Patients Needing Vaccination with any date suffix or extension
 data/Analytic Code Output/FSM_Patients_Needing_Vaccination_*
+
+data/Analytic Code Output/FSM_Patients_Needing_Vaccination_*
+
