@@ -2,3 +2,12 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Ignore only the specific raw data folder containing PII
+data/Raw Patient Data
+
+# Ignore Dataset 1 with any date suffix or extension
+data/Analytic Code Output/Dataset 1_FSM_*
+
+# Ignore Patients Needing Vaccination with any date suffix or extension
+data/Analytic Code Output/FSM_Patients_Needing_Vaccination_*
