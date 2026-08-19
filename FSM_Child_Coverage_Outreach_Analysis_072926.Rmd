@@ -488,7 +488,7 @@ reminder3 <- reminder3 %>%
     )
   ) %>%
   select(
-    patient_id, primary_contact_lastname_firstname, age_months, onreminder, rr_county,
+    patient_id, primary_contact_lastname_firstname, telephone, cell_phone, age_months, onreminder, rr_county,
     address_line_1, address_line_2, city, state, zip,
     immunization_recommendations,
     final_count, nonfinal_count,
@@ -3133,6 +3133,8 @@ clean7 <- clean6 %>%
     last_name,
     first_name,
     primary_contact_lastname_firstname,
+    telephone, 
+    cell_phone,
     gender,
     dob,
     age_months,
@@ -3680,6 +3682,8 @@ patients_needing_vaccination <- clean12_merged %>%
     last_name,
     first_name,
     primary_contact_lastname_firstname,
+    telephone,
+    cell_phone,
     gender,
     dob,
     age_months,

@@ -42,3 +42,6 @@ Updated prepare_data to match path updates in analytic code
 Added output of patients needing vax file
 Updated app so cards on coverage page dynamically update with age group
 Added 2 - 83 months to vaccination coverage page
+
+#Updates 8/19/2026 - AT
+Added telephone and cell phone to reminder/recall output
