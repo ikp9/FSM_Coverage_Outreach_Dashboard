@@ -6,6 +6,9 @@
 # Ignore only the specific raw data folder containing PII
 data/Raw Patient Data
 
+#Ignore topline archive folder
+Archive/
+
 # Ignore the Archive folder containing PII
 data/Analytic Code Output/Archive
 
