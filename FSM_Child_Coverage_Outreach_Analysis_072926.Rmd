@@ -72,7 +72,7 @@ library(readxl)
 
 # Set up directory and visualization settings
 
-## !!!! Update the directory path as needed !!!!
+## !!!! Update the directory path if needed !!!!
 
 ```{r setup, include=FALSE}
 
@@ -107,7 +107,7 @@ here::dr_here()
 
 ```
 
-## !!!! Make sure to update file paths for each new run (e.g., date) !!!!
+## !!!! Make sure to update FILE NAMES for each new run (e.g., date) !!!!
 ```{r input files, include=FALSE}
 # -------------------------------------------------------------------
 # Input files
