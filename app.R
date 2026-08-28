@@ -531,12 +531,12 @@ safe_dashboard_median <- function(x) {
 }
 
 ui <- page_navbar(
-  title = "From Shore to Shot",
+  title = NULL,
   fillable = FALSE,
   theme = bs_theme(version = 5, primary = "#0056a6", navbar_bg = "#003e73"),
   header = tags$head(tags$link(rel="stylesheet", href="styles.css")),
   nav_panel(
-    "Situation overview",
+    "Child Overview",
     
     layout_sidebar(
       fillable = FALSE,
@@ -664,7 +664,7 @@ ui <- page_navbar(
     )
   ),
   nav_panel(
-    "Vaccination coverage",
+    "Child Vaccination Coverage",
     layout_sidebar(
       fillable = FALSE,
       sidebar = sidebar(
@@ -851,7 +851,7 @@ ui <- page_navbar(
       )
     )
   ),
-  nav_panel("Community risk & access",
+  nav_panel("Community Profile (Child)",
             layout_sidebar(
               sidebar=sidebar(selectInput("community_id", "Community", choices=setNames(community$community_id, paste(community$state, community$county, sep=" — ")))),
               layout_columns(
@@ -1568,7 +1568,7 @@ server <- function(input, output, session) {
     ]
     
     m <- leaflet(x) %>%
-      addProviderTiles(providers$CartoDB.Positron) %>%
+      addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
       addCircleMarkers(
         ~longitude,
         ~latitude,
@@ -1665,7 +1665,7 @@ server <- function(input, output, session) {
     )
     
     m <- leaflet(x) %>%
-      addProviderTiles(providers$CartoDB.Positron) %>%
+      addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
       addCircleMarkers(
         ~longitude,
         ~latitude,
@@ -1733,7 +1733,7 @@ server <- function(input, output, session) {
   
   output$overview_map <- renderLeaflet({
     x <- filtered() %>% filter(!is.na(latitude), !is.na(longitude))
-    m <- leaflet(x) %>% addProviderTiles(providers$CartoDB.Positron) %>%
+    m <- leaflet(x) %>% addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
       addCircleMarkers(~longitude, ~latitude, radius=~pmax(5, sqrt(child_population)),
                        color=~pal_priority(priority_group), fillOpacity=.8, stroke=TRUE,
                        label = ~paste0(
@@ -1763,7 +1763,7 @@ server <- function(input, output, session) {
       filter(!is.na(latitude), !is.na(longitude))
     
     leaflet(x) %>%
-      addProviderTiles(providers$CartoDB.Positron) %>%
+      addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
       addCircleMarkers(
         ~longitude,
         ~latitude,
@@ -2046,7 +2046,7 @@ server <- function(input, output, session) {
   output$plan_children <- renderText(if(nrow(plan()$summary)) plan()$summary$children_targeted else 0)
   output$plan_travel <- renderText(if(nrow(plan()$summary)) plan()$summary$total_travel_hours else 0)
   output$plan_distance <- renderText(if(nrow(plan()$summary)) plan()$summary$total_distance_km else 0)
-  output$route_map <- renderLeaflet({it<-plan()$itinerary; m<-leaflet()%>%addProviderTiles(providers$CartoDB.Positron)%>%addMarkers(input$hub_lon,input$hub_lat,label="Departure hub"); if(nrow(it)){for(tm in unique(it$team)){z<-it[it$team==tm,]; m<-m%>%addPolylines(lng=c(input$hub_lon,z$longitude),lat=c(input$hub_lat,z$latitude),weight=3,label=paste("Team",tm)); m<-m%>%addCircleMarkers(data=z,lng=~longitude,lat=~latitude,radius=7,label=~paste0("Team ",team," stop ",stop_sequence,": ",county),popup=~paste0("<b>",county,"</b><br>Children targeted: ",children_not_utd,"<br>Day: ",day))}};m})
+  output$route_map <- renderLeaflet({it<-plan()$itinerary; m<-leaflet()%>%addProviderTiles(providers$OpenStreetMap.Mapnik)%>%addMarkers(input$hub_lon,input$hub_lat,label="Departure hub"); if(nrow(it)){for(tm in unique(it$team)){z<-it[it$team==tm,]; m<-m%>%addPolylines(lng=c(input$hub_lon,z$longitude),lat=c(input$hub_lat,z$latitude),weight=3,label=paste("Team",tm)); m<-m%>%addCircleMarkers(data=z,lng=~longitude,lat=~latitude,radius=7,label=~paste0("Team ",team," stop ",stop_sequence,": ",county),popup=~paste0("<b>",county,"</b><br>Children targeted: ",children_not_utd,"<br>Day: ",day))}};m})
   output$plan_product_table <- renderDT({
     product_order <- c(
       "PedVaxHib",
