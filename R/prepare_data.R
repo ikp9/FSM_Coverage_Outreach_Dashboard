@@ -36,6 +36,21 @@ patient_data_dir <- here::here(
   "Analytic Code Output"
 )
 
+# The adolescent analytic file can be read from either the project data folder
+# (recommended for a deployed dashboard) or the CDC network location used by
+# the analytic workflow. The newest matching file across the available
+# locations is selected automatically.
+adolescent_network_dir <- paste0(
+  "//cdc.gov/locker/NCIRD_ISD_AB_DATA2/Island_Surveys/Dissemination/",
+  "Federated States of Micronesia (FSM)/2026/HPV"
+)
+
+adolescent_data_dirs <- c(
+  patient_data_dir,
+  here::here("data", "Raw Patient Data"),
+  adolescent_network_dir
+)
+
 # Use the same canonical Census filename as the analytic code.
 census_file <- here::here(
   "data",
@@ -110,6 +125,59 @@ patient_file <- resolve_patient_file(
 )
 
 
+resolve_adolescent_file <- function(directories) {
+  available_directories <- unique(
+    directories[dir.exists(directories)]
+  )
+
+  matching_files <- unlist(
+    lapply(
+      available_directories,
+      function(directory) {
+        list.files(
+          path = directory,
+          pattern = paste0(
+            "^Dataset 2_FSM_9-17 Years_DeID_Full_Dataset_",
+            ".*\\.(xlsx|xls)$"
+          ),
+          full.names = TRUE,
+          ignore.case = TRUE
+        )
+      }
+    ),
+    use.names = FALSE
+  )
+
+  matching_files <- unique(matching_files)
+
+  if (length(matching_files) == 0) {
+    stop(
+      paste0(
+        "No deidentified adolescent dataset was found.\n\n",
+        "Expected a file named like:\n  ",
+        "Dataset 2_FSM_9-17 Years_DeID_Full_Dataset_MMDDYY.xlsx\n\n",
+        "Checked:\n  - ",
+        paste(directories, collapse = "\n  - ")
+      ),
+      call. = FALSE
+    )
+  }
+
+  file_information <- file.info(matching_files)
+  newest_file_index <- order(
+    file_information$mtime,
+    decreasing = TRUE
+  )[1]
+
+  matching_files[[newest_file_index]]
+}
+
+
+adolescent_file <- resolve_adolescent_file(
+  adolescent_data_dirs
+)
+
+
 # ------------------------------------------------------------------------------
 # Dashboard output files
 # ------------------------------------------------------------------------------
@@ -127,6 +195,11 @@ vaccine_output_file <- file.path(
 patient_output_file <- file.path(
   dashboard_data_dir,
   "patient_dashboard.csv"
+)
+
+adolescent_output_file <- file.path(
+  dashboard_data_dir,
+  "adolescent_patient_dashboard.csv"
 )
 
 product_output_file <- file.path(
@@ -149,6 +222,11 @@ census_atoll_members_output_file <- file.path(
   "qa_census_atoll_members.csv"
 )
 
+adolescent_geography_qa_output_file <- file.path(
+  dashboard_data_dir,
+  "qa_adolescent_geography.csv"
+)
+
 
 # ------------------------------------------------------------------------------
 # Path confirmation
@@ -167,6 +245,15 @@ message(
   "Using patient dataset: ",
   normalizePath(
     patient_file,
+    winslash = "/",
+    mustWork = FALSE
+  )
+)
+
+message(
+  "Using adolescent dataset: ",
+  normalizePath(
+    adolescent_file,
     winslash = "/",
     mustWork = FALSE
   )
@@ -201,6 +288,7 @@ high_individual_risk_threshold <- 70
 
 required_files <- c(
   patient_file,
+  adolescent_file,
   census_file
 )
 
@@ -1469,7 +1557,300 @@ patient_dashboard <- patient %>%
 
 
 # ==============================================================================
-# 19. Write dashboard-ready files
+# 19. Prepare adolescent dashboard data
+# ==============================================================================
+
+adolescent_raw <- read_excel(
+  adolescent_file,
+  sheet = "Patient_Data"
+)
+
+# Normalize imported field names without adding another package dependency.
+names(adolescent_raw) <- names(adolescent_raw) %>%
+  str_squish() %>%
+  str_to_lower() %>%
+  str_replace_all("[^a-z0-9]+", "_") %>%
+  str_replace_all("^_|_$", "")
+
+required_adolescent_columns <- c(
+  "record_id",
+  "gender",
+  "age_years",
+  "age_group",
+  "state",
+  "region",
+  "county",
+  "village",
+  "on_reminder",
+  "need_hpv_dose_1",
+  "need_hpv_dose_2",
+  "hpv_recommendation_unparsed",
+  "hpv_count",
+  "hpv_1plus",
+  "hpv_2plus",
+  "hpv_3plus",
+  "hpv_utd",
+  "tdap_1plus",
+  "mmr_2plus",
+  "hepb_3plus"
+)
+
+missing_adolescent_columns <- setdiff(
+  required_adolescent_columns,
+  names(adolescent_raw)
+)
+
+if (length(missing_adolescent_columns) > 0) {
+  stop(
+    paste0(
+      "The adolescent file was opened, but required columns are missing:\n  - ",
+      paste(missing_adolescent_columns, collapse = "\n  - "),
+      "\n\nAdolescent file:\n  ",
+      adolescent_file,
+      "\n\nColumns imported:\n  ",
+      paste(names(adolescent_raw), collapse = ", ")
+    ),
+    call. = FALSE
+  )
+}
+
+adolescent_flag_columns <- c(
+  "on_reminder",
+  "need_hpv_dose_1",
+  "need_hpv_dose_2",
+  "hpv_recommendation_unparsed",
+  "hpv_count",
+  "hpv_1plus",
+  "hpv_2plus",
+  "hpv_3plus",
+  "hpv_utd",
+  "tdap_1plus",
+  "mmr_2plus",
+  "hepb_3plus"
+)
+
+fsm_states <- c(
+  "Chuuk",
+  "Kosrae",
+  "Pohnpei",
+  "Yap"
+)
+
+adolescent <- adolescent_raw %>%
+  mutate(
+    record_id = as.character(record_id),
+    gender = clean_display_text(gender),
+    age_years = suppressWarnings(as.integer(age_years)),
+    age_group = clean_display_text(age_group),
+    state = clean_display_text(state),
+    region = clean_display_text(region),
+    county_input = county,
+    village = clean_display_text(village),
+    across(
+      all_of(adolescent_flag_columns),
+      ~ suppressWarnings(as.integer(.x))
+    )
+  ) %>%
+  apply_operational_county(county_input) %>%
+  mutate(
+    state_join = normalize_join_text(state),
+    village_join = normalize_join_text(village),
+    valid_fsm_state = state %in% fsm_states
+  )
+
+# Use child-dashboard village coordinates first because those coordinates drive
+# the existing village-level reminder/recall map. Census coordinates and the
+# operational county center provide progressively broader fallbacks.
+child_village_coordinates <- if ("city" %in% names(patient)) {
+  patient %>%
+    filter(
+      !is.na(state_join),
+      state_join != "",
+      !is.na(county_join),
+      county_join != "",
+      !is.na(city),
+      str_trim(city) != ""
+    ) %>%
+    transmute(
+      state_join,
+      county_join,
+      village_join = normalize_join_text(city),
+      child_village_latitude = latitude,
+      child_village_longitude = longitude
+    ) %>%
+    group_by(
+      state_join,
+      county_join,
+      village_join
+    ) %>%
+    summarise(
+      child_village_latitude = safe_median(child_village_latitude),
+      child_village_longitude = safe_median(child_village_longitude),
+      .groups = "drop"
+    )
+} else {
+  tibble(
+    state_join = character(),
+    county_join = character(),
+    village_join = character(),
+    child_village_latitude = double(),
+    child_village_longitude = double()
+  )
+}
+
+child_state_village_coordinates <- child_village_coordinates %>%
+  group_by(
+    state_join,
+    village_join
+  ) %>%
+  summarise(
+    child_state_village_latitude = safe_median(child_village_latitude),
+    child_state_village_longitude = safe_median(child_village_longitude),
+    .groups = "drop"
+  )
+
+census_village_coordinates <- census_prepared %>%
+  group_by(
+    state_join,
+    village_join = county_source_join
+  ) %>%
+  summarise(
+    census_village_latitude = safe_median(latitude_census),
+    census_village_longitude = safe_median(longitude_census),
+    .groups = "drop"
+  )
+
+county_coordinates <- community_summary %>%
+  select(
+    state_join,
+    county_join,
+    county_latitude = latitude,
+    county_longitude = longitude
+  ) %>%
+  distinct(
+    state_join,
+    county_join,
+    .keep_all = TRUE
+  )
+
+census_county_coordinates <- census_lookup_join %>%
+  select(
+    state_join,
+    county_join,
+    census_county_latitude = latitude_census,
+    census_county_longitude = longitude_census
+  ) %>%
+  distinct(
+    state_join,
+    county_join,
+    .keep_all = TRUE
+  )
+
+adolescent_dashboard <- adolescent %>%
+  left_join(
+    child_village_coordinates,
+    by = c(
+      "state_join",
+      "county_join",
+      "village_join"
+    )
+  ) %>%
+  left_join(
+    child_state_village_coordinates,
+    by = c(
+      "state_join",
+      "village_join"
+    )
+  ) %>%
+  left_join(
+    census_village_coordinates,
+    by = c(
+      "state_join",
+      "village_join"
+    )
+  ) %>%
+  left_join(
+    county_coordinates,
+    by = c(
+      "state_join",
+      "county_join"
+    )
+  ) %>%
+  left_join(
+    census_county_coordinates,
+    by = c(
+      "state_join",
+      "county_join"
+    )
+  ) %>%
+  mutate(
+    village_latitude = coalesce(
+      child_village_latitude,
+      child_state_village_latitude,
+      census_village_latitude
+    ),
+    village_longitude = coalesce(
+      child_village_longitude,
+      child_state_village_longitude,
+      census_village_longitude
+    ),
+    county_latitude = coalesce(
+      county_latitude,
+      census_county_latitude,
+      village_latitude
+    ),
+    county_longitude = coalesce(
+      county_longitude,
+      census_county_longitude,
+      village_longitude
+    ),
+    geography_quality = case_when(
+      !valid_fsm_state ~ "Outside four FSM states",
+      is.na(county_latitude) | is.na(county_longitude) ~
+        "County and village coordinates unavailable",
+      is.na(village_latitude) | is.na(village_longitude) ~
+        "Village coordinates unavailable; county available",
+      TRUE ~ "County and village coordinates available"
+    )
+  ) %>%
+  select(
+    record_id,
+    gender,
+    age_years,
+    age_group,
+    state,
+    region,
+    county,
+    village,
+    all_of(adolescent_flag_columns),
+    valid_fsm_state,
+    county_latitude,
+    county_longitude,
+    village_latitude,
+    village_longitude,
+    geography_quality
+  )
+
+adolescent_geography_qa <- adolescent_dashboard %>%
+  count(
+    valid_fsm_state,
+    state,
+    county,
+    village,
+    geography_quality,
+    name = "adolescent_patients"
+  ) %>%
+  arrange(
+    valid_fsm_state,
+    geography_quality,
+    state,
+    county,
+    village
+  )
+
+
+# ==============================================================================
+# 20. Write dashboard-ready files
 # ==============================================================================
 
 write_csv(
@@ -1498,9 +1879,21 @@ write_csv(
   na = ""
 )
 
+write_csv(
+  adolescent_dashboard,
+  adolescent_output_file,
+  na = ""
+)
+
+write_csv(
+  adolescent_geography_qa,
+  adolescent_geography_qa_output_file,
+  na = ""
+)
+
 
 # ==============================================================================
-# 20. Print preparation summary
+# 21. Print preparation summary
 # ==============================================================================
 
 preparation_summary <- community_summary %>%
@@ -1567,6 +1960,8 @@ message(
     "  - ", unmatched_census_output_file, "\n",
     "  - ", census_duplicates_output_file, "\n",
     "  - ", census_atoll_members_output_file, "\n",
-    "  - ", product_output_file, "\n"
+    "  - ", product_output_file, "\n",
+    "  - ", adolescent_output_file, "\n",
+    "  - ", adolescent_geography_qa_output_file, "\n"
   )
 )

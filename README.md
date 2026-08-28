@@ -48,3 +48,10 @@ Added 2 - 83 months to vaccination coverage page
 
 #Updates 8/19/2026 - AT
 Added telephone and cell phone to reminder/recall output
+
+#Updates 8/24/26 - AT
+Switched from Markdown to Quarto
+
+#Updates 8/28/26 - AT
+Brought in de-id adolescent dataset to prepare data and app. App now inlcudes adolescent coverage and planning page. 
+

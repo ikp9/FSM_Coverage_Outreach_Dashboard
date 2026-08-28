@@ -1,0 +1,808 @@
+valid_fsm_state,state,county,village,geography_quality,adolescent_patients
+FALSE,Fm,Dededo,Dededo,Outside four FSM states,1
+FALSE,Fm,Tamuning,Tamuning,Outside four FSM states,1
+TRUE,Chuuk,Elin,Elin,County and village coordinates available,1
+TRUE,Chuuk,Eot Island,Eot Island,County and village coordinates available,37
+TRUE,Chuuk,Eot Island,Fanip,County and village coordinates available,4
+TRUE,Chuuk,Etal,Etal,County and village coordinates available,44
+TRUE,Chuuk,Fanapanges,Fanapanges,County and village coordinates available,157
+TRUE,Chuuk,Fanapanges,Monowe,County and village coordinates available,1
+TRUE,Chuuk,Fanapanges,Nukanap,County and village coordinates available,1
+TRUE,Chuuk,Fanapanges,Sapota,County and village coordinates available,3
+TRUE,Chuuk,Fanapanges,Sapotiw,County and village coordinates available,4
+TRUE,Chuuk,Fanapanges,Sapou,County and village coordinates available,3
+TRUE,Chuuk,Fanapanges,Sopota,County and village coordinates available,1
+TRUE,Chuuk,Fanapanges,Sopou,County and village coordinates available,7
+TRUE,Chuuk,Fefan,Fanip,County and village coordinates available,208
+TRUE,Chuuk,Fefan,Fefan,County and village coordinates available,14
+TRUE,Chuuk,Fefan,Inaka,County and village coordinates available,105
+TRUE,Chuuk,Fefan,Kuchua,County and village coordinates available,2
+TRUE,Chuuk,Fefan,Mechitiw,County and village coordinates available,1
+TRUE,Chuuk,Fefan,Mwan,County and village coordinates available,2
+TRUE,Chuuk,Fefan,Mwanukun,County and village coordinates available,1
+TRUE,Chuuk,Fefan,Nepukos,County and village coordinates available,2
+TRUE,Chuuk,Fefan,Parem,County and village coordinates available,10
+TRUE,Chuuk,Fefan,Penia,County and village coordinates available,1
+TRUE,Chuuk,Fefan,Polle,County and village coordinates available,1
+TRUE,Chuuk,Fefan,Sapeta,County and village coordinates available,229
+TRUE,Chuuk,Fefan,Sapore,County and village coordinates available,162
+TRUE,Chuuk,Fefan,Sapota,County and village coordinates available,3
+TRUE,Chuuk,Fefan,Siis,County and village coordinates available,15
+TRUE,Chuuk,Fefan,Sopou,County and village coordinates available,1
+TRUE,Chuuk,Fefan,Ufo,County and village coordinates available,183
+TRUE,Chuuk,Fefan,Wichap,County and village coordinates available,2
+TRUE,Chuuk,Fonoton,Fonoton,County and village coordinates available,54
+TRUE,Chuuk,Fonoton,Kutu Island,County and village coordinates available,2
+TRUE,Chuuk,Fonoton,Nukanap,County and village coordinates available,2
+TRUE,Chuuk,Houk,Houk,County and village coordinates available,112
+TRUE,Chuuk,Kuchua,Kuchua,County and village coordinates available,1
+TRUE,Chuuk,Losap Atoll,Losap Island,County and village coordinates available,63
+TRUE,Chuuk,Losap Atoll,Nama,County and village coordinates available,117
+TRUE,Chuuk,Lukunor Atoll,Lekinioch,County and village coordinates available,175
+TRUE,Chuuk,Lukunor Atoll,Oneop,County and village coordinates available,81
+TRUE,Chuuk,Manaio,Manaio,County and village coordinates available,1
+TRUE,Chuuk,Mochon,Mochon,County and village coordinates available,1
+TRUE,Chuuk,Mortlock,Etal,County and village coordinates available,1
+TRUE,Chuuk,Mortlock,Lekinioch,County and village coordinates available,2
+TRUE,Chuuk,Mortlock,Losap Island,County and village coordinates available,1
+TRUE,Chuuk,Mortlock,Oneop,County and village coordinates available,5
+TRUE,Chuuk,Mortlock,Satawan,County and village coordinates available,6
+TRUE,Chuuk,Murilo Atoll,Murilo Atoll,County and village coordinates available,100
+TRUE,Chuuk,Murilo Atoll,Pisemew,County and village coordinates available,71
+TRUE,Chuuk,Murilo Atoll,Ruo,County and village coordinates available,90
+TRUE,Chuuk,Murilo Atoll,Sapota,County and village coordinates available,2
+TRUE,Chuuk,Namoluk,Namoluk,County and village coordinates available,72
+TRUE,Chuuk,Namonuito Atoll,Magur Island,County and village coordinates available,45
+TRUE,Chuuk,Namonuito Atoll,Onari Island,County and village coordinates available,58
+TRUE,Chuuk,Namonuito Atoll,Ono Island,County and village coordinates available,22
+TRUE,Chuuk,Namonuito Atoll,Onoun,County and village coordinates available,170
+TRUE,Chuuk,Namonuito Atoll,Piharar,County and village coordinates available,73
+TRUE,Chuuk,Neauo,Neauo,County and village coordinates available,2
+TRUE,Chuuk,Nomwin Atoll,Fananu Island,County and village coordinates available,76
+TRUE,Chuuk,Nomwin Atoll,Nomwin Island,County and village coordinates available,85
+TRUE,Chuuk,Northwest,Fananu Island,County and village coordinates available,1
+TRUE,Chuuk,Northwest,Magur Island,County and village coordinates available,1
+TRUE,Chuuk,Northwest,Piharar,County and village coordinates available,1
+TRUE,Chuuk,Northwest,Pulap,County and village coordinates available,1
+TRUE,Chuuk,Northwest,Tamatam,County and village coordinates available,1
+TRUE,Chuuk,Onei,Manaio,County and village coordinates available,2
+TRUE,Chuuk,Onei,Mwan,County and village coordinates available,1
+TRUE,Chuuk,Onei,Mwunien,County and village coordinates available,1
+TRUE,Chuuk,Onei,Nepon,County and village coordinates available,5
+TRUE,Chuuk,Onei,Nepukos,County and village coordinates available,1
+TRUE,Chuuk,Onei,Penia,County and village coordinates available,1
+TRUE,Chuuk,Onei,Penieta,County and village coordinates available,26
+TRUE,Chuuk,Onei,Polle,County and village coordinates available,1
+TRUE,Chuuk,Onei,Sapotiw,County and village coordinates available,70
+TRUE,Chuuk,Onei,Tonokas,County and village coordinates available,39
+TRUE,Chuuk,Onei,Wonei,County and village coordinates available,74
+TRUE,Chuuk,Parem,Fanip,County and village coordinates available,1
+TRUE,Chuuk,Parem,Namoluk,County and village coordinates available,1
+TRUE,Chuuk,Parem,Nukanap,County and village coordinates available,2
+TRUE,Chuuk,Parem,Parem,County and village coordinates available,69
+TRUE,Chuuk,Parem,Sapota,County and village coordinates available,1
+TRUE,Chuuk,Parem,Sapotiw,County and village coordinates available,1
+TRUE,Chuuk,Patta,Chukuram,County and village coordinates available,7
+TRUE,Chuuk,Patta,Epin,County and village coordinates available,42
+TRUE,Chuuk,Patta,Etiamar,County and village coordinates available,7
+TRUE,Chuuk,Patta,Iras,County and village coordinates available,1
+TRUE,Chuuk,Patta,Manaio,County and village coordinates available,4
+TRUE,Chuuk,Patta,Nukaf,County and village coordinates available,28
+TRUE,Chuuk,Patta,Paata,County and village coordinates available,37
+TRUE,Chuuk,Patta,Pata,County and village coordinates available,43
+TRUE,Chuuk,Patta,Polle,County and village coordinates available,1
+TRUE,Chuuk,Patta,Poukochou,County and village coordinates available,20
+TRUE,Chuuk,Patta,Sapeta,County and village coordinates available,1
+TRUE,Chuuk,Patta,Sapota,County and village coordinates available,68
+TRUE,Chuuk,Patta,Sapou,County and village coordinates available,1
+TRUE,Chuuk,Patta,Sopota,County and village coordinates available,3
+TRUE,Chuuk,Patta,Sopou,County and village coordinates available,4
+TRUE,Chuuk,Piis Paneu,Iras,County and village coordinates available,1
+TRUE,Chuuk,Piis Paneu,Nukanap,County and village coordinates available,2
+TRUE,Chuuk,Piis Paneu,Piis Moen,County and village coordinates available,47
+TRUE,Chuuk,Piis Paneu,Sapotiw,County and village coordinates available,2
+TRUE,Chuuk,Polle,Chukuram,County and village coordinates available,118
+TRUE,Chuuk,Polle,Manaio,County and village coordinates available,84
+TRUE,Chuuk,Polle,Nama,County and village coordinates available,2
+TRUE,Chuuk,Polle,Neirenom,County and village coordinates available,141
+TRUE,Chuuk,Polle,Nepukos,County and village coordinates available,2
+TRUE,Chuuk,Polle,Nethon,County and village coordinates available,62
+TRUE,Chuuk,Polle,Penienuk,County and village coordinates available,10
+TRUE,Chuuk,Polle,Polle,County and village coordinates available,74
+TRUE,Chuuk,Polle,Sapou,County and village coordinates available,43
+TRUE,Chuuk,Polle,Sopou,County and village coordinates available,23
+TRUE,Chuuk,Polle,Winika,County and village coordinates available,12
+TRUE,Chuuk,Polle,Wonei,County and village coordinates available,1
+TRUE,Chuuk,Pulap Atoll,Pulap,County and village coordinates available,64
+TRUE,Chuuk,Pulap Atoll,Tamatam,County and village coordinates available,95
+TRUE,Chuuk,Puluwat,Puluwat,County and village coordinates available,58
+TRUE,Chuuk,Romonum,Kutu Island,County and village coordinates available,1
+TRUE,Chuuk,Romonum,Romonum,County and village coordinates available,146
+TRUE,Chuuk,Romonum,Wonei,County and village coordinates available,1
+TRUE,Chuuk,Sapeta,Sapeta,County and village coordinates available,1
+TRUE,Chuuk,Sapotiw,Sapotiw,County and village coordinates available,1
+TRUE,Chuuk,Satawan Atoll,Kutu Island,County and village coordinates available,97
+TRUE,Chuuk,Satawan Atoll,Moch,County and village coordinates available,119
+TRUE,Chuuk,Satawan Atoll,Satawan,County and village coordinates available,111
+TRUE,Chuuk,Satawan Atoll,Ta,County and village coordinates available,57
+TRUE,Chuuk,Siis,Foup,County and village coordinates available,1
+TRUE,Chuuk,Siis,Siis,County and village coordinates available,65
+TRUE,Chuuk,Sopou,Sopou,County and village coordinates available,2
+TRUE,Chuuk,Tolensom,Chukienu,County and village coordinates available,91
+TRUE,Chuuk,Tolensom,Chukuram,County and village coordinates available,2
+TRUE,Chuuk,Tolensom,Eot Island,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Faro,County and village coordinates available,67
+TRUE,Chuuk,Tolensom,Fason,County and village coordinates available,194
+TRUE,Chuuk,Tolensom,Foup,County and village coordinates available,316
+TRUE,Chuuk,Tolensom,Foupo,County and village coordinates available,159
+TRUE,Chuuk,Tolensom,Iras,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Malon,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Mwanitiw,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Mwunien,County and village coordinates available,74
+TRUE,Chuuk,Tolensom,Nechap,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Nechocho,County and village coordinates available,56
+TRUE,Chuuk,Tolensom,Neirenom,County and village coordinates available,4
+TRUE,Chuuk,Tolensom,Nepon,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Nepukos,County and village coordinates available,3
+TRUE,Chuuk,Tolensom,Nukuno,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Penia,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Poukochou,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Sapuk,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Satawan,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Tol,County and village coordinates available,73
+TRUE,Chuuk,Tolensom,Wichap,County and village coordinates available,1
+TRUE,Chuuk,Tolensom,Wichukuno,County and village coordinates available,106
+TRUE,Chuuk,Tolensom,Winifei,County and village coordinates available,59
+TRUE,Chuuk,Tolensom,Wonei,County and village coordinates available,2
+TRUE,Chuuk,Tolensom,Wonip,County and village coordinates available,241
+TRUE,Chuuk,Tonoas,Elin,County and village coordinates available,124
+TRUE,Chuuk,Tonoas,Etten,County and village coordinates available,69
+TRUE,Chuuk,Tonoas,Faro,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Inaka,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Iras,County and village coordinates available,2
+TRUE,Chuuk,Tonoas,Kuchua,County and village coordinates available,187
+TRUE,Chuuk,Tonoas,Malon,County and village coordinates available,69
+TRUE,Chuuk,Tonoas,Mwan,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Neauo,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Nechap,County and village coordinates available,160
+TRUE,Chuuk,Tonoas,Nepukos,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Nukuno,County and village coordinates available,210
+TRUE,Chuuk,Tonoas,Parem,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Pata,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Penienuk,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Roro,County and village coordinates available,77
+TRUE,Chuuk,Tonoas,Sapeta,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Sapota,County and village coordinates available,1
+TRUE,Chuuk,Tonoas,Sapuk,County and village coordinates available,3
+TRUE,Chuuk,Tonoas,Tonoas,County and village coordinates available,16
+TRUE,Chuuk,Tonoas,Tunuk,County and village coordinates available,4
+TRUE,Chuuk,Tonoas,Wichap,County and village coordinates available,1
+TRUE,Chuuk,Udot,Eot Island,County and village coordinates available,29
+TRUE,Chuuk,Udot,Epinup,County and village coordinates available,1
+TRUE,Chuuk,Udot,Fanapanges,County and village coordinates available,39
+TRUE,Chuuk,Udot,Faninen,County and village coordinates available,24
+TRUE,Chuuk,Udot,Fanomo,County and village coordinates available,65
+TRUE,Chuuk,Udot,Lekinioch,County and village coordinates available,1
+TRUE,Chuuk,Udot,Mechitiw,County and village coordinates available,1
+TRUE,Chuuk,Udot,Monowe,County and village coordinates available,143
+TRUE,Chuuk,Udot,Mwan,County and village coordinates available,1
+TRUE,Chuuk,Udot,Mwanitiw,County and village coordinates available,78
+TRUE,Chuuk,Udot,Neauo,County and village coordinates available,1
+TRUE,Chuuk,Udot,Penia,County and village coordinates available,79
+TRUE,Chuuk,Udot,Piis Moen,County and village coordinates available,1
+TRUE,Chuuk,Udot,Poukochou,County and village coordinates available,1
+TRUE,Chuuk,Udot,Romonum,County and village coordinates available,28
+TRUE,Chuuk,Udot,Sannuk,County and village coordinates available,1
+TRUE,Chuuk,Udot,Sapuk,County and village coordinates available,1
+TRUE,Chuuk,Udot,Satawan,County and village coordinates available,1
+TRUE,Chuuk,Udot,Tunuk,County and village coordinates available,69
+TRUE,Chuuk,Udot,Udot,County and village coordinates available,24
+TRUE,Chuuk,Udot,Wonip,County and village coordinates available,57
+TRUE,Chuuk,Uman,Eot Island,County and village coordinates available,1
+TRUE,Chuuk,Uman,Fananu Island,County and village coordinates available,1
+TRUE,Chuuk,Uman,Faninen,County and village coordinates available,1
+TRUE,Chuuk,Uman,Iras,County and village coordinates available,1
+TRUE,Chuuk,Uman,Mochon,County and village coordinates available,40
+TRUE,Chuuk,Uman,Mwan,County and village coordinates available,1
+TRUE,Chuuk,Uman,Mwanukun,County and village coordinates available,56
+TRUE,Chuuk,Uman,Nepon,County and village coordinates available,31
+TRUE,Chuuk,Uman,Nepukos,County and village coordinates available,1
+TRUE,Chuuk,Uman,Nukanap,County and village coordinates available,132
+TRUE,Chuuk,Uman,Nukuno,County and village coordinates available,1
+TRUE,Chuuk,Uman,Roro,County and village coordinates available,1
+TRUE,Chuuk,Uman,Sannuk,County and village coordinates available,128
+TRUE,Chuuk,Uman,Sapeta,County and village coordinates available,2
+TRUE,Chuuk,Uman,Sapota,County and village coordinates available,29
+TRUE,Chuuk,Uman,Sapotiw,County and village coordinates available,45
+TRUE,Chuuk,Uman,Sapou,County and village coordinates available,29
+TRUE,Chuuk,Uman,Sopota,County and village coordinates available,2
+TRUE,Chuuk,Uman,Sopou,County and village coordinates available,84
+TRUE,Chuuk,Uman,Tunuk,County and village coordinates available,1
+TRUE,Chuuk,Uman,Uman,County and village coordinates available,12
+TRUE,Chuuk,Uman,Wonip,County and village coordinates available,1
+TRUE,Chuuk,Weno,Chukienu,County and village coordinates available,2
+TRUE,Chuuk,Weno,Elin,County and village coordinates available,1
+TRUE,Chuuk,Weno,Epin,County and village coordinates available,1
+TRUE,Chuuk,Weno,Epinup,County and village coordinates available,42
+TRUE,Chuuk,Weno,Etal,County and village coordinates available,3
+TRUE,Chuuk,Weno,Etten,County and village coordinates available,3
+TRUE,Chuuk,Weno,Fananu Island,County and village coordinates available,2
+TRUE,Chuuk,Weno,Fanip,County and village coordinates available,1
+TRUE,Chuuk,Weno,Fanomo,County and village coordinates available,1
+TRUE,Chuuk,Weno,Fason,County and village coordinates available,4
+TRUE,Chuuk,Weno,Fonoton,County and village coordinates available,8
+TRUE,Chuuk,Weno,Foup,County and village coordinates available,4
+TRUE,Chuuk,Weno,Foupo,County and village coordinates available,3
+TRUE,Chuuk,Weno,Houk,County and village coordinates available,4
+TRUE,Chuuk,Weno,Inaka,County and village coordinates available,1
+TRUE,Chuuk,Weno,Iras,County and village coordinates available,72
+TRUE,Chuuk,Weno,Kuchua,County and village coordinates available,4
+TRUE,Chuuk,Weno,Kutu Island,County and village coordinates available,4
+TRUE,Chuuk,Weno,Lekinioch,County and village coordinates available,1
+TRUE,Chuuk,Weno,Losap Island,County and village coordinates available,7
+TRUE,Chuuk,Weno,Magur Island,County and village coordinates available,1
+TRUE,Chuuk,Weno,Malon,County and village coordinates available,1
+TRUE,Chuuk,Weno,Manaio,County and village coordinates available,2
+TRUE,Chuuk,Weno,Mechitiw,County and village coordinates available,112
+TRUE,Chuuk,Weno,Moch,County and village coordinates available,2
+TRUE,Chuuk,Weno,Monowe,County and village coordinates available,2
+TRUE,Chuuk,Weno,Mwan,County and village coordinates available,234
+TRUE,Chuuk,Weno,Mwanukun,County and village coordinates available,2
+TRUE,Chuuk,Weno,Nama,County and village coordinates available,2
+TRUE,Chuuk,Weno,Namoluk,County and village coordinates available,2
+TRUE,Chuuk,Weno,Neauo,County and village coordinates available,184
+TRUE,Chuuk,Weno,Nechap,County and village coordinates available,4
+TRUE,Chuuk,Weno,Neirenom,County and village coordinates available,1
+TRUE,Chuuk,Weno,Nepukos,County and village coordinates available,239
+TRUE,Chuuk,Weno,Nethon,County and village coordinates available,3
+TRUE,Chuuk,Weno,Nomwin Island,County and village coordinates available,3
+TRUE,Chuuk,Weno,Nukanap,County and village coordinates available,1
+TRUE,Chuuk,Weno,Oneop,County and village coordinates available,1
+TRUE,Chuuk,Weno,Ono Island,County and village coordinates available,1
+TRUE,Chuuk,Weno,Onoun,County and village coordinates available,3
+TRUE,Chuuk,Weno,Penia,County and village coordinates available,90
+TRUE,Chuuk,Weno,Peniesene,County and village coordinates available,115
+TRUE,Chuuk,Weno,Piharar,County and village coordinates available,2
+TRUE,Chuuk,Weno,Piis Moen,County and village coordinates available,41
+TRUE,Chuuk,Weno,Pisemew,County and village coordinates available,1
+TRUE,Chuuk,Weno,Polle,County and village coordinates available,1
+TRUE,Chuuk,Weno,Pulap,County and village coordinates available,4
+TRUE,Chuuk,Weno,Puluwat,County and village coordinates available,2
+TRUE,Chuuk,Weno,Romonum,County and village coordinates available,4
+TRUE,Chuuk,Weno,Roro,County and village coordinates available,3
+TRUE,Chuuk,Weno,Sannuk,County and village coordinates available,2
+TRUE,Chuuk,Weno,Sapeta,County and village coordinates available,3
+TRUE,Chuuk,Weno,Sapore,County and village coordinates available,1
+TRUE,Chuuk,Weno,Sapota,County and village coordinates available,1
+TRUE,Chuuk,Weno,Sapotiw,County and village coordinates available,1
+TRUE,Chuuk,Weno,Sapou,County and village coordinates available,1
+TRUE,Chuuk,Weno,Sapuk,County and village coordinates available,274
+TRUE,Chuuk,Weno,Satawan,County and village coordinates available,1
+TRUE,Chuuk,Weno,Sekere,County and village coordinates available,2
+TRUE,Chuuk,Weno,Siis,County and village coordinates available,1
+TRUE,Chuuk,Weno,Sopota,County and village coordinates available,1
+TRUE,Chuuk,Weno,Ta,County and village coordinates available,1
+TRUE,Chuuk,Weno,Tunuk,County and village coordinates available,96
+TRUE,Chuuk,Weno,Ufo,County and village coordinates available,1
+TRUE,Chuuk,Weno,Weno,County and village coordinates available,64
+TRUE,Chuuk,Weno,Wichap,County and village coordinates available,236
+TRUE,Chuuk,Weno,Wonei,County and village coordinates available,3
+TRUE,Chuuk,Weno,Wonip,County and village coordinates available,3
+TRUE,Kosrae,Lelu,Lelu Island,County and village coordinates available,375
+TRUE,Kosrae,Malem,Lelu Island,County and village coordinates available,1
+TRUE,Kosrae,Malem,Malem,County and village coordinates available,161
+TRUE,Kosrae,Malem,Tafunsak,County and village coordinates available,1
+TRUE,Kosrae,Tafunsak,Tafunsak,County and village coordinates available,366
+TRUE,Kosrae,Tafunsak,Walung,County and village coordinates available,7
+TRUE,Kosrae,Utwe,Tafunsak,County and village coordinates available,2
+TRUE,Kosrae,Utwe,Utwa,County and village coordinates available,182
+TRUE,Kosrae,Utwe,Walung,County and village coordinates available,1
+TRUE,Kosrae,Walung,Tafunsak,County and village coordinates available,1
+TRUE,Kosrae,Walung,Walung,County and village coordinates available,15
+TRUE,Pohnpei,Kapingamarangi,Kapingamarangi,County and village coordinates available,26
+TRUE,Pohnpei,Kapingamarangi,Pohnrakied,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Alauso,County and village coordinates available,3
+TRUE,Pohnpei,Kitti,Awak Pah,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Diadi-Kitti,County and village coordinates available,57
+TRUE,Pohnpei,Kitti,Dien-Kitti,County and village coordinates available,49
+TRUE,Pohnpei,Kitti,Dien-U,County and village coordinates available,5
+TRUE,Pohnpei,Kitti,Enipein Pah,County and village coordinates available,120
+TRUE,Pohnpei,Kitti,Enipein Powe,County and village coordinates available,41
+TRUE,Pohnpei,Kitti,Iakipa,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Kahmar,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Kepinle,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Kinakapw,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Kipar,County and village coordinates available,42
+TRUE,Pohnpei,Kitti,Kitti,County and village coordinates available,18
+TRUE,Pohnpei,Kitti,Kolonia,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Lewetik,County and village coordinates available,11
+TRUE,Pohnpei,Kitti,Lohd Pah,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Mapwusi,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Meitik,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Mwakot,County and village coordinates available,65
+TRUE,Pohnpei,Kitti,Nankemeu,County and village coordinates available,3
+TRUE,Pohnpei,Kitti,Nanmand,County and village coordinates available,73
+TRUE,Pohnpei,Kitti,Nanpahlap,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Oare,County and village coordinates available,6
+TRUE,Pohnpei,Kitti,Ohmine,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Paies,County and village coordinates available,65
+TRUE,Pohnpei,Kitti,Paies-Kitti,County and village coordinates available,67
+TRUE,Pohnpei,Kitti,Palikir,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Pehleng,County and village coordinates available,193
+TRUE,Pohnpei,Kitti,Peil,County and village coordinates available,4
+TRUE,Pohnpei,Kitti,Poahs,County and village coordinates available,8
+TRUE,Pohnpei,Kitti,Poatoapoat,County and village coordinates available,13
+TRUE,Pohnpei,Kitti,Pwok,County and village coordinates available,5
+TRUE,Pohnpei,Kitti,Pwudoi,County and village coordinates available,45
+TRUE,Pohnpei,Kitti,Rehntu,County and village coordinates available,7
+TRUE,Pohnpei,Kitti,Rohi,County and village coordinates available,59
+TRUE,Pohnpei,Kitti,Rongkitti,County and village coordinates available,2
+TRUE,Pohnpei,Kitti,Salapwuk,County and village coordinates available,28
+TRUE,Pohnpei,Kitti,Seinwar,County and village coordinates available,29
+TRUE,Pohnpei,Kitti,Sowihso,County and village coordinates available,17
+TRUE,Pohnpei,Kitti,Tamworohi,County and village coordinates available,1
+TRUE,Pohnpei,Kitti,Tomwoaroahleng,County and village coordinates available,53
+TRUE,Pohnpei,Kitti,Wone,County and village coordinates available,125
+TRUE,Pohnpei,Kolonia,China Town,County and village coordinates available,114
+TRUE,Pohnpei,Kolonia,Daini,County and village coordinates available,56
+TRUE,Pohnpei,Kolonia,Dewenou,County and village coordinates available,23
+TRUE,Pohnpei,Kolonia,Dipision,County and village coordinates available,5
+TRUE,Pohnpei,Kolonia,Dolonier,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Dowenou,County and village coordinates available,2
+TRUE,Pohnpei,Kolonia,Enipein Pah,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Iakipa,County and village coordinates available,7
+TRUE,Pohnpei,Kolonia,Kepin Awak,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Kepinle,County and village coordinates available,75
+TRUE,Pohnpei,Kolonia,Kolonia,County and village coordinates available,72
+TRUE,Pohnpei,Kolonia,Komwonlaid,County and village coordinates available,31
+TRUE,Pohnpei,Kolonia,Lehdau,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Likinkel,County and village coordinates available,116
+TRUE,Pohnpei,Kolonia,Mand,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Mapwusi,County and village coordinates available,134
+TRUE,Pohnpei,Kolonia,Meitik,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Mwapwusi,County and village coordinates available,6
+TRUE,Pohnpei,Kolonia,Nan Peper,County and village coordinates available,25
+TRUE,Pohnpei,Kolonia,Nan Pwonopwon,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Nankemeu,County and village coordinates available,10
+TRUE,Pohnpei,Kolonia,Nantehlik,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Nantuelek,County and village coordinates available,6
+TRUE,Pohnpei,Kolonia,Nett,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Nintu,County and village coordinates available,26
+TRUE,Pohnpei,Kolonia,Ohmine,County and village coordinates available,133
+TRUE,Pohnpei,Kolonia,Paliais,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Palikir,County and village coordinates available,3
+TRUE,Pohnpei,Kolonia,Peilapalap,County and village coordinates available,6
+TRUE,Pohnpei,Kolonia,Pingelap,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Pohnlik,County and village coordinates available,24
+TRUE,Pohnpei,Kolonia,Pohnrakied,County and village coordinates available,148
+TRUE,Pohnpei,Kolonia,Pohnrakiet,County and village coordinates available,13
+TRUE,Pohnpei,Kolonia,Sekere,County and village coordinates available,1
+TRUE,Pohnpei,Kolonia,Tomwoaroahleng,County and village coordinates available,2
+TRUE,Pohnpei,Kolonia,U,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Alohkapw,County and village coordinates available,24
+TRUE,Pohnpei,Madolenihmw,Arew,County and village coordinates available,23
+TRUE,Pohnpei,Madolenihmw,China Town,County and village coordinates available,3
+TRUE,Pohnpei,Madolenihmw,Diadi-Madol,County and village coordinates available,8
+TRUE,Pohnpei,Madolenihmw,Dien-U,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Elieliwi,County and village coordinates available,9
+TRUE,Pohnpei,Madolenihmw,Enipoas,County and village coordinates available,14
+TRUE,Pohnpei,Madolenihmw,Ipwitek,County and village coordinates available,51
+TRUE,Pohnpei,Madolenihmw,Kepirohi,County and village coordinates available,14
+TRUE,Pohnpei,Madolenihmw,Kinakapw,County and village coordinates available,11
+TRUE,Pohnpei,Madolenihmw,Lehdau,County and village coordinates available,2
+TRUE,Pohnpei,Madolenihmw,Lohd Pah,County and village coordinates available,13
+TRUE,Pohnpei,Madolenihmw,Lukop,County and village coordinates available,78
+TRUE,Pohnpei,Madolenihmw,Madolenihmw,County and village coordinates available,11
+TRUE,Pohnpei,Madolenihmw,Mand,County and village coordinates available,44
+TRUE,Pohnpei,Madolenihmw,Mapwusi,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Meitik,County and village coordinates available,5
+TRUE,Pohnpei,Madolenihmw,Mesihsou,County and village coordinates available,27
+TRUE,Pohnpei,Madolenihmw,Metipw-Madol,County and village coordinates available,36
+TRUE,Pohnpei,Madolenihmw,Nankepira,County and village coordinates available,14
+TRUE,Pohnpei,Madolenihmw,Nanpahlap,County and village coordinates available,14
+TRUE,Pohnpei,Madolenihmw,Nansalohi,County and village coordinates available,8
+TRUE,Pohnpei,Madolenihmw,Ohwa,County and village coordinates available,13
+TRUE,Pohnpei,Madolenihmw,Pahnmeiti,County and village coordinates available,2
+TRUE,Pohnpei,Madolenihmw,Pihs,County and village coordinates available,52
+TRUE,Pohnpei,Madolenihmw,Pohnlangas,County and village coordinates available,17
+TRUE,Pohnpei,Madolenihmw,Pohnrakied,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Pwudoi,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Rohi,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Salapwuk,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Sapwalap,County and village coordinates available,89
+TRUE,Pohnpei,Madolenihmw,Sapwehrek,County and village coordinates available,20
+TRUE,Pohnpei,Madolenihmw,Satawan,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Senpehn,County and village coordinates available,8
+TRUE,Pohnpei,Madolenihmw,Tamworohi,County and village coordinates available,9
+TRUE,Pohnpei,Madolenihmw,Temwen,County and village coordinates available,50
+TRUE,Pohnpei,Madolenihmw,Tomwara,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,U,County and village coordinates available,1
+TRUE,Pohnpei,Madolenihmw,Wapar,County and village coordinates available,35
+TRUE,Pohnpei,Mwoakilloa,Mwoakilloa,County and village coordinates available,9
+TRUE,Pohnpei,Nett,Dolokei,County and village coordinates available,45
+TRUE,Pohnpei,Nett,Dolonier,County and village coordinates available,179
+TRUE,Pohnpei,Nett,Eirike,County and village coordinates available,168
+TRUE,Pohnpei,Nett,Iakipa,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Kahmar,County and village coordinates available,91
+TRUE,Pohnpei,Nett,Kolonia,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Lehdau,County and village coordinates available,23
+TRUE,Pohnpei,Nett,Lenger,County and village coordinates available,3
+TRUE,Pohnpei,Nett,Lewetik,County and village coordinates available,22
+TRUE,Pohnpei,Nett,Likinkel,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Liwi,County and village coordinates available,44
+TRUE,Pohnpei,Nett,Luknot,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Meitik,County and village coordinates available,155
+TRUE,Pohnpei,Nett,Nan Peper,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Nanipil,County and village coordinates available,48
+TRUE,Pohnpei,Nett,Nanparangon,County and village coordinates available,14
+TRUE,Pohnpei,Nett,Nanpil,County and village coordinates available,40
+TRUE,Pohnpei,Nett,Nanpohnmal,County and village coordinates available,84
+TRUE,Pohnpei,Nett,Nethon,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Nett,County and village coordinates available,26
+TRUE,Pohnpei,Nett,Nintu,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Pahnimwinsapw,County and village coordinates available,19
+TRUE,Pohnpei,Nett,Pali Powe,County and village coordinates available,69
+TRUE,Pohnpei,Nett,Paliais,County and village coordinates available,77
+TRUE,Pohnpei,Nett,Palikir,County and village coordinates available,2
+TRUE,Pohnpei,Nett,Panasang,County and village coordinates available,18
+TRUE,Pohnpei,Nett,Parem Kep,County and village coordinates available,16
+TRUE,Pohnpei,Nett,Parem Pei,County and village coordinates available,58
+TRUE,Pohnpei,Nett,Pingelap,County and village coordinates available,1
+TRUE,Pohnpei,Nett,Sounting,County and village coordinates available,2
+TRUE,Pohnpei,Nett,Temwen,County and village coordinates available,1
+TRUE,Pohnpei,Nukuoro,Nukuoro,County and village coordinates available,23
+TRUE,Pohnpei,Nukuoro,Pohnrakied,County and village coordinates available,2
+TRUE,Pohnpei,Pingilap,Pingelap,County and village coordinates available,16
+TRUE,Pohnpei,Sapwuahfik,Sapwuahfik,County and village coordinates available,67
+TRUE,Pohnpei,Sokehs,Danipei,County and village coordinates available,36
+TRUE,Pohnpei,Sokehs,Dolon,County and village coordinates available,11
+TRUE,Pohnpei,Sokehs,Dolonier,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Kepira,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Kipar,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Kitti,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Lewetik,County and village coordinates available,23
+TRUE,Pohnpei,Sokehs,Luknot,County and village coordinates available,5
+TRUE,Pohnpei,Sokehs,Mwakot,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Mwalok,County and village coordinates available,116
+TRUE,Pohnpei,Sokehs,Nandaku,County and village coordinates available,10
+TRUE,Pohnpei,Sokehs,Nankewi,County and village coordinates available,5
+TRUE,Pohnpei,Sokehs,Nanmadap,County and village coordinates available,3
+TRUE,Pohnpei,Sokehs,Nanmal,County and village coordinates available,3
+TRUE,Pohnpei,Sokehs,Nanpohnmal,County and village coordinates available,159
+TRUE,Pohnpei,Sokehs,Nett,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Oaumoar,County and village coordinates available,3
+TRUE,Pohnpei,Sokehs,Ohmine,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Pahnmeiti,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Paies,County and village coordinates available,2
+TRUE,Pohnpei,Sokehs,Paies- Sokehs,County and village coordinates available,7
+TRUE,Pohnpei,Sokehs,Pakihn,County and village coordinates available,11
+TRUE,Pohnpei,Sokehs,Palikir,County and village coordinates available,346
+TRUE,Pohnpei,Sokehs,Panasang,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Peidie,County and village coordinates available,50
+TRUE,Pohnpei,Sokehs,Pingelap,County and village coordinates available,2
+TRUE,Pohnpei,Sokehs,Pohnrakied,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Pohras,County and village coordinates available,15
+TRUE,Pohnpei,Sokehs,Rohi,County and village coordinates available,2
+TRUE,Pohnpei,Sokehs,Rohie,County and village coordinates available,76
+TRUE,Pohnpei,Sokehs,Saladak,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Sapwohn,County and village coordinates available,13
+TRUE,Pohnpei,Sokehs,Satawan,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Sekere,County and village coordinates available,199
+TRUE,Pohnpei,Sokehs,Sokehs,County and village coordinates available,19
+TRUE,Pohnpei,Sokehs,Sokehs Pah,County and village coordinates available,7
+TRUE,Pohnpei,Sokehs,Sokehs Powe,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Soledi,County and village coordinates available,25
+TRUE,Pohnpei,Sokehs,Sowihso,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Tamworohi,County and village coordinates available,1
+TRUE,Pohnpei,Sokehs,Tomwara,County and village coordinates available,11
+TRUE,Pohnpei,Sokehs,Wone,County and village coordinates available,1
+TRUE,Pohnpei,U,Alohkapw,County and village coordinates available,5
+TRUE,Pohnpei,U,Awak Pah,County and village coordinates available,124
+TRUE,Pohnpei,U,Awak Powe,County and village coordinates available,17
+TRUE,Pohnpei,U,Dehpehk,County and village coordinates available,7
+TRUE,Pohnpei,U,Diadi-U,County and village coordinates available,9
+TRUE,Pohnpei,U,Dien-U,County and village coordinates available,28
+TRUE,Pohnpei,U,Kepin Awak,County and village coordinates available,58
+TRUE,Pohnpei,U,Kipar,County and village coordinates available,1
+TRUE,Pohnpei,U,Metipw-U,County and village coordinates available,17
+TRUE,Pohnpei,U,Mwand Peidak,County and village coordinates available,3
+TRUE,Pohnpei,U,Mwand Peidi,County and village coordinates available,4
+TRUE,Pohnpei,U,Nan U,County and village coordinates available,46
+TRUE,Pohnpei,U,Nanwel En Rohi,County and village coordinates available,20
+TRUE,Pohnpei,U,Nintu,County and village coordinates available,1
+TRUE,Pohnpei,U,Pahn Takai,County and village coordinates available,6
+TRUE,Pohnpei,U,Paliais,County and village coordinates available,1
+TRUE,Pohnpei,U,Parem Kep,County and village coordinates available,1
+TRUE,Pohnpei,U,Rohi,County and village coordinates available,34
+TRUE,Pohnpei,U,Saladak,County and village coordinates available,90
+TRUE,Pohnpei,U,Sekere,County and village coordinates available,1
+TRUE,Pohnpei,U,Souna,County and village coordinates available,5
+TRUE,Pohnpei,U,Takaieu,County and village coordinates available,21
+TRUE,Pohnpei,U,U,County and village coordinates available,6
+TRUE,Pohnpei,U,Yosmahru,County and village coordinates available,13
+TRUE,Yap,Dalipeebinaew,Falalop,County and village coordinates available,1
+TRUE,Yap,Dalipeebinaew,Fedor,County and village coordinates available,13
+TRUE,Yap,Dalipeebinaew,Ifaluk,County and village coordinates available,1
+TRUE,Yap,Dalipeebinaew,Mogmog,County and village coordinates available,1
+TRUE,Yap,Eauripik,Eauripik,County and village coordinates available,19
+TRUE,Yap,Elato Island,Elato Island,County and village coordinates available,20
+TRUE,Yap,Fais,Fais,County and village coordinates available,87
+TRUE,Yap,Fanif,Fanif,County and village coordinates available,1
+TRUE,Yap,Fanif,Gilfith,County and village coordinates available,7
+TRUE,Yap,Fanif,Keng,County and village coordinates available,1
+TRUE,Yap,Fanif,Rang,County and village coordinates available,5
+TRUE,Yap,Fanif,Rumuu',County and village coordinates available,17
+TRUE,Yap,Fanif,Satawal,County and village coordinates available,3
+TRUE,Yap,Fanif,Yyin,County and village coordinates available,3
+TRUE,Yap,Faraulap,Faraulap,County and village coordinates available,3
+TRUE,Yap,Faraulap,Fechailap,County and village coordinates available,10
+TRUE,Yap,Faraulap,Piig,County and village coordinates available,1
+TRUE,Yap,Gagil,Amun,County and village coordinates available,12
+TRUE,Yap,Gagil,Fais,County and village coordinates available,1
+TRUE,Yap,Gagil,Falalop,County and village coordinates available,1
+TRUE,Yap,Gagil,Gachpar,County and village coordinates available,13
+TRUE,Yap,Gagil,Ifaluk,County and village coordinates available,2
+TRUE,Yap,Gagil,Makiy,County and village coordinates available,11
+TRUE,Yap,Gagil,Riken,County and village coordinates available,1
+TRUE,Yap,Gagil,Ruu,County and village coordinates available,6
+TRUE,Yap,Gagil,Wanyan,County and village coordinates available,18
+TRUE,Yap,Gilman,Anoth,County and village coordinates available,2
+TRUE,Yap,Gilman,Dechmur,County and village coordinates available,1
+TRUE,Yap,Gilman,Guror,County and village coordinates available,11
+TRUE,Yap,Gilman,Magchagil,County and village coordinates available,2
+TRUE,Yap,Ifalik,Falalop,County and village coordinates available,1
+TRUE,Yap,Ifalik,Ifalik,County and village coordinates available,2
+TRUE,Yap,Ifalik,Ifaluk,County and village coordinates available,149
+TRUE,Yap,Kanifay,Nel,County and village coordinates available,6
+TRUE,Yap,Kanifay,Tafgif,County and village coordinates available,16
+TRUE,Yap,Lamotrek Island,Elato Island,County and village coordinates available,17
+TRUE,Yap,Lamotrek Island,Gitam,County and village coordinates available,1
+TRUE,Yap,Lamotrek Island,Lamotrek Island,County and village coordinates available,89
+TRUE,Yap,Maap,Bechiyal,County and village coordinates available,1
+TRUE,Yap,Maap,Keng,County and village coordinates available,2
+TRUE,Yap,Maap,Maap,County and village coordinates available,2
+TRUE,Yap,Maap,Plaw,County and village coordinates available,5
+TRUE,Yap,Maap,Rang,County and village coordinates available,1
+TRUE,Yap,Maap,Talngith,County and village coordinates available,12
+TRUE,Yap,Maap,Waloy,County and village coordinates available,4
+TRUE,Yap,Ngulu,Ngulu,County and village coordinates available,4
+TRUE,Yap,Rumung,Fais,County and village coordinates available,1
+TRUE,Yap,Rumung,Rumung,County and village coordinates available,1
+TRUE,Yap,Ruul,Asor,County and village coordinates available,1
+TRUE,Yap,Ruul,Balabat,County and village coordinates available,24
+TRUE,Yap,Ruul,Falalop,County and village coordinates available,7
+TRUE,Yap,Ruul,Fechailap,County and village coordinates available,1
+TRUE,Yap,Ruul,Gachpar,County and village coordinates available,1
+TRUE,Yap,Ruul,Gitam,County and village coordinates available,31
+TRUE,Yap,Ruul,Ifaluk,County and village coordinates available,3
+TRUE,Yap,Ruul,Magchagil,County and village coordinates available,1
+TRUE,Yap,Ruul,Mogmog,County and village coordinates available,3
+TRUE,Yap,Ruul,Ngof,County and village coordinates available,5
+TRUE,Yap,Ruul,Ngolog,County and village coordinates available,34
+TRUE,Yap,Ruul,Ruul,County and village coordinates available,3
+TRUE,Yap,Ruul,Satawal,County and village coordinates available,11
+TRUE,Yap,Ruul,Tagailap,County and village coordinates available,2
+TRUE,Yap,Ruul,Tanayboch,County and village coordinates available,6
+TRUE,Yap,Ruul,Worwoo',County and village coordinates available,19
+TRUE,Yap,Ruul,Yinuf,County and village coordinates available,14
+TRUE,Yap,Satawal,Lamotrek Island,County and village coordinates available,1
+TRUE,Yap,Satawal,Satawal,County and village coordinates available,174
+TRUE,Yap,Satawal,Tagailap,County and village coordinates available,2
+TRUE,Yap,Tamil,Dechmur,County and village coordinates available,5
+TRUE,Yap,Tamil,Elato Island,County and village coordinates available,2
+TRUE,Yap,Tamil,Falalop,County and village coordinates available,5
+TRUE,Yap,Tamil,Falalus,County and village coordinates available,1
+TRUE,Yap,Tamil,Fechailap,County and village coordinates available,1
+TRUE,Yap,Tamil,Gargey,County and village coordinates available,11
+TRUE,Yap,Tamil,Lamotrek Island,County and village coordinates available,6
+TRUE,Yap,Tamil,Mogmog,County and village coordinates available,2
+TRUE,Yap,Tamil,Satawal,County and village coordinates available,7
+TRUE,Yap,Tamil,Siliap,County and village coordinates available,8
+TRUE,Yap,Tamil,Tamil,County and village coordinates available,4
+TRUE,Yap,Tamil,Teb,County and village coordinates available,20
+TRUE,Yap,Ulithi Atoll,Asor,County and village coordinates available,18
+TRUE,Yap,Ulithi Atoll,Fadraii,County and village coordinates available,13
+TRUE,Yap,Ulithi Atoll,Falalop,County and village coordinates available,49
+TRUE,Yap,Ulithi Atoll,Fechailap,County and village coordinates available,24
+TRUE,Yap,Ulithi Atoll,Mogmog,County and village coordinates available,41
+TRUE,Yap,Ulithi Atoll,Piig,County and village coordinates available,3
+TRUE,Yap,Ulithi Atoll,Wanyan,County and village coordinates available,1
+TRUE,Yap,Weeloey,Adubwee,County and village coordinates available,6
+TRUE,Yap,Weeloey,Dugor,County and village coordinates available,13
+TRUE,Yap,Weeloey,Eauripik,County and village coordinates available,1
+TRUE,Yap,Weeloey,Fechailap,County and village coordinates available,1
+TRUE,Yap,Weeloey,Fedor,County and village coordinates available,1
+TRUE,Yap,Weeloey,Keng,County and village coordinates available,20
+TRUE,Yap,Weeloey,Lamotrek Island,County and village coordinates available,1
+TRUE,Yap,Weeloey,Mulroo,County and village coordinates available,3
+TRUE,Yap,Weeloey,Nimar,County and village coordinates available,23
+TRUE,Yap,Weeloey,Okaw,County and village coordinates available,6
+TRUE,Yap,Weeloey,Satawal,County and village coordinates available,1
+TRUE,Yap,Weeloey,Waloy,County and village coordinates available,1
+TRUE,Yap,Weeloey,Weeloey,County and village coordinates available,1
+TRUE,Yap,Woleai,Falalop,County and village coordinates available,130
+TRUE,Yap,Woleai,Falalus,County and village coordinates available,24
+TRUE,Yap,Woleai,Ifaluk,County and village coordinates available,1
+TRUE,Yap,Woleai,Siliap,County and village coordinates available,14
+TRUE,Yap,Woleai,Tagailap,County and village coordinates available,26
+TRUE,Yap,Woleai,Wattagai,County and village coordinates available,33
+TRUE,Yap,Woleai,Woleai,County and village coordinates available,11
+TRUE,Chuuk,Sadawan,Sadawan,County and village coordinates unavailable,16
+TRUE,Chuuk,Sokehs Pah,Sokehs Pah,County and village coordinates unavailable,1
+TRUE,Chuuk,Zz-Unknown-Chuuk,Unknown,County and village coordinates unavailable,3
+TRUE,Pohnpei,Zz-Unknown-Pohnpei,Unknown,County and village coordinates unavailable,4
+TRUE,Chuuk,Fefan,Unknown,Village coordinates unavailable; county available,3
+TRUE,Chuuk,Mortlock,Mortlock,Village coordinates unavailable; county available,8
+TRUE,Chuuk,Namonuito Atoll,Pohras,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Northwest,Northwest,Village coordinates unavailable; county available,31
+TRUE,Chuuk,Onei,Unknown,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Onei,Wone,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Patta,Unknown,Village coordinates unavailable; county available,2
+TRUE,Chuuk,Polle,Unknown,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Satawan Atoll,Mogmog,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Siis,Tatiw,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Tolensom,Unknown,Village coordinates unavailable; county available,14
+TRUE,Chuuk,Tonoas,Unknown,Village coordinates unavailable; county available,4
+TRUE,Chuuk,Udot,Unknown,Village coordinates unavailable; county available,9
+TRUE,Chuuk,Uman,U,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Weno,Michew,Village coordinates unavailable; county available,2
+TRUE,Chuuk,Weno,Nanpohnmal,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Weno,Palikir,Village coordinates unavailable; county available,1
+TRUE,Chuuk,Weno,Tenfar,Village coordinates unavailable; county available,5
+TRUE,Chuuk,Weno,Unknown,Village coordinates unavailable; county available,66
+TRUE,Kosrae,Lelu,Lukop,Village coordinates unavailable; county available,1
+TRUE,Kosrae,Lelu,Tofol,Village coordinates unavailable; county available,2
+TRUE,Kosrae,Lelu,U,Village coordinates unavailable; county available,1
+TRUE,Kosrae,Lelu,Unknown,Village coordinates unavailable; county available,5
+TRUE,Kosrae,Malem,Pahlap,Village coordinates unavailable; county available,1
+TRUE,Kosrae,Tafunsak,Tolu,Village coordinates unavailable; county available,1
+TRUE,Kosrae,Tafunsak,Unknown,Village coordinates unavailable; county available,4
+TRUE,Kosrae,Utwe,Unknown,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kitti,Ipwal,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Kitti,Koapine,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kitti,Marau,Village coordinates unavailable; county available,3
+TRUE,Pohnpei,Kitti,Nintok,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kitti,Olepel,Village coordinates unavailable; county available,9
+TRUE,Pohnpei,Kitti,Pahlap,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Kitti,Paliapailong,Village coordinates unavailable; county available,3
+TRUE,Pohnpei,Kitti,Pohrasapw,Village coordinates unavailable; county available,3
+TRUE,Pohnpei,Kitti,Rohi Pah,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kitti,Sounkroun,Village coordinates unavailable; county available,9
+TRUE,Pohnpei,Kitti,Tafunsak,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kitti,Weno,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kolonia,Dolen Kutoar,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kolonia,Ifaluk,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kolonia,Likie,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kolonia,Malem,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Kolonia,Miyub,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kolonia,Ninsei,Village coordinates unavailable; county available,18
+TRUE,Pohnpei,Kolonia,Nintok,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kolonia,Pcr,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Kolonia,Pohrakiet,Village coordinates unavailable; county available,4
+TRUE,Pohnpei,Kolonia,Ponlik,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Kolonia,Porakied,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Kolonia,Porakiet,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Akahk,Village coordinates unavailable; county available,6
+TRUE,Pohnpei,Madolenihmw,Deleur,Village coordinates unavailable; county available,4
+TRUE,Pohnpei,Madolenihmw,Dolapwail,Village coordinates unavailable; county available,5
+TRUE,Pohnpei,Madolenihmw,Ipwal,Village coordinates unavailable; county available,9
+TRUE,Pohnpei,Madolenihmw,Kepine,Village coordinates unavailable; county available,4
+TRUE,Pohnpei,Madolenihmw,Koapine,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Lehiak,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Lohd Powe,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Madolenihmw,Nan Kepin,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Nanseinpwel,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Parahu,Village coordinates unavailable; county available,4
+TRUE,Pohnpei,Madolenihmw,Pisemew,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Pohnallap,Village coordinates unavailable; county available,5
+TRUE,Pohnpei,Madolenihmw,Pohnauleng,Village coordinates unavailable; county available,12
+TRUE,Pohnpei,Madolenihmw,Ponlik,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Tamwohroi,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Tamworoi,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Madolenihmw,Unknown,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Nett,Fanapanges,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Nett,Iasiring,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Nett,Mwelilap,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Nett,Pohnangang,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Nett,Pohnmangahng,Village coordinates unavailable; county available,3
+TRUE,Pohnpei,Nett,Thol,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Nett,Unknown,Village coordinates unavailable; county available,16
+TRUE,Pohnpei,Sapwuahfik,Peniesene,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Chukuram,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Eir,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Iohl,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Ipwal,Village coordinates unavailable; county available,13
+TRUE,Pohnpei,Sokehs,Iras,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Kepinkep,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Likie,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,Sokehs,Nanimwinsapw,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Roie,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Satawal,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,Sokehs,Tamwohroi,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,U,Adoroi,Village coordinates unavailable; county available,4
+TRUE,Pohnpei,U,Fanomo,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,U,Luhkok,Village coordinates unavailable; county available,14
+TRUE,Pohnpei,U,Mwan,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,U,Pahlap,Village coordinates unavailable; county available,21
+TRUE,Pohnpei,U,Rohi Pah,Village coordinates unavailable; county available,7
+TRUE,Pohnpei,U,Rohi Powe,Village coordinates unavailable; county available,2
+TRUE,Pohnpei,U,Siliap,Village coordinates unavailable; county available,1
+TRUE,Pohnpei,U,Utwa,Village coordinates unavailable; county available,1
+TRUE,Yap,Dalipeebinaew,Arngel,Village coordinates unavailable; county available,16
+TRUE,Yap,Dalipeebinaew,Kanif,Village coordinates unavailable; county available,11
+TRUE,Yap,Dalipeebinaew,Tagegin,Village coordinates unavailable; county available,1
+TRUE,Yap,Dalipeebinaew,Yaboch,Village coordinates unavailable; county available,5
+TRUE,Yap,Fanif,Atliw,Village coordinates unavailable; county available,14
+TRUE,Yap,Fanif,Ayrech,Village coordinates unavailable; county available,1
+TRUE,Yap,Fanif,Mal'ay,Village coordinates unavailable; county available,1
+TRUE,Yap,Fanif,Malway,Village coordinates unavailable; county available,4
+TRUE,Yap,Fanif,Runuw,Village coordinates unavailable; county available,1
+TRUE,Yap,Faraulap,Pigue,Village coordinates unavailable; county available,5
+TRUE,Yap,Gagil,Binaw,Village coordinates unavailable; county available,1
+TRUE,Yap,Gagil,Lebinaw,Village coordinates unavailable; county available,3
+TRUE,Yap,Gagil,Leng,Village coordinates unavailable; county available,8
+TRUE,Yap,Gagil,May,Village coordinates unavailable; county available,1
+TRUE,Yap,Gagil,Mey,Village coordinates unavailable; county available,1
+TRUE,Yap,Gagil,Muyub,Village coordinates unavailable; county available,2
+TRUE,Yap,Gilman,Gachlaw,Village coordinates unavailable; county available,2
+TRUE,Yap,Gilman,Michew,Village coordinates unavailable; county available,1
+TRUE,Yap,Gilman,Thabeth,Village coordinates unavailable; county available,6
+TRUE,Yap,Gilman,Towoway,Village coordinates unavailable; county available,1
+TRUE,Yap,Ifalik,Pohnrakied,Village coordinates unavailable; county available,1
+TRUE,Yap,Ifalik,Rawey,Village coordinates unavailable; county available,6
+TRUE,Yap,Kanifay,Faraa,Village coordinates unavailable; county available,6
+TRUE,Yap,Kanifay,Ga'l,Village coordinates unavailable; county available,1
+TRUE,Yap,Kanifay,Kanif,Village coordinates unavailable; county available,1
+TRUE,Yap,Kanifay,Mal'ay,Village coordinates unavailable; county available,5
+TRUE,Yap,Kanifay,Ne'f,Village coordinates unavailable; county available,4
+TRUE,Yap,Maap,Amin,Village coordinates unavailable; county available,15
+TRUE,Yap,Maap,Chool,Village coordinates unavailable; county available,2
+TRUE,Yap,Maap,Malon,Village coordinates unavailable; county available,6
+TRUE,Yap,Maap,Michew,Village coordinates unavailable; county available,4
+TRUE,Yap,Maap,Toruw,Village coordinates unavailable; county available,6
+TRUE,Yap,Maap,Wacholab,Village coordinates unavailable; county available,8
+TRUE,Yap,Maap,Waned,Village coordinates unavailable; county available,9
+TRUE,Yap,Maap,Wurilee,Village coordinates unavailable; county available,1
+TRUE,Yap,Rumung,Bulwol,Village coordinates unavailable; county available,1
+TRUE,Yap,Rumung,Fal,Village coordinates unavailable; county available,4
+TRUE,Yap,Rumung,Gaanaun,Village coordinates unavailable; county available,3
+TRUE,Yap,Rumung,Mechiol,Village coordinates unavailable; county available,1
+TRUE,Yap,Rumung,Riy,Village coordinates unavailable; county available,1
+TRUE,Yap,Ruul,Arngel,Village coordinates unavailable; county available,1
+TRUE,Yap,Ruul,Benik,Village coordinates unavailable; county available,2
+TRUE,Yap,Ruul,Dachngar,Village coordinates unavailable; county available,17
+TRUE,Yap,Ruul,Dulkan,Village coordinates unavailable; county available,6
+TRUE,Yap,Ruul,Ganelay,Village coordinates unavailable; county available,1
+TRUE,Yap,Ruul,Lamer,Village coordinates unavailable; county available,6
+TRUE,Yap,Ruul,Luwech,Village coordinates unavailable; county available,10
+TRUE,Yap,Ruul,Ngariy,Village coordinates unavailable; county available,4
+TRUE,Yap,Ruul,Pulap,Village coordinates unavailable; county available,1
+TRUE,Yap,Ruul,Runuw,Village coordinates unavailable; county available,1
+TRUE,Yap,Ruul,Tabinfiy,Village coordinates unavailable; county available,1
+TRUE,Yap,Ruul,Talguw,Village coordinates unavailable; county available,4
+TRUE,Yap,Ruul,Wacholab,Village coordinates unavailable; county available,1
+TRUE,Yap,Ruul,Wugem,Village coordinates unavailable; county available,1
+TRUE,Yap,Satawal,Houk,Village coordinates unavailable; county available,1
+TRUE,Yap,Satawal,Puluwat,Village coordinates unavailable; county available,2
+TRUE,Yap,Tamil,Aff,Village coordinates unavailable; county available,8
+TRUE,Yap,Tamil,Bugol,Village coordinates unavailable; county available,25
+TRUE,Yap,Tamil,Bulwol,Village coordinates unavailable; county available,1
+TRUE,Yap,Tamil,Dabach,Village coordinates unavailable; county available,5
+TRUE,Yap,Tamil,Doomchuy,Village coordinates unavailable; county available,2
+TRUE,Yap,Tamil,Maa,Village coordinates unavailable; county available,12
+TRUE,Yap,Tamil,Meerur,Village coordinates unavailable; county available,8
+TRUE,Yap,Tamil,Pigue,Village coordinates unavailable; county available,3
+TRUE,Yap,Tamil,Thol,Village coordinates unavailable; county available,14
+TRUE,Yap,Ulithi Atoll,Fassarai,Village coordinates unavailable; county available,19
+TRUE,Yap,Ulithi Atoll,Pigue,Village coordinates unavailable; county available,6
+TRUE,Yap,Ulithi Atoll,Sokehs Pah,Village coordinates unavailable; county available,1
+TRUE,Yap,Ulithi Atoll,Soledi,Village coordinates unavailable; county available,1
+TRUE,Yap,Ulithi Atoll,Tabelang,Village coordinates unavailable; county available,8
+TRUE,Yap,Ulithi Atoll,Talguw,Village coordinates unavailable; county available,1
+TRUE,Yap,Weeloey,Dachngar,Village coordinates unavailable; county available,1
+TRUE,Yap,Weeloey,Kaday,Village coordinates unavailable; county available,6
+TRUE,Yap,Weeloey,Mabuu,Village coordinates unavailable; county available,5
+TRUE,Yap,Weeloey,Numnung,Village coordinates unavailable; county available,2
+TRUE,Yap,Weeloey,Pigue,Village coordinates unavailable; county available,1
+TRUE,Yap,Weeloey,Tomwara,Village coordinates unavailable; county available,1
+TRUE,Yap,Woleai,Tabelang,Village coordinates unavailable; county available,1

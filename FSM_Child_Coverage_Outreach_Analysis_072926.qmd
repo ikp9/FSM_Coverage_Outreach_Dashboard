@@ -2,19 +2,20 @@
 title: "FSM Child Coverage and Outreach Planning"
 author: "Report provided by: USAPI Assessment Team | Surveillance & Epidemiology Branch | ISD | NCIRD | CDC"
 date: "Data as of July 29, 2026"
-output:html_document:
+format:
+  html:
     theme: flatly
-    highlight: tango
-    number_sections: false
-    df_print: paged
+    syntax-highlighting: tango
+    number-sections: false
+    df-print: paged
     css: styles.css
-  pdf_document: default
-  word_document: default
-editor_options: 
-  chunk_output_type: console
-  markdown: 
+  pdf: default
+  docx: default
+editor:
+  markdown:
     wrap: 72
 ---
+
 This is the data wrangling, cleaning, and analytic code.
 
 # Install and call required packages
@@ -24,7 +25,9 @@ STEP 1: Make a list of packages required to run code/reports
 STEP 2: Use a function to install/call on packages if they are not
 already installed/called on
 
-```{r install and call on packages, include=FALSE}
+```{r}
+#| label: install-and-call-on-packages
+#| include: false
 
 #STEP 1: Load packages and install if needed
 
@@ -74,7 +77,9 @@ library(readxl)
 
 ## !!!! Update the directory path if needed !!!!
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 
 # -------------------------------------------------------------------
 # Project directories
@@ -108,7 +113,9 @@ here::dr_here()
 ```
 
 ## !!!! Make sure to update FILE NAMES for each new run (e.g., date) !!!!
-```{r input files, include=FALSE}
+```{r}
+#| label: input-files
+#| include: false
 # -------------------------------------------------------------------
 # Input files
 # Update filenames here when new WebIZ reports are downloaded
@@ -171,7 +178,9 @@ STEP 2: Import Patient Detail with Services
 STEP 3: Import Reminder/Recall
 
 
-```{r import data, include=FALSE}
+```{r}
+#| label: import-data
+#| include: false
 
 # Import roster
 roster <- rio::import(roster_file) %>%
@@ -209,7 +218,9 @@ interest.
 
 ## !!!! UPDATE AS OF DATE AS NEEDED !!!!
 
-```{r clean roster, include=FALSE}
+```{r}
+#| label: clean-roster
+#| include: false
 
 #Set the "age as of" date. For example, age 19 - 35 months *as of January 1, 2026*
 
@@ -245,7 +256,9 @@ roster2 <- roster %>%
 
 QA roster
 
-```{r roster2 qa, include=FALSE}
+```{r}
+#| label: roster2-qa
+#| include: false
 
 #qa to ensure agegroup, age_years, and age_months was created properly and that ages are in preferred age group only
 
@@ -283,7 +296,9 @@ interest.
 
 ## !!!! UPDATE AS OF DATE AS NEEDED !!!!
 
-```{r reminder2, include=FALSE}
+```{r}
+#| label: reminder2
+#| include: false
 #Set the "age as of" date. For example, age 19 - 35 months *as of January 1, 2026*
 
 age_as_of_date <- ymd("2026-07-01")
@@ -340,7 +355,9 @@ STEP 2: Determine whether the dose is considered "final" based on age
 STEP 3: Create categorizations for delinquency according to the
 recommended schedule
 
-```{r recs, include=FALSE}
+```{r}
+#| label: recs
+#| include: false
 
 reminder3 <- reminder2 %>%
   # Keep only children 2-83 months
@@ -503,7 +520,9 @@ head(reminder3)
 
 Determine specific product types per child based on recommendations
 
-```{r recs2, include=FALSE}
+```{r}
+#| label: recs2
+#| include: false
 
 #Determine which vaccines are needed based on the reminder
 
@@ -615,7 +634,9 @@ interest.
 
 ## !!!! UPDATE AS OF DATE AS NEEDED !!!!
 
-```{r clean detail, include=FALSE}
+```{r}
+#| label: clean-detail
+#| include: false
 
 age_as_of_date <- ymd("2026-07-01")
 
@@ -649,7 +670,9 @@ detail2 <-detail %>%
 
 QA detail report
 
-```{r detail2 qa, include=FALSE}
+```{r}
+#| label: detail2-qa
+#| include: false
 
 #qa to ensure agegroup was created properly
 print(detail2)
@@ -686,7 +709,9 @@ or added to the wrong vaccine
 NOTE 3: Calculating the number of doses by antigen will be completed
 later
 
-```{r transpose vaccine data, include=FALSE}
+```{r}
+#| label: transpose-vaccine-data
+#| include: false
 
 # STEP 1 transpose vaccine data using cvx codes. This transposes the patient detail list using vaccination_code_id to get one line per patient with all vaccine history. 
 ################## BCG ##################
@@ -829,7 +854,9 @@ rota_3d <- detail2 %>%
 
 QA transposed data
 
-```{r qa transposed data, include=FALSE}
+```{r}
+#| label: qa-transposed-data
+#| include: false
 #print all for qa
 bcg
 dtap
@@ -855,7 +882,9 @@ grouping (by patient_name) intact
 
 Step4: Retain all variables in final result
 
-```{r, sorting date variables, include=FALSE}
+```{r}
+#| label: sorting-date-variables
+#| include: false
 
 # STEP 1: Sort vaccine doses in chronological order   
 
@@ -967,7 +996,9 @@ sorted_rota <- rota %>%
 
 QA sorted data
 
-```{r qa sorted data, include=FALSE}
+```{r}
+#| label: qa-sorted-data
+#| include: false
 #print all for qa
 print(sorted_bcg)
 sorted_dtap
@@ -988,7 +1019,9 @@ STEP 2: merge vaccine data with full_join, so that the transposed
 vaccine date datasets so there is one line per patient with all of their
 vaccine dates
 
-```{r, merge vaccine data, include=FALSE}
+```{r}
+#| label: merge-vaccine-data
+#| include: false
 
 # STEP 1: Create a list object of selected, sorted, vaccines
 vaccine_data <- list(
@@ -1013,7 +1046,9 @@ detail3 <- vaccine_data %>%
 
 QA merged vaccine data
 
-```{r qa merged vaccine data, include=FALSE}
+```{r}
+#| label: qa-merged-vaccine-data
+#| include: false
 #print for qa
 print(detail3)
 ```
@@ -1026,7 +1061,10 @@ STEP 2: comment name of variables (if any) need to be dropped
 
 STEP 3: drop the unwanted variables with subset
 
-```{r drop unwanted variables, include=FALSE, eval=FALSE}
+```{r}
+#| label: drop-unwanted-variables
+#| include: false
+#| eval: false
 ###########################################
 #      this code chunk is optional        #
 ###########################################
@@ -1045,7 +1083,10 @@ detail3 <- subset(detail3, select = -c(
 
 QA dropped variables
 
-```{r qa dropped variables, include=FALSE, eval=FALSE}
+```{r}
+#| label: qa-dropped-variables
+#| include: false
+#| eval: false
 #print column named to check variables were dropped
 colnames(detail3)
 ```
@@ -1060,7 +1101,9 @@ STEP 2: Extract patient id (WebIZ) from the parentheses in the
 patient_name variable, so that it matches the patient roster Patient_ID
 variable
 
-```{r more detail cleaning, include=FALSE}
+```{r}
+#| label: more-detail-cleaning
+#| include: false
 
 #Start highlight here
 detail4 <- detail3 %>%
@@ -1077,7 +1120,9 @@ detail4 <- detail3 %>%
 
 QA detail
 
-```{r qa detail4, include=FALSE}
+```{r}
+#| label: qa-detail4
+#| include: false
 #print for qa
 detail4
 colnames(detail4)
@@ -1105,7 +1150,9 @@ STEP 5: Make county uppercase
 
 STEP 6: Subset to only include active patients
 
-```{r merge detail3 and roster2, include=FALSE}
+```{r}
+#| label: merge-detail3-and-roster2
+#| include: false
 
 roster2 <- roster2 %>%
   mutate(patient_id = as.character(patient_id))
@@ -1140,7 +1187,9 @@ clean <- full_join(roster2, detail4, by= c("patient_id")) %>%
 
 ```
 
-```{r merge reminder3 and clean, include=FALSE}
+```{r}
+#| label: merge-reminder3-and-clean
+#| include: false
 #STEP 1: use full join to merge clean and reminder4, by patient id
 clean2 <- full_join(
   clean,
@@ -1157,7 +1206,9 @@ clean2 <- full_join(
 
 QA merge
 
-```{r merge2 qa, include=FALSE}
+```{r}
+#| label: merge2-qa
+#| include: false
 # --------------------------#
 #     QA CLEAN DATASET      #
 # --------------------------# -->
@@ -1220,7 +1271,9 @@ roster_detail_data
 Based on clinical guidance related to product types and catch-up
 guidance
 
-```{r hib, include=FALSE}
+```{r}
+#| label: hib
+#| include: false
 
 # ---------------------------------------#
 # REMOVE NON-HIB PRODCUSTS FROM ANALYSIS #
@@ -1253,7 +1306,9 @@ head(hib)
 
 QA HIB
 
-```{r hib qa, include=FALSE}
+```{r}
+#| label: hib-qa
+#| include: false
 
 head(hib)
 table(hib$vaccination_code_id)
@@ -1282,7 +1337,9 @@ STEP 7: Subset to only include active patients
 
 STEP 8: Remove unwanted variables
 
-```{r merge hib and roster2, include=FALSE}
+```{r}
+#| label: merge-hib-and-roster2
+#| include: false
 
 #STEP 1: use full join to merge roster2 and hib, by patient id
 clean_hib <- full_join(roster2, hib, by= c("patient_id")) %>% 
@@ -1312,7 +1369,9 @@ clean_hib <- full_join(roster2, hib, by= c("patient_id")) %>%
 
 QA clean hib
 
-```{r clean_hib qa, include=FALSE}
+```{r}
+#| label: clean-hib-qa
+#| include: false
 
 head(clean_hib)
 colnames(clean_hib)
@@ -1342,7 +1401,9 @@ workflows when working with grouped data frames in R's tidyverse. It
 ensures that subsequent operations are performed on the entire dataset
 rather than within groups unless explicitly intended.
 
-```{r hib dose number, include=FALSE}
+```{r}
+#| label: hib-dose-number
+#| include: false
 clean_hib2 <- clean_hib %>%
   mutate(
   ) %>%
@@ -1376,7 +1437,9 @@ clean_hib2 <- clean_hib %>%
 
 QA clean hib2
 
-```{r clean_hib2 qa, include=FALSE}
+```{r}
+#| label: clean-hib2-qa
+#| include: false
 
 head(clean_hib2)
 sort(colnames(clean_hib2))
@@ -1392,7 +1455,9 @@ as.data.frame(table(clean_hib2$dose_number))
 
 List columns in desired order to reorder them
 
-```{r hib ordering columns, include=FALSE}
+```{r}
+#| label: hib-ordering-columns
+#| include: false
 #STEP 1: list columns in desired order using select statement
 clean_hib3 <- clean_hib2 %>%
    
@@ -1408,7 +1473,9 @@ clean_hib3 <- clean_hib2 %>%
 
 QA clean Hib3
 
-```{r clean_hib3 qa, include=FALSE}
+```{r}
+#| label: clean-hib3-qa
+#| include: false
 #qa column names are in desired order, and view data
 colnames(clean_hib3)
 head(clean_hib3)
@@ -1422,7 +1489,9 @@ no dose
 
 STEP 2: Create product variable based on conditions
 
-```{r hib flag product names and no hib doses, include=FALSE}
+```{r}
+#| label: hib-flag-product-names-and-no-hib-doses
+#| include: false
 clean_hib4 <- clean_hib3 %>%
   mutate(
     #STEP 1: set dose_number and vaccination_code_id for kids on roster with no dose
@@ -1442,7 +1511,9 @@ clean_hib4 <- clean_hib3 %>%
 
 QA clean Hib4
 
-```{r clean_hib4 qa, include=FALSE}
+```{r}
+#| label: clean-hib4-qa
+#| include: false
 #qa column names are in desired order, and view data
 head(clean_hib4)
 table(clean_hib4$vaccination_code_id, clean_hib4$product)
@@ -1457,7 +1528,9 @@ STEP 1: Filter rows to keep only those with doses
 
 STEP 2: Transpose data creating product dose number
 
-```{r hib create product dose number, include=FALSE}
+```{r}
+#| label: hib-create-product-dose-number
+#| include: false
 # STEP 1: filter rows to keep only those with doses
 clean_hib4_filtered <- clean_hib4 %>%
   filter(product != "none")
@@ -1473,7 +1546,9 @@ product_dosenum <- clean_hib4_filtered %>%
 
 QA clean product dose number and county/village data
 
-```{r product dose number qa, include=FALSE}
+```{r}
+#| label: product-dose-number-qa
+#| include: false
 #qa column names are in desired order, and view data
 head(product_dosenum)
 colnames(product_dosenum)
@@ -1533,7 +1608,9 @@ STEP 6: complete identifying state
 STEP 7: complete identifying county
   
       
-```{r updated cleaning counties, include=FALSE}
+```{r}
+#| label: updated-cleaning-counties
+#| include: false
 #Updated county cleaning 
 # =============================================================================
 # CLEAN PROVIDER, STATE, COUNTY, CITY, AND REGION
@@ -2304,7 +2381,9 @@ clean3 <- clean2 %>%
 
 QA county data
 
-```{r qa of county, include=FALSE}
+```{r}
+#| label: qa-of-county
+#| include: false
 # Confirm the state variable exists
 names(clean3)[str_detect(names(clean3), "state")]
 
@@ -2372,7 +2451,9 @@ na_region
 
 # Merge HIB PRODUCT_DOSENUM & create vacine indicators
 
-```{r vaccine indicators part 1, include=FALSE}
+```{r}
+#| label: vaccine-indicators-part-1
+#| include: false
 #this is creating the indicators, and making them numeric so they can later be counted
 #this step must be done in a separate code chunk from counting doses and creating UTD variables. 
 
@@ -2440,14 +2521,18 @@ left_join(product_dosenum, by = "patient_id") %>%
 
 QA clean3
 
-```{r qa clean 3, include=FALSE}
+```{r}
+#| label: qa-clean-3
+#| include: false
 print(clean3)
 
 ```
 
 # Count doses
 
-```{r counting and creating doses, include=FALSE}
+```{r}
+#| label: counting-and-creating-doses
+#| include: false
 #counting doses and creating UTD variables 
 
 clean5 <- clean4 %>% 
@@ -2879,7 +2964,9 @@ hib_utd = case_when(
 
 QA CLEAN5
 
-```{r qa clean5, include=FALSE}
+```{r}
+#| label: qa-clean5
+#| include: false
 clean5 %>% 
 count(bcgbirthdose)
 clean5 %>% 
@@ -2935,7 +3022,9 @@ count(county)
 
 # Create vaccine series indicators, UTD for age, time since last vax, age at last vax
 
-```{r series indicators, include=FALSE}
+```{r}
+#| label: series-indicators
+#| include: false
 #creating utd series variables 
 
 clean6 <- clean5 %>% 
@@ -3122,7 +3211,9 @@ count(utd_no_mmr)
 
 # Keep only age 2 - 83 months and select variables
 
-```{r clean7, include=FALSE}
+```{r}
+#| label: clean7
+#| include: false
 
 clean7 <- clean6 %>%
   select(
@@ -3221,7 +3312,9 @@ clean7 <- clean6 %>%
 
 QA CLEAN7
 
-```{r qa clean7, include=FALSE}
+```{r}
+#| label: qa-clean7
+#| include: false
 
 print(clean7)
 
@@ -3244,7 +3337,9 @@ names(clean7)
 
 clean11_merged is the final patient-level dataframe from this step
 
-```{r village mapping, include=FALSE}
+```{r}
+#| label: village-mapping
+#| include: false
 
 # Filter to wanted feature classes
 placenames2 <- placenames %>%
@@ -3576,7 +3671,9 @@ writexl::write_xlsx(
 
 # Create individual risk score
 
-```{r risk score, include=FALSE}
+```{r}
+#| label: risk-score
+#| include: false
 
 clean12_merged <- clean11_merged %>%
   mutate(
@@ -3606,7 +3703,9 @@ clean12_merged%>%
 
 # Dataset 1 - Export final full patient-level dataframe to Excel
 
-```{r export_excel, echo=FALSE}
+```{r}
+#| label: export-excel
+#| echo: false
 getwd()
 
 if (!requireNamespace("openxlsx", quietly = TRUE)) {
@@ -3740,7 +3839,9 @@ message(
 for small islands -All counties on main islands use same area - haven't
 been able to find
 
-```{r pop density, include=FALSE}
+```{r}
+#| label: pop-density
+#| include: false
 
 
 pop_density <- rio::import(census_file) %>%

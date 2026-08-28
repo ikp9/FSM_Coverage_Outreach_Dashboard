@@ -95,6 +95,10 @@ dashboard_files <- c(
   patient = here::here(
     "data",
     "patient_dashboard.csv"
+  ),
+  adolescent = here::here(
+    "data",
+    "adolescent_patient_dashboard.csv"
   )
 )
 
@@ -172,6 +176,47 @@ patient <- read_csv(
   locale = locale(encoding = "windows-1252"),
   show_col_types = FALSE
 )
+
+adolescent <- read_csv(
+  dashboard_files[["adolescent"]],
+  locale = locale(encoding = "windows-1252"),
+  show_col_types = FALSE
+)
+
+required_adolescent_dashboard_columns <- c(
+  "record_id",
+  "gender",
+  "age_years",
+  "state",
+  "county",
+  "village",
+  "need_hpv_dose_1",
+  "need_hpv_dose_2",
+  "tdap_1plus",
+  "hpv_1plus",
+  "hpv_utd",
+  "valid_fsm_state",
+  "county_latitude",
+  "county_longitude",
+  "village_latitude",
+  "village_longitude"
+)
+
+missing_adolescent_dashboard_columns <- setdiff(
+  required_adolescent_dashboard_columns,
+  names(adolescent)
+)
+
+if (length(missing_adolescent_dashboard_columns) > 0) {
+  stop(
+    paste0(
+      "The adolescent dashboard file is missing required columns:\n  - ",
+      paste(missing_adolescent_dashboard_columns, collapse = "\n  - "),
+      "\n\nRun:\n  source(here::here(\"R\", \"prepare_data.R\"))"
+    ),
+    call. = FALSE
+  )
+}
 
 # Dashboard coverage components mirror the age-specific requirements used in
 # the analytic UTD-for-age definition. Defining them here also corrects the
@@ -438,6 +483,53 @@ filter_coverage_age <- function(data, age_group) {
     )
 }
 
+fsm_states <- c(
+  "Chuuk",
+  "Kosrae",
+  "Pohnpei",
+  "Yap"
+)
+
+adolescent_vaccine_choices <- c(
+  "Tdap (all teens)" = "tdap_1plus",
+  "≥1 HPV (females)" = "hpv_1plus",
+  "HPV UTD (females)" = "hpv_utd"
+)
+
+adolescent_age_choices <- c(
+  "9–10 years" = "9_10",
+  "11–12 years" = "11_12",
+  "13–17 years" = "13_17",
+  "9–17 years" = "9_17"
+)
+
+adolescent_age_ranges <- list(
+  "9_10" = c(9, 10),
+  "11_12" = c(11, 12),
+  "13_17" = c(13, 17),
+  "9_17" = c(9, 17)
+)
+
+adolescent_vaccine_label <- function(variable) {
+  labels <- names(adolescent_vaccine_choices)[
+    match(variable, adolescent_vaccine_choices)
+  ]
+
+  if (length(labels) == 0 || is.na(labels[[1]])) {
+    return("Selected vaccine")
+  }
+
+  labels[[1]]
+}
+
+safe_dashboard_median <- function(x) {
+  if (length(x) == 0 || all(is.na(x))) {
+    return(NA_real_)
+  }
+
+  median(x, na.rm = TRUE)
+}
+
 ui <- page_navbar(
   title = "From Shore to Shot",
   fillable = FALSE,
@@ -673,6 +765,92 @@ ui <- page_navbar(
       )
     )
   ),
+  nav_panel(
+    "Adolescent Vaccination Coverage and Planning",
+    layout_sidebar(
+      fillable = FALSE,
+      sidebar = sidebar(
+        selectInput(
+          "adolescent_vaccine",
+          "Vaccine",
+          choices = adolescent_vaccine_choices,
+          selected = "tdap_1plus"
+        ),
+        selectInput(
+          "adolescent_age_group",
+          "Age group",
+          choices = adolescent_age_choices,
+          selected = "9_17"
+        ),
+        selectInput(
+          "adolescent_map_state",
+          "Map state",
+          choices = setNames(
+            c("FSM", fsm_states),
+            c("All FSM", fsm_states)
+          ),
+          selected = "FSM"
+        ),
+        tags$p(
+          class = "small-note",
+          paste0(
+            "The chart always compares FSM overall with all four states; the maps ",
+            "use the selected map state. Tdap includes all adolescents; HPV ",
+            "indicators include females only. The village map ",
+            "uses the HPV dose 1 reminder flag for ≥1 HPV, the HPV dose 2 reminder ",
+            "flag for HPV UTD, and Tdap coverage equal to 0 for Tdap."
+          )
+        )
+      ),
+      card(
+        class = "coverage-chart-card",
+        card_header("Vaccination coverage by geography"),
+        plotlyOutput("adolescent_coverage_bar", height = "350px")
+      ),
+      layout_columns(
+        card(
+          full_screen = TRUE,
+          class = "overview-map-card",
+          card_header("Vaccination coverage by county"),
+          tags$p(
+            class = "small-note map-note",
+            paste0(
+              "County-level coverage for the selected vaccine and age group. ",
+              "Marker size represents the eligible denominator."
+            )
+          ),
+          div(
+            class = "overview-map",
+            leafletOutput(
+              "adolescent_coverage_map",
+              height = "430px"
+            )
+          )
+        ),
+        card(
+          full_screen = TRUE,
+          class = "overview-map-card",
+          card_header("Patients needing vaccine by village"),
+          tags$p(
+            class = "small-note map-note",
+            paste0(
+              "Village-level counts for the selected vaccine and age group. ",
+              "Marker size increases with the number of patients needing vaccine."
+            )
+          ),
+          div(
+            class = "overview-map",
+            leafletOutput(
+              "adolescent_needs_map",
+              height = "430px"
+            )
+          )
+        ),
+        col_widths = c(6, 6),
+        class = "overview-map-grid"
+      )
+    )
+  ),
   nav_panel("Community risk & access",
             layout_sidebar(
               sidebar=sidebar(selectInput("community_id", "Community", choices=setNames(community$community_id, paste(community$state, community$county, sep=" — ")))),
@@ -773,6 +951,382 @@ ui <- page_navbar(
 )
 
 server <- function(input, output, session) {
+  adolescent_selected_data <- reactive({
+    req(
+      input$adolescent_vaccine,
+      input$adolescent_age_group
+    )
+
+    age_range <- adolescent_age_ranges[[
+      input$adolescent_age_group
+    ]]
+
+    x <- adolescent %>%
+      filter(
+        valid_fsm_state,
+        state %in% fsm_states,
+        between(
+          age_years,
+          age_range[[1]],
+          age_range[[2]]
+        )
+      )
+
+    if (input$adolescent_vaccine != "tdap_1plus") {
+      x <- x %>%
+        filter(gender == "Female")
+    }
+
+    x %>%
+      mutate(
+        selected_indicator = suppressWarnings(
+          as.numeric(.data[[input$adolescent_vaccine]])
+        )
+      )
+  })
+
+  adolescent_coverage_bar_data <- reactive({
+    x <- adolescent_selected_data()
+
+    fsm_summary <- x %>%
+      summarise(
+        eligible_patients = n_distinct(
+          record_id[!is.na(selected_indicator)],
+          na.rm = TRUE
+        ),
+        patients_covered = n_distinct(
+          record_id[selected_indicator == 1],
+          na.rm = TRUE
+        )
+      ) %>%
+      mutate(geography = "FSM Overall")
+
+    state_summary <- x %>%
+      group_by(state) %>%
+      summarise(
+        eligible_patients = n_distinct(
+          record_id[!is.na(selected_indicator)],
+          na.rm = TRUE
+        ),
+        patients_covered = n_distinct(
+          record_id[selected_indicator == 1],
+          na.rm = TRUE
+        ),
+        .groups = "drop"
+      ) %>%
+      rename(geography = state)
+
+    state_template <- tibble::tibble(
+      geography = fsm_states
+    )
+
+    bind_rows(
+      fsm_summary,
+      state_template %>%
+        left_join(
+          state_summary,
+          by = "geography"
+        )
+    ) %>%
+      mutate(
+        eligible_patients = coalesce(
+          eligible_patients,
+          0L
+        ),
+        patients_covered = coalesce(
+          patients_covered,
+          0L
+        ),
+        coverage = if_else(
+          eligible_patients > 0,
+          100 * patients_covered / eligible_patients,
+          NA_real_
+        ),
+        geography = factor(
+          geography,
+          levels = c("FSM Overall", fsm_states)
+        ),
+        bar_color = if_else(
+          geography == "FSM Overall",
+          "#003e73",
+          "#2b8cbe"
+        )
+      )
+  })
+
+  adolescent_selected_map_data <- reactive({
+    req(input$adolescent_map_state)
+
+    x <- adolescent_selected_data()
+
+    if (input$adolescent_map_state != "FSM") {
+      x <- x %>%
+        filter(state == input$adolescent_map_state)
+    }
+
+    x
+  })
+
+  output$adolescent_coverage_bar <- renderPlotly({
+    d <- adolescent_coverage_bar_data() %>%
+      filter(!is.na(coverage))
+
+    validate(
+      need(
+        nrow(d) > 0,
+        "No eligible adolescent patients are available for this selection."
+      )
+    )
+
+    vaccine_label <- adolescent_vaccine_label(
+      input$adolescent_vaccine
+    )
+
+    plot_ly(
+      d,
+      x = ~geography,
+      y = ~coverage,
+      type = "bar",
+      marker = list(color = d$bar_color),
+      text = ~paste0(round(coverage, 1), "%"),
+      textposition = "outside",
+      hovertext = ~paste0(
+        "<b>", geography, "</b><br>",
+        vaccine_label, ": ", sprintf("%.1f", coverage), "%<br>",
+        "Patients covered: ", format(patients_covered, big.mark = ","), "<br>",
+        "Eligible patients: ", format(eligible_patients, big.mark = ",")
+      ),
+      hoverinfo = "text"
+    ) %>%
+      layout(
+        xaxis = list(title = ""),
+        yaxis = list(
+          title = "Coverage (%)",
+          range = c(0, 105),
+          ticksuffix = "%"
+        ),
+        margin = list(l = 70, r = 25, t = 20, b = 70),
+        showlegend = FALSE
+      )
+  })
+
+  adolescent_county_coverage_data <- reactive({
+    adolescent_selected_map_data() %>%
+      filter(
+        !is.na(county),
+        str_trim(county) != ""
+      ) %>%
+      group_by(
+        state,
+        county
+      ) %>%
+      summarise(
+        eligible_patients = n_distinct(
+          record_id[!is.na(selected_indicator)],
+          na.rm = TRUE
+        ),
+        patients_covered = n_distinct(
+          record_id[selected_indicator == 1],
+          na.rm = TRUE
+        ),
+        county_latitude = safe_dashboard_median(county_latitude),
+        county_longitude = safe_dashboard_median(county_longitude),
+        .groups = "drop"
+      ) %>%
+      mutate(
+        coverage = if_else(
+          eligible_patients > 0,
+          100 * patients_covered / eligible_patients,
+          NA_real_
+        ),
+        marker_radius = pmin(
+          22,
+          pmax(5, 4 + sqrt(eligible_patients))
+        )
+      )
+  })
+
+  output$adolescent_coverage_map <- renderLeaflet({
+    x <- adolescent_county_coverage_data() %>%
+      filter(
+        eligible_patients > 0,
+        !is.na(coverage),
+        !is.na(county_latitude),
+        !is.na(county_longitude)
+      )
+
+    validate(
+      need(
+        nrow(x) > 0,
+        "No geocoded county coverage data are available for this selection."
+      )
+    )
+
+    vaccine_label <- adolescent_vaccine_label(
+      input$adolescent_vaccine
+    )
+
+    m <- leaflet(x) %>%
+      addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
+      addCircleMarkers(
+        ~county_longitude,
+        ~county_latitude,
+        radius = ~marker_radius,
+        color = ~coverage_color(coverage),
+        fillColor = ~coverage_color(coverage),
+        fillOpacity = 0.85,
+        opacity = 1,
+        weight = 1,
+        label = ~paste0(
+          county,
+          ": ",
+          round(coverage, 1),
+          "%"
+        ),
+        popup = ~paste0(
+          "<b>", county, "</b><br>",
+          "State: ", state, "<br>",
+          vaccine_label, ": ", round(coverage, 1), "%<br>",
+          "Patients covered: ", patients_covered, " of ", eligible_patients
+        )
+      ) %>%
+      addLegend(
+        position = "bottomright",
+        colors = coverage_colors,
+        labels = coverage_legend_labels,
+        opacity = 0.9,
+        title = paste0(vaccine_label, " coverage")
+      )
+
+    if (nrow(x) == 1) {
+      m <- m %>%
+        setView(
+          lng = x$county_longitude[[1]],
+          lat = x$county_latitude[[1]],
+          zoom = 9
+        )
+    } else {
+      m <- m %>%
+        fitBounds(
+          lng1 = min(x$county_longitude),
+          lat1 = min(x$county_latitude),
+          lng2 = max(x$county_longitude),
+          lat2 = max(x$county_latitude)
+        )
+    }
+
+    m
+  })
+
+  adolescent_village_needs_data <- reactive({
+    adolescent_selected_map_data() %>%
+      mutate(
+        needs_selected_vaccine = case_when(
+          input$adolescent_vaccine == "hpv_1plus" ~
+            coalesce(as.numeric(need_hpv_dose_1), 0) == 1,
+          input$adolescent_vaccine == "hpv_utd" ~
+            coalesce(as.numeric(need_hpv_dose_2), 0) == 1,
+          input$adolescent_vaccine == "tdap_1plus" ~
+            selected_indicator == 0,
+          TRUE ~ FALSE
+        )
+      ) %>%
+      filter(
+        needs_selected_vaccine,
+        !is.na(village),
+        str_trim(village) != ""
+      ) %>%
+      group_by(
+        state,
+        county,
+        village
+      ) %>%
+      summarise(
+        patients_needing = n_distinct(
+          record_id,
+          na.rm = TRUE
+        ),
+        village_latitude = safe_dashboard_median(village_latitude),
+        village_longitude = safe_dashboard_median(village_longitude),
+        .groups = "drop"
+      ) %>%
+      mutate(
+        marker_radius = pmin(
+          24,
+          pmax(5, 3 + 2.2 * sqrt(patients_needing))
+        )
+      )
+  })
+
+  output$adolescent_needs_map <- renderLeaflet({
+    x <- adolescent_village_needs_data() %>%
+      filter(
+        patients_needing > 0,
+        !is.na(village_latitude),
+        !is.na(village_longitude)
+      )
+
+    validate(
+      need(
+        nrow(x) > 0,
+        "No geocoded patients needing vaccine are available for this selection."
+      )
+    )
+
+    vaccine_label <- adolescent_vaccine_label(
+      input$adolescent_vaccine
+    )
+
+    m <- leaflet(x) %>%
+      addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
+      addCircleMarkers(
+        ~village_longitude,
+        ~village_latitude,
+        radius = ~marker_radius,
+        color = "#9b2c2c",
+        fillColor = "#c43c39",
+        fillOpacity = 0.75,
+        opacity = 0.95,
+        weight = 1.5,
+        label = ~paste0(
+          village,
+          ": ",
+          patients_needing,
+          if_else(
+            patients_needing == 1,
+            " patient",
+            " patients"
+          )
+        ),
+        popup = ~paste0(
+          "<b>", village, "</b><br>",
+          "County / atoll: ", county, "<br>",
+          "State: ", state, "<br>",
+          "Vaccine indicator: ", vaccine_label, "<br>",
+          "Patients needing vaccine: ", patients_needing
+        )
+      )
+
+    if (nrow(x) == 1) {
+      m <- m %>%
+        setView(
+          lng = x$village_longitude[[1]],
+          lat = x$village_latitude[[1]],
+          zoom = 11
+        )
+    } else {
+      m <- m %>%
+        fitBounds(
+          lng1 = min(x$village_longitude),
+          lat1 = min(x$village_latitude),
+          lng2 = max(x$village_longitude),
+          lat2 = max(x$village_latitude)
+        )
+    }
+
+    m
+  })
+
   coverage_scope <- reactive({
     x <- patient %>%
       filter(between(age_months, 2, 83))
