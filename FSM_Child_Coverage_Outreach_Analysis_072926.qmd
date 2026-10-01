@@ -1,7 +1,7 @@
 ---
 title: "FSM Child Coverage and Outreach Planning"
 author: "Report provided by: USAPI Assessment Team | Surveillance & Epidemiology Branch | ISD | NCIRD | CDC"
-date: "Data as of July 29, 2026"
+date: "Data as of September 29, 2026"
 format:
   html:
     theme: flatly
@@ -123,17 +123,17 @@ here::dr_here()
 
 roster_file <- file.path(
   raw_data_dir,
-  "Roster_0-7_072926.xlsx"
+  "Roster_0-7_092926.xlsx"
 )
 
 detail_file <- file.path(
   raw_data_dir,
-  "Details_0-7_072926.xlsx"
+  "Details_0-7_092926.xlsx"
 )
 
 reminder_file <- file.path(
   raw_data_dir,
-  "RR_ALL_0-7_072726.xlsx"
+  "RR_ALL_0-7_092926.xlsx"
 )
 
 placenames_file <- file.path(
@@ -224,7 +224,7 @@ interest.
 
 #Set the "age as of" date. For example, age 19 - 35 months *as of January 1, 2026*
 
-age_as_of_date <- ymd("2026-07-01")
+age_as_of_date <- ymd("2026-09-29")
 
 roster2 <- roster %>% 
   mutate(
