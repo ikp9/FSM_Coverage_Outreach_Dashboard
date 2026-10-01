@@ -301,7 +301,7 @@ interest.
 #| include: false
 #Set the "age as of" date. For example, age 19 - 35 months *as of January 1, 2026*
 
-age_as_of_date <- ymd("2026-07-01")
+age_as_of_date <- ymd("2026-09-29")
 
 reminder2 <- reminder %>% 
   mutate(
@@ -431,7 +431,7 @@ processed_doses <- reminder3 %>%
       age_months >= 19 & age_months <= 47 ~ case_when(
         vaccine == "DTAP"         & dose == 4 ~ 1,
         vaccine == "POLIO"        & dose == 3 ~ 1,
-        vaccine == "MMR/MEASLES"  & dose == 2 ~ 1,
+        vaccine == "MMR/MEASLES"  & dose == 1 ~ 1,
         vaccine == "HIB"                    ~ 1,
         vaccine == "HEPB"         & dose == 3 ~ 1,
         vaccine == "PNEUMOCOCCAL"           ~ 1,
@@ -442,7 +442,7 @@ processed_doses <- reminder3 %>%
       age_months >= 48 & age_months <= 83 ~ case_when(
         vaccine == "DTAP"         & dose %in% c(4, 5) ~ 1,
         vaccine == "POLIO"        & dose %in% c(3, 4) ~ 1,
-        vaccine == "MMR/MEASLES"  & dose == 2         ~ 1,
+        vaccine == "MMR/MEASLES"  & dose == 2        ~ 1,
         vaccine == "HIB"                              ~ 1,
         vaccine == "HEPB"         & dose == 3         ~ 1,
         vaccine == "PNEUMOCOCCAL"                     ~ 1,
@@ -638,7 +638,7 @@ interest.
 #| label: clean-detail
 #| include: false
 
-age_as_of_date <- ymd("2026-07-01")
+age_as_of_date <- ymd("2026-09-29")
 
 detail2 <-detail %>% 
   mutate(
@@ -2952,7 +2952,7 @@ hib_utd = case_when(
       age_months >= 12 & age_months <= 47 &   # age 1-3 years
       mmr1utd == 1 &                          # received dose 1
       mmr2utd == 0 &                          # has not received dose 2
-      days_since_mmr1 > 30                    # more than 30 days since dose 1
+      days_since_mmr1 > 28                    # more than 28 days since dose 1
     ),
 
   MMR_Single = if_else(need_mmr, 1, 0)
@@ -3768,11 +3768,28 @@ today <- format(
 
 patients_needing_vaccination <- clean12_merged %>%
 
-  # Include children on reminder/recall plus children identified as needing
-  # an additional MMR dose through the FSM-specific MMR logic.
+  # Create separate MMR dose-needs flags for this patient list.
+  mutate(
+    MMR1UTD = if_else(mmr1utd == 1, 1L, 0L, missing = 0L),
+    Need_MMR1 = if_else(
+      age_months >= 12 & MMR1UTD == 0,
+      1L, 0L, missing = 0L
+    ),
+    Need_MMR2 = if_else(
+      age_months >= 13 &
+        MMR1UTD == 1 &
+        mmr2utd == 0 &
+        !is.na(mmr_date1) &
+        as.numeric(Sys.Date() - as.Date(mmr_date1)) > 28,
+      1L, 0L, missing = 0L
+    )
+  ) %>%
+
+  # Include children on reminder/recall plus children needing MMR dose 1 or 2.
   filter(
     onreminder == 1 |
-      need_mmr == 1
+      Need_MMR1 == 1 |
+      Need_MMR2 == 1
   ) %>%
 
   select(
@@ -3789,15 +3806,17 @@ patients_needing_vaccination <- clean12_merged %>%
     county,
     state,
     immunization_recommendations,
-    mmr2utd,
     PedVaxHib,
     Vaxelis,
     Pediarix,
     DTaP_Single,
     IPV_Single,
-    MMR_Single,
     Prevnar,
-    RotaTeq
+    RotaTeq,
+    MMR1UTD,
+    mmr2utd,
+    Need_MMR1,
+    Need_MMR2
   ) %>%
 
   arrange(

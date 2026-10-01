@@ -336,6 +336,7 @@ TRUE,Pohnpei,Kitti,Pwok,County and village coordinates available,5
 TRUE,Pohnpei,Kitti,Pwudoi,County and village coordinates available,45
 TRUE,Pohnpei,Kitti,Rehntu,County and village coordinates available,7
 TRUE,Pohnpei,Kitti,Rohi,County and village coordinates available,59
+TRUE,Pohnpei,Kitti,Rongkitti,County and village coordinates available,2
 TRUE,Pohnpei,Kitti,Salapwuk,County and village coordinates available,28
 TRUE,Pohnpei,Kitti,Seinwar,County and village coordinates available,29
 TRUE,Pohnpei,Kitti,Sowihso,County and village coordinates available,17
@@ -518,6 +519,7 @@ TRUE,Pohnpei,U,Souna,County and village coordinates available,5
 TRUE,Pohnpei,U,Takaieu,County and village coordinates available,21
 TRUE,Pohnpei,U,U,County and village coordinates available,6
 TRUE,Pohnpei,U,Yosmahru,County and village coordinates available,13
+TRUE,Yap,Dalipeebinaew,Arngel,County and village coordinates available,16
 TRUE,Yap,Dalipeebinaew,Falalop,County and village coordinates available,1
 TRUE,Yap,Dalipeebinaew,Fedor,County and village coordinates available,13
 TRUE,Yap,Dalipeebinaew,Ifaluk,County and village coordinates available,1
@@ -567,6 +569,7 @@ TRUE,Yap,Maap,Waloy,County and village coordinates available,4
 TRUE,Yap,Ngulu,Ngulu,County and village coordinates available,4
 TRUE,Yap,Rumung,Fais,County and village coordinates available,1
 TRUE,Yap,Rumung,Rumung,County and village coordinates available,1
+TRUE,Yap,Ruul,Arngel,County and village coordinates available,1
 TRUE,Yap,Ruul,Asor,County and village coordinates available,1
 TRUE,Yap,Ruul,Balabat,County and village coordinates available,24
 TRUE,Yap,Ruul,Dachngar,County and village coordinates available,17
@@ -670,7 +673,6 @@ TRUE,Pohnpei,Kitti,Paliapailong,Village coordinates unavailable; county availabl
 TRUE,Pohnpei,Kitti,Poahs,Village coordinates unavailable; county available,8
 TRUE,Pohnpei,Kitti,Pohrasapw,Village coordinates unavailable; county available,3
 TRUE,Pohnpei,Kitti,Rohi Pah,Village coordinates unavailable; county available,1
-TRUE,Pohnpei,Kitti,Rongkitti,Village coordinates unavailable; county available,2
 TRUE,Pohnpei,Kitti,Sounkroun,Village coordinates unavailable; county available,9
 TRUE,Pohnpei,Kitti,Tafunsak,Village coordinates unavailable; county available,1
 TRUE,Pohnpei,Kitti,Weno,Village coordinates unavailable; county available,1
@@ -733,7 +735,6 @@ TRUE,Pohnpei,U,Rohi Pah,Village coordinates unavailable; county available,7
 TRUE,Pohnpei,U,Rohi Powe,Village coordinates unavailable; county available,2
 TRUE,Pohnpei,U,Siliap,Village coordinates unavailable; county available,1
 TRUE,Pohnpei,U,Utwa,Village coordinates unavailable; county available,1
-TRUE,Yap,Dalipeebinaew,Arngel,Village coordinates unavailable; county available,16
 TRUE,Yap,Dalipeebinaew,Kanif,Village coordinates unavailable; county available,11
 TRUE,Yap,Dalipeebinaew,Tagegin,Village coordinates unavailable; county available,1
 TRUE,Yap,Dalipeebinaew,Yaboch,Village coordinates unavailable; county available,5
@@ -772,7 +773,6 @@ TRUE,Yap,Rumung,Fal,Village coordinates unavailable; county available,4
 TRUE,Yap,Rumung,Gaanaun,Village coordinates unavailable; county available,3
 TRUE,Yap,Rumung,Mechiol,Village coordinates unavailable; county available,1
 TRUE,Yap,Rumung,Riy,Village coordinates unavailable; county available,1
-TRUE,Yap,Ruul,Arngel,Village coordinates unavailable; county available,1
 TRUE,Yap,Ruul,Benik,Village coordinates unavailable; county available,2
 TRUE,Yap,Ruul,Dulkan,Village coordinates unavailable; county available,6
 TRUE,Yap,Ruul,Ganelay,Village coordinates unavailable; county available,1
