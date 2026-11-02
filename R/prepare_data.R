@@ -120,9 +120,13 @@ resolve_patient_file <- function(directory) {
 }
 
 
-patient_file <- resolve_patient_file(
-  patient_data_dir
-)
+# A completed analytic run pins its newly exported patient file. Standalone
+# preparation retains the existing newest-file selection behavior.
+if (exists("patient_file_override", inherits = FALSE)) {
+  patient_file <- normalizePath(patient_file_override, winslash = "/", mustWork = TRUE)
+} else {
+  patient_file <- resolve_patient_file(patient_data_dir)
+}
 
 
 resolve_adolescent_file <- function(directories) {
@@ -137,7 +141,7 @@ resolve_adolescent_file <- function(directories) {
         list.files(
           path = directory,
           pattern = paste0(
-            "^Dataset 2_FSM_9-17 Years_DeID_Full_Dataset_",
+            "^Dataset 3_FSM_9-17 Years_DeID_Full_Dataset_",
             ".*\\.(xlsx|xls)$"
           ),
           full.names = TRUE,
@@ -155,7 +159,7 @@ resolve_adolescent_file <- function(directories) {
       paste0(
         "No deidentified adolescent dataset was found.\n\n",
         "Expected a file named like:\n  ",
-        "Dataset 2_FSM_9-17 Years_DeID_Full_Dataset_MMDDYY.xlsx\n\n",
+        "Dataset 3_FSM_9-17 Years_DeID_Full_Dataset_MMDDYY.xlsx\n\n",
         "Checked:\n  - ",
         paste(directories, collapse = "\n  - ")
       ),
@@ -883,6 +887,17 @@ patient <- patient_raw %>%
       )
     ),
     
+    # Recalculate risk here so older analytic exports cannot retain the
+    # reversed non-MMR term. Preserve the existing missing-date convention:
+    # a missing interval receives the maximum time contribution.
+    t_i = pmin(months_since_last_vax, 36, na.rm = TRUE),
+    t_i_tilde = t_i / 36,
+    individual_risk_score = 100 * (
+      0.20 * if_else(utd_no_mmr == 0, 1, 0, missing = 0) +
+      0.55 * if_else(mmr_utd == 0, 1, 0, missing = 0) +
+      0.25 * t_i_tilde
+    ),
+
     not_utd = case_when(
       is.na(utd) ~ NA_integer_,
       utd == 0 ~ 1L,
@@ -1101,6 +1116,7 @@ community_summary <- community_summary %>%
 
 community_summary <- community_summary %>%
   mutate(
+    # Operational metadata only; access/remoteness is excluded from priority.
     remoteness = case_when(
       county_join %in% remote_names_join ~ 1,
       county_join %in% moderate_names_join ~ 0.5,
@@ -1158,7 +1174,7 @@ community_summary <- community_summary %>%
     density_percentile_component =
       percentile_100(log_population_density),
     
-    # Low density represents operational difficulty.
+    # Retained operational metadata; low density is excluded from priority.
     low_density_component = case_when(
       !is.na(density_percentile_component) ~
         100 - density_percentile_component,
@@ -1199,11 +1215,10 @@ community_summary <- community_summary %>%
 community_summary <- community_summary %>%
   mutate(
     priority_score = round(
-      0.90 * community_patient_risk_component +
-        0.010 * access_component +
-        0.010 * low_density_component_for_score +
+      # Remove access terms and normalize the retained 90:4:4 weights.
+      (0.90 * community_patient_risk_component +
         0.040 * transmission_component +
-        0.040 * burden_component,
+        0.040 * burden_component) / 0.98,
       digits = 1
     ),
     
@@ -1229,17 +1244,9 @@ community_summary <- community_summary %>%
         # Highest score tertile.
         priority_score > priority_cutpoints[2] ~ "High",
         
-        # Severe coverage gaps are always High.
+        # Severe gaps are High before the program review overrides below.
         utd_coverage < 30 |
           mmr_coverage < 50 ~ "High",
-        
-        # Remote communities below the program target
-        # cannot be classified as Low.
-        remoteness == 1 &
-          (
-            utd_coverage < 50 |
-              mmr_coverage < 50
-          ) ~ "Moderate",
         
         # Middle score tertile.
         priority_score > priority_cutpoints[1] ~ "Moderate",
@@ -1259,52 +1266,10 @@ community_summary <- community_summary %>%
 # 15. Create data-quality and routing-readiness indicators
 # ==============================================================================
 
-unresolved_geographies <- normalize_join_text(
-  c(
-    "Mortlock",
-    "Northwest",
-    "Missing",
-    "Unknown"
-  )
-)
-
-
-community_summary <- community_summary %>%
-  mutate(
-    data_quality_flag = case_when(
-      is.na(latitude) | is.na(longitude) ~
-        "Missing coordinates",
-      
-      county_join %in% unresolved_geographies ~
-        "Geography requires resolution",
-      
-      is.na(census_total) ~
-        "Missing Census match",
-      
-      is.na(area_km2) ~
-        "Missing land area",
-      
-      is.na(population_density_km2) ~
-        "Missing population density",
-      
-      child_population < 5 ~
-        "Small denominator",
-      
-      TRUE ~
-        "Ready"
-    ),
-    
-    routing_ready = case_when(
-      is.na(latitude) | is.na(longitude) ~ FALSE,
-      county_join %in% unresolved_geographies ~ FALSE,
-      TRUE ~ TRUE
-    )
-  ) %>%
-  arrange(
-    priority_rank,
-    state,
-    county
-  )
+# Apply the shared program review rules, retaining the calculated score/rank.
+source(here::here("R", "community_priority_review.R"), local = TRUE)
+community_summary <- apply_community_priority_review(community_summary) %>%
+  arrange(priority_rank, state, county)
 
 
 # ==============================================================================
@@ -1892,6 +1857,23 @@ write_csv(
 )
 
 
+# Retain the analysis cutoff dates associated with the prepared data.
+source(here::here("R", "dashboard_dates.R"), local = TRUE)
+dashboard_date_metadata <- write_dashboard_dates(
+  here::here("data", "dashboard_metadata.csv"),
+  child_source = patient_file,
+  adolescent_source = adolescent_file,
+  child_analysis_date = get0("analysis_as_of_date_override", inherits = FALSE, ifnotfound = NULL)
+)
+
+# Export the same finalized community scores used by the dashboard.
+source(here::here("R", "export_community_priority_scores.R"), local = TRUE)
+community_priority_export_file <- export_community_priority_scores(
+  community_summary,
+  output_dir = patient_data_dir,
+  source_file = patient_file
+)
+
 # ==============================================================================
 # 21. Print preparation summary
 # ==============================================================================
@@ -1955,6 +1937,7 @@ message(
     "\nData preparation complete.\n\n",
     "Created:\n",
     "  - ", community_output_file, "\n",
+    "  - ", community_priority_export_file, "\n",
     "  - ", vaccine_output_file, "\n",
     "  - ", patient_output_file, "\n",
     "  - ", unmatched_census_output_file, "\n",

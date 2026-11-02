@@ -204,7 +204,7 @@ CHUUK__TOLENSOM,Chuuk,Tolensom,Vaxelis,103
 CHUUK__TOLENSOM,Chuuk,Tolensom,Pediarix,54
 CHUUK__TOLENSOM,Chuuk,Tolensom,DTaP_Single,170
 CHUUK__TOLENSOM,Chuuk,Tolensom,IPV_Single,95
-CHUUK__TOLENSOM,Chuuk,Tolensom,MMR_Single,150
+CHUUK__TOLENSOM,Chuuk,Tolensom,MMR_Single,155
 CHUUK__TOLENSOM,Chuuk,Tolensom,Prevnar,140
 CHUUK__TOLENSOM,Chuuk,Tolensom,RotaTeq,9
 CHUUK__TONOAS,Chuuk,Tonoas,PedVaxHib,22
@@ -244,7 +244,7 @@ CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,Vaxelis,0
 CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,Pediarix,0
 CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,DTaP_Single,0
 CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,IPV_Single,0
-CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,MMR_Single,29
+CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,MMR_Single,35
 CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,Prevnar,0
 CHUUK__ZZ-UNKNOWN-CHUUK,Chuuk,Zz-Unknown-Chuuk,RotaTeq,1
 KOSRAE__LELU,Kosrae,Lelu,PedVaxHib,19
@@ -308,7 +308,7 @@ POHNPEI__KITTI,Pohnpei,Kitti,Vaxelis,111
 POHNPEI__KITTI,Pohnpei,Kitti,Pediarix,64
 POHNPEI__KITTI,Pohnpei,Kitti,DTaP_Single,139
 POHNPEI__KITTI,Pohnpei,Kitti,IPV_Single,71
-POHNPEI__KITTI,Pohnpei,Kitti,MMR_Single,224
+POHNPEI__KITTI,Pohnpei,Kitti,MMR_Single,225
 POHNPEI__KITTI,Pohnpei,Kitti,Prevnar,170
 POHNPEI__KITTI,Pohnpei,Kitti,RotaTeq,27
 POHNPEI__KOLONIA,Pohnpei,Kolonia,PedVaxHib,31
@@ -364,7 +364,7 @@ POHNPEI__SOKEHS,Pohnpei,Sokehs,Vaxelis,102
 POHNPEI__SOKEHS,Pohnpei,Sokehs,Pediarix,34
 POHNPEI__SOKEHS,Pohnpei,Sokehs,DTaP_Single,132
 POHNPEI__SOKEHS,Pohnpei,Sokehs,IPV_Single,73
-POHNPEI__SOKEHS,Pohnpei,Sokehs,MMR_Single,189
+POHNPEI__SOKEHS,Pohnpei,Sokehs,MMR_Single,190
 POHNPEI__SOKEHS,Pohnpei,Sokehs,Prevnar,157
 POHNPEI__SOKEHS,Pohnpei,Sokehs,RotaTeq,19
 POHNPEI__U,Pohnpei,U,PedVaxHib,19

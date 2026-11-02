@@ -32,9 +32,14 @@ styles_file <- here::here(
   "styles.css"
 )
 
+dashboard_dates_file <- here::here("R", "dashboard_dates.R")
+seasonal_flu_functions_file <- here::here("R", "seasonal_flu.R")
+
 required_project_files <- c(
   route_functions_file,
-  prepare_data_file
+  prepare_data_file,
+  dashboard_dates_file,
+  seasonal_flu_functions_file
 )
 
 missing_project_files <- required_project_files[
@@ -182,6 +187,21 @@ adolescent <- read_csv(
   locale = locale(encoding = "windows-1252"),
   show_col_types = FALSE
 )
+
+# Load the dates recorded with these prepared datasets, not current analysis settings.
+source(dashboard_dates_file, local = TRUE)
+dashboard_date_metadata <- read_dashboard_dates(here::here("data", "dashboard_metadata.csv"))
+
+source(seasonal_flu_functions_file, local = TRUE)
+seasonal_flu <- load_fsm_seasonal_flu(
+  here::here("data", "Analytic Code Output"),
+  here::here("data", "Census_Flu_2026.xlsx"),
+  here::here("data", "seasonal_flu_settings.csv")
+)
+flu_default_ymax <- if (is.null(seasonal_flu$error)) {
+  min(100, max(1, ceiling(max(seasonal_flu$curves$coverage) * 1.1)))
+} else 100
+
 
 required_adolescent_dashboard_columns <- c(
   "record_id",
@@ -531,10 +551,14 @@ safe_dashboard_median <- function(x) {
 }
 
 ui <- page_navbar(
+  id = "dashboard_page",
   title = NULL,
   fillable = FALSE,
   theme = bs_theme(version = 5, primary = "#0056a6", navbar_bg = "#003e73"),
-  header = tags$head(tags$link(rel="stylesheet", href="styles.css")),
+  header = tagList(
+    tags$head(tags$link(rel="stylesheet", href="styles.css")),
+    uiOutput("dashboard_data_as_of")
+  ),
   nav_panel(
     "Child Overview",
     
@@ -569,11 +593,9 @@ ui <- page_navbar(
         p(
           class = "small-note",
           paste0(
-            "Priority score: 90% community patient risk, ",
-            "1% access/remoteness, ",
-            "1% low-density access difficulty, ",
-            "4% high-density transmission potential, and ",
-            "4% high-risk child burden."
+            "Priority score: 91.84% community patient risk, ",
+            "4.08% high-density transmission potential, and ",
+            "4.08% high-risk child burden."
           )
         )
       ),
@@ -767,6 +789,7 @@ ui <- page_navbar(
   ),
   nav_panel(
     "Adolescent Vaccination Coverage and Planning",
+    value = "adolescent",
     layout_sidebar(
       fillable = FALSE,
       sidebar = sidebar(
@@ -851,18 +874,74 @@ ui <- page_navbar(
       )
     )
   ),
+  nav_panel(
+    "Seasonal Flu",
+    value = "seasonal_flu",
+    layout_sidebar(
+      fillable = FALSE,
+      sidebar = sidebar(
+        selectizeInput("flu_geographies", "Geography",
+          choices = FSM_FLU_GEOGRAPHIES, selected = "FSM", multiple = TRUE,
+          options = list(plugins = list("remove_button"))),
+        selectizeInput("flu_ages", "Age group",
+          choices = FSM_FLU_AGES, selected = FSM_FLU_AGES, multiple = TRUE,
+          options = list(plugins = list("remove_button"))),
+        sliderInput("flu_ymax", "Coverage scale maximum (%)",
+          min = 1, max = 100, value = flu_default_ymax, step = 1),
+        tags$p(class = "small-note", "Adjust the scale to magnify low coverage. Scroll or drag over a chart to zoom; double-click to reset."),
+        tags$p(class = "small-note", "Each selected geography has its own chart. Total combines the selected age groups."),
+        tags$p(class = "small-note", "If FSM is selected, summary cards use the FSM total once. Otherwise, cards combine the selected states.")
+      ),
+      h3("Seasonal influenza vaccination coverage"),
+      uiOutput("flu_reporting_period"),
+      layout_columns(
+        value_box(title = "Population size", value = textOutput("flu_population"),
+          showcase = bsicons::bs_icon("people"), class = "overview-value-box"),
+        value_box(title = "Influenza doses administered to date", value = textOutput("flu_doses"),
+          showcase = bsicons::bs_icon("shield-plus"), class = "overview-value-box"),
+        col_widths = c(6, 6)
+      ),
+      uiOutput("flu_geography_charts"),
+      tags$p(class = "small-note", paste0(
+        "Coverage counts each person once from their first qualifying seasonal dose, divided by the Census population. ",
+        "The dose card counts all distinct seasonal doses. Ages follow the five age groups in the analytic extract. ",
+        "Coverage reflects receipt of at least one dose, rather than up-to-date status. ",
+        "Monthly charts and dose totals use completed reporting months through the analysis cutoff. ",
+        "Population denominators come from the FSM sheet of Census_Flu_2026.xlsx. ",
+        "Population cards are rounded for display; calculations retain the supplied precision."))
+    )
+  ),
   nav_panel("Community Profile (Child)",
             layout_sidebar(
-              sidebar=sidebar(selectInput("community_id", "Community", choices=setNames(community$community_id, paste(community$state, community$county, sep=" — ")))),
+              fillable = FALSE,
+              sidebar = sidebar(
+                selectInput("profile_state", "State",
+                  choices = sort(unique(community$state)), multiple = FALSE),
+                selectInput("community_id", "Community", choices = NULL,
+                  multiple = FALSE)
+              ),
               layout_columns(
+                fill = FALSE,
+                fillable = FALSE,
                 card(card_header("Community profile"), uiOutput("community_profile")),
-                card(card_header("Priority-score components"), plotlyOutput("components_plot", height=330)),
+                card(
+                  card_header("Priority-score contributions"),
+                  plotlyOutput("components_plot", height = 330, fill = FALSE),
+                  tags$p(class = "small-note", paste0(
+                    "Community patient risk contributes 91.84%, transmission potential 4.08%, ",
+                    "and high-risk child burden 4.08%. Individual risk adds 20 points for ",
+                    "non-MMR vaccines overdue, 55 for MMR overdue, and up to 25 for time ",
+                    "since vaccination, capped at 36 months. Access, remoteness, and ",
+                    "low-density access are excluded."))
+                ),
                 col_widths=c(5,7)
               ),
               card(
                 card_header("Estimated Vaccine Needs"),
                 
                 layout_columns(
+                fill = FALSE,
+                fillable = FALSE,
                   div(
                     class = "vaccine-needs-table",
                     DTOutput("vax_table")
@@ -929,7 +1008,23 @@ ui <- page_navbar(
                      )
                    ),
                    tags$li(
-                     "Replace the provisional remoteness lookup with a validated community lookup."
+                     paste0(
+                       "Individual risk adds 20 points for non-MMR vaccines overdue, ",
+                       "55 points for MMR overdue, and up to 25 points for time ",
+                       "since vaccination, capped at 36 months. Access and ",
+                       "remoteness do not affect priority scores or groups."
+                     )
+                   ),
+                   tags$li(
+                     paste0(
+                       "Unknown county totals are reviewed by state: fewer than ",
+                       "15 children is Low, 15-30 is Moderate, and more than 30 ",
+                       "is High for data-quality review. Known counties with ",
+                       "10 or fewer children are reduced from High to Moderate. ",
+                       "All counties with 10 or fewer children receive a small-",
+                       "denominator flag. Multiple flags are separated by semicolons. ",
+                       "Numerical priority scores and ranks are unchanged."
+                     )
                    ),
                    tags$li(
                      paste0(
@@ -951,6 +1046,62 @@ ui <- page_navbar(
 )
 
 server <- function(input, output, session) {
+  output$dashboard_data_as_of <- renderUI({
+    label <- if (identical(input$dashboard_page, "seasonal_flu")) {
+      dashboard_date_label(data.frame(dataset = "flu", data_as_of_date = seasonal_flu$as_of_date), "flu")
+    } else {
+      dataset <- if (identical(input$dashboard_page, "adolescent")) "adolescent" else "child"
+      dashboard_date_label(dashboard_date_metadata, dataset)
+    }
+    tags$div(
+      class = "dashboard-data-as-of",
+      style = "padding: 0.5rem 1.5rem; text-align: right; font-size: 0.95rem; color: #475569;",
+      label
+    )
+  })
+
+  selected_flu_geographies <- reactive(intersect(FSM_FLU_GEOGRAPHIES, input$flu_geographies))
+  selected_flu_ages <- reactive(intersect(FSM_FLU_AGES, input$flu_ages))
+  selected_flu_cards <- reactive({
+    req(is.null(seasonal_flu$error))
+    fsm_flu_cards(seasonal_flu, selected_flu_geographies(), selected_flu_ages())
+  })
+  output$flu_population <- renderText({
+    if (!is.null(seasonal_flu$error)) return("Unavailable")
+    if (!length(selected_flu_geographies()) || !length(selected_flu_ages())) return("Select filters")
+    format(round(selected_flu_cards()$population), big.mark = ",", scientific = FALSE, trim = TRUE)
+  })
+  output$flu_doses <- renderText({
+    if (!is.null(seasonal_flu$error)) return("Unavailable")
+    if (!length(selected_flu_geographies()) || !length(selected_flu_ages())) return("Select filters")
+    format(selected_flu_cards()$doses, big.mark = ",", scientific = FALSE, trim = TRUE)
+  })
+  output$flu_reporting_period <- renderUI({
+    if (!is.null(seasonal_flu$error)) return(tags$p(class = "small-note", seasonal_flu$error))
+    year <- as.integer(format(seasonal_flu$season_start, "%Y"))
+    tags$p(class = "small-note", paste0(year, "-", year + 1L,
+      " season | Reporting through ", format(seasonal_flu$through, "%B %Y")))
+  })
+  output$flu_geography_charts <- renderUI({
+    if (!is.null(seasonal_flu$error)) return(tags$p("Seasonal influenza data are unavailable. ", seasonal_flu$error))
+    geographies <- selected_flu_geographies()
+    if (!length(geographies) || !length(selected_flu_ages())) return(tags$p("Select at least one geography and one age group."))
+    cards <- lapply(geographies, function(geo) card(
+      full_screen = TRUE,
+      card_header(paste0(geo, ": cumulative seasonal influenza vaccination coverage")),
+      plotlyOutput(paste0("flu_coverage_", tolower(geo)), height = "420px")
+    ))
+    do.call(layout_columns, c(cards, list(col_widths = rep(if (length(cards) == 1L) 12 else 6, length(cards)))))
+  })
+  for (geo in FSM_FLU_GEOGRAPHIES) local({
+    geography <- geo
+    output[[paste0("flu_coverage_", tolower(geography))]] <- renderPlotly({
+      validate(need(is.null(seasonal_flu$error), seasonal_flu$error),
+               need(length(selected_flu_ages()) > 0, "Select at least one age group."))
+      fsm_flu_plot(seasonal_flu, geography, selected_flu_ages(), input$flu_ymax)
+    })
+  })
+
   adolescent_selected_data <- reactive({
     req(
       input$adolescent_vaccine,
@@ -1820,8 +1971,63 @@ server <- function(input, output, session) {
     )
   )
   
-  selected_comm <- reactive(community %>% filter(community_id == input$community_id) %>% slice(1))
-  output$community_profile <- renderUI({x<-selected_comm(); req(nrow(x)); tagList(h3(x$county), h5(x$state), tags$hr(), tags$p(strong("Priority: "),x$priority_score," (",x$priority_group,")"), tags$p(strong("Children: "),x$child_population), tags$p(strong("Not UTD: "),x$children_not_utd," (",round(x$proportion_not_utd,1),"%)"), tags$p(strong("MMR coverage: "),round(x$mmr_coverage,1),"%"), tags$p(strong("Median months since vaccination among not UTD: "),round(x$median_months_since_vax,1)), tags$p(strong("Routing readiness: "),x$data_quality_flag))})
+  profile_communities <- reactive({
+    req(input$profile_state)
+    community %>% filter(state == input$profile_state) %>% arrange(county)
+  })
+  observeEvent(input$profile_state, {
+    choices <- profile_communities()
+    selected <- isolate(input$community_id)
+    if (is.null(selected) || !selected %in% choices$community_id) {
+      selected <- head(choices$community_id, 1)
+    }
+    freezeReactiveValue(input, "community_id")
+    updateSelectInput(session, "community_id",
+      choices = setNames(choices$community_id, choices$county), selected = selected)
+  }, ignoreNULL = TRUE)
+  selected_comm <- reactive({
+    req(input$community_id)
+    x <- profile_communities() %>% filter(community_id == input$community_id) %>% slice(1)
+    req(nrow(x) == 1)
+    x
+  })
+  output$community_profile <- renderUI({
+    x <- selected_comm()
+    number <- function(value, digits = 1) {
+      if (is.na(value)) "Not available" else format(round(value, digits), big.mark = ",", trim = TRUE)
+    }
+    percent <- function(value) {
+      if (is.na(value)) "Not available" else paste0(number(value), "%")
+    }
+    level_note <- if (isTRUE(x$county_unknown)) {
+      paste0("Unknown county: ", number(x$unknown_county_children_in_state, 0),
+        " children in ", x$state, ". Priority level follows the state total: fewer than 15 = Low; ",
+        "15–30 = Moderate; more than 30 = High for data quality review.")
+    } else if (x$child_population <= 10 && as.character(x$priority_group_before_review) == "High") {
+      "Priority level reduced from High to Moderate because this known community has 10 or fewer children."
+    } else {
+      "Priority level follows the score and coverage rules; no program review adjustment applies."
+    }
+    flags <- strsplit(x$data_quality_flag, "; *")[[1]]
+    tagList(
+      h3(x$county), h5(x$state), tags$hr(),
+      tags$p(strong("Priority score: "), number(x$priority_score), " / 100"),
+      tags$p(strong("Priority rank: "), number(x$priority_rank, 0)),
+      tags$p(strong("Priority level: "), as.character(x$priority_group)),
+      tags$p(class = "small-note", level_note, " Numerical score and rank are retained."),
+      tags$p(strong("Children: "), number(x$child_population, 0)),
+      tags$p(strong("Children not UTD: "), number(x$children_not_utd, 0),
+        " (", percent(x$proportion_not_utd), ")"),
+      tags$p(strong("UTD: "), percent(x$utd_coverage)),
+      tags$p(strong("MMR UTD: "), percent(x$mmr_coverage)),
+      tags$p(strong("UTD excluding MMR: "), percent(x$utd_no_mmr_coverage)),
+      tags$p(strong("Median time since vaccination (months), among children not UTD: "),
+        number(x$median_months_since_vax)),
+      tags$p(strong("Population density (people/km²): "), number(x$population_density_km2)),
+      tags$p(strong("Data quality flags: ")),
+      tags$ul(lapply(flags, tags$li))
+    )
+  })
   output$components_plot <- renderPlotly({
     x <- selected_comm()
     req(nrow(x) == 1)
@@ -1829,27 +2035,21 @@ server <- function(input, output, session) {
     d <- tibble::tibble(
       component = c(
         "Community patient risk",
-        "Access / remoteness",
-        "Low-density access difficulty",
         "High-density transmission potential",
         "High-risk child burden"
       ),
       
       component_score = c(
         x$community_patient_risk_component,
-        x$access_component,
-        x$low_density_component_for_score,
         x$transmission_component,
         x$burden_component
       ),
       
       weight = c(
         0.90,
-        0.01,
-        0.01,
         0.04,
         0.04
-      )
+      ) / 0.98
     ) %>%
       mutate(
         weighted_points = component_score * weight,
@@ -1862,7 +2062,7 @@ server <- function(input, output, session) {
     
     plot_ly(
       d,
-      x = ~component_score,
+      x = ~weighted_points,
       y = ~component,
       type = "bar",
       orientation = "h",
@@ -1874,18 +2074,19 @@ server <- function(input, output, session) {
         round(component_score, 1),
         " / 100",
         "<br>Weight: ",
-        round(weight * 100),
+        round(weight * 100, 2),
         "%",
         "<br>Contribution to priority score: ",
         round(weighted_points, 1),
         " points"
       ),
       
-      hoverinfo = "text"
+      hoverinfo = "text",
+      textposition = "none"
     ) %>%
       layout(
         xaxis = list(
-          title = "Component score (0–100)",
+          title = "Contribution to priority score (points)",
           range = c(0, 100)
         ),
         
@@ -1915,9 +2116,10 @@ server <- function(input, output, session) {
       "PCV"
     )
     
+    selected_id <- selected_comm()$community_id
     vaccine_table_data <- vax_needs %>%
       filter(
-        community_id == input$community_id
+        community_id == selected_id
       ) %>%
       select(
         vaccine,
@@ -1979,9 +2181,10 @@ server <- function(input, output, session) {
       "RotaTeq"
     )
     
+    selected_id <- selected_comm()$community_id
     product_table_data <- product_needs %>%
       filter(
-        community_id == input$community_id
+        community_id == selected_id
       ) %>%
       select(
         product,

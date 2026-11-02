@@ -3685,7 +3685,7 @@ clean12_merged <- clean11_merged %>%
     t_i_tilde = t_i / 36,
 
     individual_risk_score = 100 * (
-      0.20 * if_else(utd_no_mmr == 1, 1, 0, missing = 0) +
+      0.20 * if_else(utd_no_mmr == 0, 1, 0, missing = 0) +
       0.55 * if_else(mmr_utd == 0, 1, 0, missing = 0) +
       0.25 * t_i_tilde
     )
@@ -3747,8 +3747,12 @@ deid_dataset_file <- file.path(
   )
 )
 
+# Store the analysis cutoff with the extract so later preparations retain it.
 openxlsx::write.xlsx(
-  deid_dataset,
+  list(
+    Sheet1 = deid_dataset,
+    Analysis_Metadata = data.frame(analysis_as_of_date = as.character(age_as_of_date))
+  ),
   file = deid_dataset_file,
   overwrite = TRUE
 )
@@ -5100,4 +5104,25 @@ message("Workbook created: ", output_file)
 output_file
 
 
+```
+
+
+# Community priority score export and dashboard refresh
+
+```{r}
+#| label: export-community-priority-scores
+#| echo: false
+
+# Use this run's exact deidentified dataset rather than a saved community CSV
+# or another file selected by modification date. Isolate preparation variables
+# so the analysis data frames and output settings remain unchanged.
+stopifnot(exists("deid_dataset_file"), file.exists(deid_dataset_file))
+community_priority_run <- new.env(parent = globalenv())
+community_priority_run$patient_file_override <- deid_dataset_file
+community_priority_run$analysis_as_of_date_override <- age_as_of_date
+sys.source(
+  here::here("R", "prepare_data.R"),
+  envir = community_priority_run
+)
+community_priority_export_file <- community_priority_run$community_priority_export_file
 ```

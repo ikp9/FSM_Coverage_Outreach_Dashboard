@@ -1,6 +1,6 @@
 packages <- c(
   "shiny", "bslib", "bsicons", "dplyr", "readr", "readxl", "tidyr",
-  "stringr", "tibble", "DT", "leaflet", "plotly", "here"
+  "stringr", "tibble", "DT", "leaflet", "plotly", "here", "openxlsx"
 )
 new <- packages[!packages %in% rownames(installed.packages())]
 if(length(new)) install.packages(new)
