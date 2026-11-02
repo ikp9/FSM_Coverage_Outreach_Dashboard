@@ -110,7 +110,7 @@ export_community_priority_scores <- function(community_summary, output_dir,
       "A new dated workbook is written after each completed analysis or data-preparation run. Re-running on the same date replaces that date's workbook; other dates are retained.",
       "Unavailable values are blank, not zero. Scoring retains the existing neutral density of 50 for missing density and maximum time contribution for missing vaccination dates.",
       "20 points for non-MMR overdue, 55 for MMR overdue, plus up to 25 for time since vaccination over 36 months. MMR not yet eligible contributes zero.",
-      "Patient risk = 60% median child score + 20% child-score 75th percentile + 20% percentage scoring >=70. Final score uses patient risk, density-based transmission, and high-risk child burden in a normalized 90:4:4 ratio.",
+      "Patient risk = 60% median child score + 20% child-score 75th percentile + 20% percentage scoring >=70. Final score = 90% community patient risk + 5% high-density transmission potential + 5% high-risk child burden.",
       "Base level: High if above the upper score tertile, overall UTD <30%, or MMR UTD <50%; otherwise Moderate above the lower tertile, else Low. Overrides: Unknown county total per state <15 is Low, 15-30 is Moderate, >30 is High for data-quality review. A known county with 10 or fewer children cannot be High and is changed to Moderate. Numerical scores and ranks are retained."
     ), check.names = FALSE, stringsAsFactors = FALSE
   )

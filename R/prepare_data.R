@@ -1215,10 +1215,10 @@ community_summary <- community_summary %>%
 community_summary <- community_summary %>%
   mutate(
     priority_score = round(
-      # Remove access terms and normalize the retained 90:4:4 weights.
-      (0.90 * community_patient_risk_component +
-        0.040 * transmission_component +
-        0.040 * burden_component) / 0.98,
+      # Weight patient risk, transmission potential, and child burden at 90%, 5%, and 5%.
+      0.90 * community_patient_risk_component +
+        0.05 * transmission_component +
+        0.05 * burden_component,
       digits = 1
     ),
     

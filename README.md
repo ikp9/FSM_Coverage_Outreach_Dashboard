@@ -70,16 +70,16 @@ individual score so older analytic exports also use the corrected definition.
 
 Community patient risk remains 60% median individual score, 20% 75th percentile,
 and 20% percentage scoring at least 70. Priority now combines patient risk,
-density-based transmission potential, and high-risk child burden in a normalized
-90:4:4 ratio (91.8367%, 4.0816%, 4.0816%). Access/remoteness and low-density
+density-based transmission potential, and high-risk child burden with weights
+of 90%, 5%, and 5%, respectively. Access/remoteness and low-density
 access terms, including the remoteness-based Moderate floor, are removed from
 priority. Coverage-based High overrides and scenario-specific score tertiles
 remain unchanged. Operational access metadata remains available in prepared
 data but is not used in the score or component chart.
 
 After changing analytic inputs, run `source(here::here("R", "prepare_data.R"))`
-before starting the app. The saved October 5 cohort yields 24 High, 22 Moderate,
-and 23 Low communities with the revised calculation.
+before starting the app. Priority levels are recalculated from the current data and score tertiles,
+then the program review rules below are applied.
 
 
 # Community priority Excel export — November 2, 2026

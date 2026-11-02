@@ -560,12 +560,16 @@ ui <- page_navbar(
     uiOutput("dashboard_data_as_of")
   ),
   nav_panel(
-    "Child Overview",
+    "Child Situation Overview",
     
     layout_sidebar(
       fillable = FALSE,
       
       sidebar = sidebar(
+        p(
+          class = "small-note",
+          "This page reflects summary indicators among all children 2 - 83 months. See the Child Vaccination Coverage page for a breakdown by age group."
+        ),
         selectInput(
           "state",
           "State",
@@ -593,16 +597,16 @@ ui <- page_navbar(
         p(
           class = "small-note",
           paste0(
-            "Priority score: 91.84% community patient risk, ",
-            "4.08% high-density transmission potential, and ",
-            "4.08% high-risk child burden."
+            "Priority score: 90% community patient risk, ",
+            "5% high-density transmission potential, and ",
+            "5% high-risk child burden."
           )
         )
       ),
       
       layout_columns(
         value_box(
-          title = "Children",
+          title = "Children 2 - 83 months",
           value = textOutput("n_children"),
           showcase = bsicons::bs_icon("people"),
           class = "overview-value-box"
@@ -928,8 +932,8 @@ ui <- page_navbar(
                   card_header("Priority-score contributions"),
                   plotlyOutput("components_plot", height = 330, fill = FALSE),
                   tags$p(class = "small-note", paste0(
-                    "Community patient risk contributes 91.84%, transmission potential 4.08%, ",
-                    "and high-risk child burden 4.08%. Individual risk adds 20 points for ",
+                    "Community patient risk contributes 90%, transmission potential 5%, ",
+                    "and high-risk child burden 5%. Individual risk adds 20 points for ",
                     "non-MMR vaccines overdue, 55 for MMR overdue, and up to 25 for time ",
                     "since vaccination, capped at 36 months. Access, remoteness, and ",
                     "low-density access are excluded."))
@@ -2047,9 +2051,9 @@ server <- function(input, output, session) {
       
       weight = c(
         0.90,
-        0.04,
-        0.04
-      ) / 0.98
+        0.05,
+        0.05
+      )
     ) %>%
       mutate(
         weighted_points = component_score * weight,
